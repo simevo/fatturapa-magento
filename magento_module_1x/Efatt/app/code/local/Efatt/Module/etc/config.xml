@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Efatt_Module>
+            <version>0.0.1</version>
+        </Efatt_Module>
+    </modules>
+    <adminhtml>
+
+        <events>
+            <adminhtml_widget_container_html_before>
+                <observers>
+                    <efatt_module>
+                        <class>efatt_module/observer</class>
+                        <method>adminhtmlWidgetContainerHtmlBefore</method>
+                    </efatt_module>
+                </observers>
+            </adminhtml_widget_container_html_before>
+        </events>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Efatt_Module after="Mage_Adminhtml">Efatt_Module_Adminhtml</Efatt_Module>
+                    </modules>
+                </args>                         
+            </adminhtml>
+        </routers>
+
+    </admin>
+    <global>
+        <models>
+            <efatt_module>
+                <class>Efatt_Module_Model</class>
+            </efatt_module>
+        </models>
+        <helpers>
+            <paformat>
+                <class>Efatt_Module_Helper</class>
+            </paformat>
+        </helpers>
+
+    </global>
+
+
+
+</config>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Efatt_Module>
+      <active>true</active>
+      <codePool>local</codePool>
+      <version>0.1.0</version>
+    </Efatt_Module>
+  </modules>
+</config>
