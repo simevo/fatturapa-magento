@@ -6,22 +6,38 @@ class Efatt_Module_Adminhtml_Sales_InvoiceController extends Mage_Adminhtml_Sale
 
         $invoiceIds = $this->getRequest()->getParam('invoice_ids');
 
+        /* estraggo l'oggetto fattura */
         $invoice = Mage::getModel('sales/order_invoice')->load($invoiceIds);
 
+        /* estraggo l'oggetto order */
+        $order = Mage::getModel('sales/order')->load($invoice->order_id);
+
+		/* mostro per sviluppo i dati di entrambi gli oggettti */
         echo "<h1>Invoice data</h1>"; 
 
         echo "<pre>";
        	var_dump($invoice);
        	echo "</pre>";
 
-        $order = Mage::getModel('sales/order')->load($invoice->order_id);
-
         echo "<h1>Order data</h1>"; 
 
         echo "<pre>";
        	var_dump($order);
        	echo "</pre>";
-       	
+
+       	/* genero la fattura xml */
+
+       	$xml = '<?xml version="1.0" encoding="UTF-8"?>';
+       	$xml .= '<FatturaElettronicaHeader>';
+       	$xml .= '<CedentePrestatore>';
+        $xml .= '<DatiAnagrafici>';
+
+
+	    header('Content-type: text/xml');
+		header('Content-Disposition: attachment; filename="text.xml"');
+
+		echo $xmlString;
+		exit();
 
        	
     }
