@@ -1,5 +1,4 @@
 <?php
-//ric
 require_once Mage::getModuleDir('controllers', 'Mage_Adminhtml') . DS . 'Sales' . DS . 'InvoiceController.php';
 class Efatt_Module_Adminhtml_Sales_InvoiceController extends Mage_Adminhtml_Sales_InvoiceController
 {   
@@ -41,22 +40,61 @@ class Efatt_Module_Adminhtml_Sales_InvoiceController extends Mage_Adminhtml_Sale
 
        	$xml = '<?xml version="1.0" encoding="UTF-8"?>';
        	$xml .= '<FatturaElettronicaHeader>';
-       	$xml .= '<CedentePrestatore>';
-        $xml .= '<DatiAnagrafici>';
-        $xml .= '<Anagrafica>';
-        $xml .= '<Denominazione>';
-        $xml .= $bAddress->firstname . " " . $bAddress->lastname;
-        $xml .= '</Denominazione>';
-        $xml .= '</Anagrafica>';
-        $xml .= '</DatiAnagrafici>';
-        $xml .= '</CedentePrestatore>';
+          $xml .= '<DatiTrasmissione>';
+            $xml .= '<IdTrasmittente>';
+              $xml .= '<IdPaese>IT</IdPaese>'; //questo si potrebbe prendere dai dati dello store magento?
+              $xml .= '<IdCodice>01234567890</IdCodice>'; //codice fiscale del trasmittente
+            $xml .= '</IdTrasmittente>';
+            $xml .= '<ProgressivoInvio>';
+            $xml .= $invoice->entity_id;
+            $xml .= '</ProgressivoInvio>';
+            $xml .= '<FormatoTrasmissione>FPA12</FormatoTrasmissione>'; //versione del tracciato con cui è stato predisposto il documento fattura
+            $xml .= '<CodiceDestinatario>AAAAAA</CodiceDestinatario>'; //deve corrispondere al campo Codice Ufficio riportato nella rubrica Indice PA
+          $xml .= '</DatiTrasmissione>';   
+
+          $xml .= '<CedentePrestatore>';
+            $xml .= '<DatiAnagrafici>';
+              $xml .= '<IdFiscaleIVA>';
+              $xml .= '<IdPaese>IT</IdPaese>';
+              $xml .= '<IdCodice>01234567890</IdCodice>'; //codice fiscale prestatore
+              $xml .= '</IdFiscaleIVA>';
+              $xml .= '<Anagrafica>';
+              $xml .= '<Denominazione>ALPHA SRL</Denominazione>'; //questo si potrebbe prendere dai dati dello store magento?
+              $xml .= '</Anagrafica>';
+              $xml .= '<RegimeFiscale>RF01</RegimeFiscale>';
+              $xml .= '</DatiAnagrafici>';
+              $xml .= '<Sede>';
+              $xml .= '<Indirizzo>VIALE ROMA 543</Indirizzo>';
+              $xml .= '<CAP>07100</CAP>';
+              $xml .= '<Comune>SASSARI</Comune>';
+              $xml .= '<Provincia>SS</Provincia>';
+              $xml .= '<Nazione>IT</Nazione>';
+            $xml .= '</Sede>';
+          $xml .= '</CedentePrestatore>';
+
+          $xml .= '<CessionarioCommittente>';
+            $xml .= '<DatiAnagrafici>';
+              $xml .= '<CodiceFiscale>09876543210</CodiceFiscale>';
+              $xml .= '<Anagrafica>';
+                $xml .= '<Denominazione>AMMINISTRAZIONE BETA</Denominazione>';
+              $xml .= '</Anagrafica>';
+            $xml .= '</DatiAnagrafici>';
+            $xml .= '<Sede>';
+              $xml .= '<Indirizzo>VIA TORINO 38-B</Indirizzo>';
+              $xml .= '<CAP>00145</CAP>';
+              $xml .= '<Comune>ROMA</Comune>';
+              $xml .= '<Provincia>RM</Provincia>';
+              $xml .= '<Nazione>IT</Nazione>';
+            $xml .= '</Sede>';
+          $xml .= '</CessionarioCommittente>';
+
         $xml .= '</FatturaElettronicaHeader>';
 
 
 	    $xml=simplexml_load_string($xml) or die("Error: Cannot create object");
 	    echo "<pre>";
-		print_r($xml);
-		echo "</pre>";
+  		print_r($xml);
+  		echo "</pre>";
 		exit();
 
        	
