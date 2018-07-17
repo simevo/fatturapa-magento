@@ -15,6 +15,9 @@ class Efatt_Module_Adminhtml_Sales_InvoiceController extends Mage_Adminhtml_Sale
         /* estraggo il billing address */
 		$bAddress = $order->getBillingAddress();
 
+        /* store info */
+        $store = Mage::getStoreConfig('general/store_information');
+
 		/* mostro per sviluppo i dati di entrambi gli oggettti */
         echo "<h1>Invoice data</h1>"; 
 
@@ -33,6 +36,12 @@ class Efatt_Module_Adminhtml_Sales_InvoiceController extends Mage_Adminhtml_Sale
         echo "<pre>";
        	var_dump($bAddress);
        	echo "</pre>";
+
+        echo "<h1>Store info</h1>"; 
+
+        echo "<pre>";
+        var_dump($store);
+        echo "</pre>";
 
        	/* genero la fattura xml */
 
