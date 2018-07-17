@@ -13,7 +13,7 @@ class Efatt_Module_Adminhtml_Sales_InvoiceController extends Mage_Adminhtml_Sale
         $order = Mage::getModel('sales/order')->load($invoice->order_id);
 
         /* estraggo il billing address */
-        $address = Mage::getModel('customer/address')->load($order->billing_address_id);
+		$bAddress = $order->getBillingAddress();
 
 		/* mostro per sviluppo i dati di entrambi gli oggettti */
         echo "<h1>Invoice data</h1>"; 
@@ -31,23 +31,31 @@ class Efatt_Module_Adminhtml_Sales_InvoiceController extends Mage_Adminhtml_Sale
        	echo "<h1>Billing address</h1>"; 
 
         echo "<pre>";
-       	var_dump($address);
+       	var_dump($bAddress);
        	echo "</pre>";
 
        	/* genero la fattura xml */
+
+       	echo "<h1>Oggetto fattura</h1>";
 
        	$xml = '<?xml version="1.0" encoding="UTF-8"?>';
        	$xml .= '<FatturaElettronicaHeader>';
        	$xml .= '<CedentePrestatore>';
         $xml .= '<DatiAnagrafici>';
         $xml .= '<Anagrafica>';
+        $xml .= '<Denominazione>';
+        $xml .= $bAddress->firstname . " " . $bAddress->lastname;
+        $xml .= '</Denominazione>';
+        $xml .= '</Anagrafica>';
+        $xml .= '</DatiAnagrafici>';
+        $xml .= '</CedentePrestatore>';
+        $xml .= '</FatturaElettronicaHeader>';
 
 
-
-	    header('Content-type: text/xml');
-		header('Content-Disposition: attachment; filename="text.xml"');
-
-		echo $xmlString;
+	    $xml=simplexml_load_string($xml) or die("Error: Cannot create object");
+	    echo "<pre>";
+		print_r($xml);
+		echo "</pre>";
 		exit();
 
        	
