@@ -37,9 +37,9 @@
             </efatt_module>
         </models>
         <helpers>
-            <paformat>
-                <class>Efatt_Module_Helper</class>
-            </paformat>
+        <module>
+            <class>Efatt_Module_Helper</class>
+        </module>
         </helpers>
 
     </global>

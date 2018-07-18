@@ -1,8 +1,40 @@
+<?xml version="1.0"?>
 <config>
-    <tabs>
-        <efattconfig translate="label" module="efatt">
-            <label>Test Config</label>
-            <sort_order>99999</sort_order>
-        </efattconfig>
-    </tabs>    
+	  <tabs>
+		<efatt translate="label" module="module">
+            <label>test</label>
+            <sort_order>5</sort_order>
+        </efatt>
+	  </tabs>
+	  <sections>
+		<efatt  translate="label" module="module">                    
+		<label>test</label>
+		<tab>efatt</tab>
+		<frontend_type>text</frontend_type>
+		<sort_order>0</sort_order>
+		<show_in_default>1</show_in_default>
+		<show_in_website>1</show_in_website>
+		<show_in_store>1</show_in_store>            
+					<groups>
+				      <efatt translate="label"> 
+					  <label>efatt</label>
+					  <frontend_type>text</frontend_type>
+					  <sort_order>0</sort_order>
+					  <show_in_default>1</show_in_default>
+					  <show_in_website>1</show_in_website>
+					  <show_in_store>1</show_in_store>
+				       <fields>
+                          <efatt translate="label">
+                            <label>test field</label>
+							<frontend_type>text</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                          </efatt>
+					   </fields>
+					   </efatt>
+					</groups>
+		</efatt>
+	  </sections>
 </config>
