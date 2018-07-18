@@ -1,0 +1,8 @@
+<config>
+    <tabs>
+        <efattconfig translate="label" module="efatt">
+            <label>Test Config</label>
+            <sort_order>99999</sort_order>
+        </efattconfig>
+    </tabs>    
+</config>
