@@ -18,30 +18,48 @@ class Efatt_Module_Adminhtml_Sales_InvoiceController extends Mage_Adminhtml_Sale
         /* store info */
         $store = Mage::getStoreConfig('general/store_information');
 
+        /* product info */
+        $ordered_items = $order->getAllItems();
+        Foreach($ordered_items as $item){
+          //item detail
+          echo "<h2>Riepilogo ordine</h2>";
+          echo "<p>ID: ".$item->getItemId()."</p>"; //product id
+          echo "<p>Sku: ".$item->getSku()."</p>";
+          echo "<p>Quantità: ".$item->getQtyOrdered()."</p>"; //ordered qty of item
+          echo "<p>Prodotto: ".$item->getName()."</p>";
+        }
+
+
     /* mostro per sviluppo i dati di entrambi gli oggettti */
-        echo "<h1>Invoice data</h1>"; 
+        echo "<h2>Invoice data</h2>"; 
 
         echo "<pre>";
         var_dump($invoice);
         echo "</pre>";
 
-        echo "<h1>Order data</h1>"; 
+        echo "<h2>Order data</h2>"; 
 
         echo "<pre>";
         var_dump($order);
         echo "</pre>";
 
-        echo "<h1>Billing address</h1>"; 
+        echo "<h2>Billing address</h2>"; 
 
         echo "<pre>";
         var_dump($bAddress);
         echo "</pre>";
 
-        echo "<h1>Store info</h1>"; 
+        echo "<h2>Store info</h2>"; 
 
         echo "<pre>";
         var_dump($store);
         echo "</pre>";
+
+        echo "<h2>Product info</h2>"; 
+
+        echo "<pre>";
+        var_dump($product);
+        echo "</pre>";        
 
         /* genero la fattura xml */
 
@@ -88,11 +106,11 @@ xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.
           $xml .= '<DatiGenerali>';
             $xml .= '<DatiGeneraliDocumento>';
               $xml .= '<TipoDocumento>TD01</TipoDocumento>'; // fattura, acconto, anticipo su fattura, nota di credito, parcella
-              $xml .= '<Divisa>EUR</Divisa>'; // questo va preso da magento
+              $xml .= '<Divisa>'.$invoice->store_currency_code.'</Divisa>'; // questo va preso da magento
               $xml .= '<Data>' . $order->updated_at . '</Data>';
-              $xml .= '<Numero>123</Numero>';
-              $xml .= '<Causale>LA FATTURA FA RIFERIMENTO AD UNA OPERAZIONE AAAA BBBBBBBBBBBBBBBBBB CCC DDDDDDDDDDDDDDD E FFFFFFFFFFFFFFFFFFFF GGGGGGGGGG HHHHHHH II LLLLLLLLLLLLLLLLL MMM NNNNN OO PPPPPPPPPPP QQQQ RRRR SSSSSSSSSSSSSS</Causale>';
-              $xml .= '<Causale>SEGUE DESCRIZIONE CAUSALE NEL CASO IN CUI NON SIANO STATI SUFFICIENTI 200 CARATTERI AAAAAAAAAAA BBBBBBBBBBBBBBBBB</Causale>';
+              $xml .= '<Numero>'.$invoice->entity_id.'</Numero>';
+              $xml .= '<Causale>'.$invoice->entity_id.'</Causale>'; //max 200 caratteri
+              $xml .= '<Causale>'.$invoice->entity_id.'</Causale>'; // segue se è più di 200 caratteri
             $xml .= '</DatiGeneraliDocumento>';
 
 
