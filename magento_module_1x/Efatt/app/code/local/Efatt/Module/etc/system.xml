@@ -11,21 +11,29 @@
 		<show_in_store>1</show_in_store>            
 					<groups>
 				      <efatt translate="label"> 
-					  <label>efatt</label>
+					  <label>Configurazione Cedente Prestatore</label>
 					  <frontend_type>text</frontend_type>
 					  <sort_order>0</sort_order>
 					  <show_in_default>1</show_in_default>
 					  <show_in_website>1</show_in_website>
 					  <show_in_store>1</show_in_store>
 				       <fields>
-                          <efatt translate="label">
-                            <label>test field</label>
+                          <efatt_idpaese translate="label">
+                            <label>IdPaese</label>
 							<frontend_type>text</frontend_type>
                             <sort_order>0</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                          </efatt>
+                          </efatt_idpaese>
+                          <efatt_idcodice translate="label">
+                            <label>IdCodice</label>
+							<frontend_type>text</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                          </efatt_idcodice>  
 					   </fields>
 					   </efatt>
 					</groups>
