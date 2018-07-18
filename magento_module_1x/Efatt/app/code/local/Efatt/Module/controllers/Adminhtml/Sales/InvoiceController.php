@@ -48,10 +48,14 @@ class Efatt_Module_Adminhtml_Sales_InvoiceController extends Mage_Adminhtml_Sale
         echo "<h1>Oggetto fattura</h1>";
 
         $xml = '<?xml version="1.0" encoding="UTF-8"?>';
+        $xml .= '<p:FatturaElettronica versione="FPA12" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" 
+xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 http://www.fatturapa.gov.it/export/fatturazione/sdi/fatturapa/v1.2/Schema_del_file_xml_FatturaPA_versione_1.2.xsd">';
         $xml .= '<FatturaElettronicaHeader>';
           $xml .= '<DatiTrasmissione>';
             $xml .= '<IdTrasmittente>';
-              $xml .= '<IdPaese>' . $store->merchant_country . '</IdPaese>'; //questo si potrebbe prendere dai dati dello store magento?
+              $xml .= '<IdPaese>' . $store->merchant_country . '</IdPaese>'; //questo si potrebbe prendere dai dati dello store magento
               $xml .= '<IdCodice>' . $store->merchant_vat_number . '</IdCodice>'; //codice fiscale del trasmittente
             $xml .= '</IdTrasmittente>';
             $xml .= '<ProgressivoInvio>' . $invoice->entity_id . '</ProgressivoInvio>';
@@ -78,23 +82,6 @@ class Efatt_Module_Adminhtml_Sales_InvoiceController extends Mage_Adminhtml_Sale
               $xml .= '<Nazione>' . $store->merchant_country . '</Nazione>';
             $xml .= '</Sede>';
           $xml .= '</CedentePrestatore>';
-/** questo serve solo se c'è un concesionario 
-          $xml .= '<CessionarioCommittente>';
-            $xml .= '<DatiAnagrafici>';
-              $xml .= '<CodiceFiscale>09876543210</CodiceFiscale>';
-              $xml .= '<Anagrafica>';
-                $xml .= '<Denominazione>AMMINISTRAZIONE BETA</Denominazione>';
-              $xml .= '</Anagrafica>';
-            $xml .= '</DatiAnagrafici>';
-            $xml .= '<Sede>';
-              $xml .= '<Indirizzo>VIA TORINO 38-B</Indirizzo>';
-              $xml .= '<CAP>00145</CAP>';
-              $xml .= '<Comune>ROMA</Comune>';
-              $xml .= '<Provincia>RM</Provincia>';
-              $xml .= '<Nazione>IT</Nazione>';
-            $xml .= '</Sede>';
-          $xml .= '</CessionarioCommittente>';
-**/
         $xml .= '</FatturaElettronicaHeader>';
 
         $xml .= '<FatturaElettronicaBody>';
@@ -112,7 +99,7 @@ class Efatt_Module_Adminhtml_Sales_InvoiceController extends Mage_Adminhtml_Sale
 
           $xml .= '</DatiGenerali>';
         $xml .= '</FatturaElettronicaBody>';
-
+        $xml .= '</p:FatturaElettronica>';
 
 
       // $xml=simplexml_load_string($xml) or die("Error: Cannot create object");
