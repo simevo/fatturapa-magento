@@ -1,15 +1,9 @@
 <?xml version="1.0"?>
 <config>
-	  <tabs>
-		<efatt translate="label" module="module">
-            <label>test</label>
-            <sort_order>5</sort_order>
-        </efatt>
-	  </tabs>
 	  <sections>
 		<efatt  translate="label" module="module">                    
-		<label>test</label>
-		<tab>efatt</tab>
+		<label>Fattura Elettronica</label>
+		<tab>sales</tab>
 		<frontend_type>text</frontend_type>
 		<sort_order>0</sort_order>
 		<show_in_default>1</show_in_default>
