@@ -20,17 +20,15 @@ class Efatt_Module_Adminhtml_Sales_InvoiceController extends Mage_Adminhtml_Sale
 
         /* product info */
         $ordered_items = $order->getAllItems();
-        Foreach($ordered_items as $item){
-          //item detail
-          echo "<h2>Riepilogo ordine</h2>";
-          echo "<p>ID: ".$item->getItemId()."</p>"; //product id
-          echo "<p>Sku: ".$item->getSku()."</p>";
-          echo "<p>Quantità: ".$item->getQtyOrdered()."</p>"; //ordered qty of item
-          echo "<p>Prodotto: ".$item->getName()."</p>";
+        foreach($ordered_items as $item){  
+          $desc = '<li><span>ID: '.$item->getItemId().'</span>'; //product id
+          $desc .= '<span>Sku: '.$item->getSku().'</span>';
+          $desc .= '<span>Quantità: '.$item->getQtyOrdered().'</span>'; //ordered qty of item
+          $desc .= '<span>Prodotto: '.$item->getName().'</span></li>';
         }
 
 
-    /* mostro per sviluppo i dati di entrambi gli oggettti */
+    /* mostro per sviluppo i dati degli oggettti */
         echo "<h2>Invoice data</h2>"; 
 
         echo "<pre>";
@@ -73,10 +71,10 @@ xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.
         $xml .= '<FatturaElettronicaHeader>';
           $xml .= '<DatiTrasmissione>';
             $xml .= '<IdTrasmittente>';
-              $xml .= '<IdPaese>' . $store->merchant_country . '</IdPaese>'; //questo si potrebbe prendere dai dati dello store magento
-              $xml .= '<IdCodice>' . $store->merchant_vat_number . '</IdCodice>'; //codice fiscale del trasmittente
+              $xml .= '<IdPaese>'.$store->merchant_country.'</IdPaese>'; //questo si potrebbe prendere dai dati dello store magento
+              $xml .= '<IdCodice>'.$store->merchant_vat_number.'</IdCodice>'; //codice fiscale del trasmittente
             $xml .= '</IdTrasmittente>';
-            $xml .= '<ProgressivoInvio>' . $invoice->entity_id . '</ProgressivoInvio>';
+            $xml .= '<ProgressivoInvio>'.$invoice->entity_id.'</ProgressivoInvio>';
             $xml .= '<FormatoTrasmissione>FPA12</FormatoTrasmissione>'; //versione del tracciato con cui è stato predisposto il documento fattura
             $xml .= '<CodiceDestinatario>AAAAAA</CodiceDestinatario>'; //deve corrispondere al campo Codice Ufficio riportato nella rubrica Indice PA
           $xml .= '</DatiTrasmissione>';   
@@ -84,20 +82,20 @@ xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.
           $xml .= '<CedentePrestatore>';
             $xml .= '<DatiAnagrafici>';
               $xml .= '<IdFiscaleIVA>';
-              $xml .= '<IdPaese>' . $store->merchant_country . '</IdPaese>';
-              $xml .= '<IdCodice>' . $store->merchant_vat_number . '</IdCodice>'; //codice fiscale prestatore
+              $xml .= '<IdPaese>'.$store->merchant_country.'</IdPaese>';
+              $xml .= '<IdCodice>'.$store->merchant_vat_number . '</IdCodice>'; //codice fiscale prestatore
               $xml .= '</IdFiscaleIVA>';
               $xml .= '<Anagrafica>';
-              $xml .= '<Denominazione>' . $store->name . '</Denominazione>';
+              $xml .= '<Denominazione>'.$store->name.'</Denominazione>';
               $xml .= '</Anagrafica>';
               $xml .= '<RegimeFiscale>RF01</RegimeFiscale>'; // ??
               $xml .= '</DatiAnagrafici>';
               $xml .= '<Sede>';
-              $xml .= '<Indirizzo>' . $store->address . '</Indirizzo>';
+              $xml .= '<Indirizzo>'.$store->address.'</Indirizzo>';
               $xml .= '<CAP></CAP>';
               $xml .= '<Comune></Comune>';
               $xml .= '<Provincia></Provincia>';
-              $xml .= '<Nazione>' . $store->merchant_country . '</Nazione>';
+              $xml .= '<Nazione>'.$store->merchant_country.'</Nazione>';
             $xml .= '</Sede>';
           $xml .= '</CedentePrestatore>';
         $xml .= '</FatturaElettronicaHeader>';
@@ -107,12 +105,19 @@ xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.
             $xml .= '<DatiGeneraliDocumento>';
               $xml .= '<TipoDocumento>TD01</TipoDocumento>'; // fattura, acconto, anticipo su fattura, nota di credito, parcella
               $xml .= '<Divisa>'.$invoice->store_currency_code.'</Divisa>'; // questo va preso da magento
-              $xml .= '<Data>' . $order->updated_at . '</Data>';
+              $xml .= '<Data>'.$order->updated_at.'</Data>';
               $xml .= '<Numero>'.$invoice->entity_id.'</Numero>';
-              $xml .= '<Causale>'.$invoice->entity_id.'</Causale>'; //max 200 caratteri
-              $xml .= '<Causale>'.$invoice->entity_id.'</Causale>'; // segue se è più di 200 caratteri
+              $xml .= '<Causale></Causale>'; // ??
+              $xml .= '<Causale></Causale>'; // ??
             $xml .= '</DatiGeneraliDocumento>';
 
+            $xml .= '<DatiOrdineAcquisto>';
+              $xml .= '<RiferimentoNumeroLinea>1</RiferimentoNumeroLinea>';
+              $xml .= '<IdDocumento>66685</IdDocumento>';
+              $xml .= '<NumItem>'.$order->total_qty_ordered.'</NumItem>';
+              $xml .= '<CodiceCUP>123abc</CodiceCUP>'; //Il CUP  è un codice che identifica un progetto di investimento pubblico 
+            $xml .= '<CodiceCIG>456def</CodiceCIG>';
+            $xml .= '</DatiOrdineAcquisto>';
 
 
           $xml .= '</DatiGenerali>';
