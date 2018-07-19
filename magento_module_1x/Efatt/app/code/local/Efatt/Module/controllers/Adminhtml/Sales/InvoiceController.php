@@ -11,6 +11,11 @@ class Efatt_Module_Adminhtml_Sales_InvoiceController extends Mage_Adminhtml_Sale
 
     public function editinvoiceAction()
     {
+
+        $invoiceIds = $this->getRequest()->getParam('invoice_ids');
+
+        Mage::register('efatt-invoice-id', $invoiceIds); 
+
         $this->loadLayout();
         $this->_title($this->__("Edit invoice"));
         $this->renderLayout();

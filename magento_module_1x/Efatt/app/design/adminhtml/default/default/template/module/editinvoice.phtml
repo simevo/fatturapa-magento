@@ -2,11 +2,50 @@
 $lUrl = "*/sales_invoice/viewinvoicespage/invoice_ids/1"; 
 $mUrl = Mage::helper('adminhtml')->getUrl($lUrl);
 $fKey = Mage::getSingleton('core/session')->getFormKey();
+$fId  = Mage::registry('efatt-invoice-id'); 
 ?>
+
+<div id="page:main-container">
+<div class="content-header">
+    <table cellspacing="0">
+        <tbody><tr>
+            <td style="width:50%;"><h3 class="icon-head head-sales-invoice"><?php echo "Fattura " . $fId ?> </h3></td>
+        </tr>
+    </tbody></table>
+</div>
 
 <form method="post" action='<?php echo $mUrl; ?>'>
 <input name="form_key" type="hidden" value='<?php echo $fKey ?>' />
+
+<div class="box-left">
+    <!--Order Information-->
+    <div class="entry-edit">
+        <div class="entry-edit-head">
+            <strong>Dati cedente prestatore</strong>
+        </div>
+        <div class="fieldset">
+            <table cellspacing="0" class="form-list">
+            <tbody><tr>
+                <td class="label"><label>Order Date</label></td>
+                <td class="value"><strong>17/lug/2018 16:55:22</strong></td>
+            </tr>
+                        <tr>
+                <td class="label"><label>Order Status</label></td>
+                <td class="value"><strong><span id="order_status">Processing</span></strong></td>
+            </tr>
+            <tr>
+                <td class="label"><label>Purchased From</label></td>
+                <td class="value"><strong>Main Website<br>Main Website Store<br>Default Store View</strong></td>
+            </tr>
+            </tbody></table>
+        </div>
+    </div>
+</div>
+
+
 <button type="submit" >Invio</button>
 </form>
+<div>
+
 
 
