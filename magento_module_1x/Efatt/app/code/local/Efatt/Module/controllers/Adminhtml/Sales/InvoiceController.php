@@ -2,6 +2,21 @@
 require_once Mage::getModuleDir('controllers', 'Mage_Adminhtml') . DS . 'Sales' . DS . 'InvoiceController.php';
 class Efatt_Module_Adminhtml_Sales_InvoiceController extends Mage_Adminhtml_Sales_InvoiceController
 {   
+
+    protected function _isAllowed()
+    {
+      //return Mage::getSingleton('admin/session')->isAllowed('module/modulebackend');
+      return true;
+    }
+
+    public function editinvoiceAction()
+    {
+        $this->loadLayout();
+        $this->_title($this->__("Edit invoice"));
+        $this->renderLayout();
+    }
+
+
     public function viewinvoicespageAction() {
 
         $invoiceIds = $this->getRequest()->getParam('invoice_ids');

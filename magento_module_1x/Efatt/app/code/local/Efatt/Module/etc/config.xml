@@ -17,14 +17,16 @@
                 </observers>
             </adminhtml_widget_container_html_before>
         </events>
-    </adminhtml>
-    <layout>
+
+            <layout>
       <updates>
         <module>
           <file>module.xml</file>
         </module>
       </updates>
     </layout>
+    </adminhtml>
+
     <admin>
         <routers>
             <adminhtml>
@@ -44,10 +46,14 @@
             </efatt_module>
         </models>
         <helpers>
-        <module>
-            <class>Efatt_Module_Helper</class>
-        </module>
+            <module>
+                <class>Efatt_Module_Helper</class>
+            </module>
         </helpers>
-
+        <blocks>
+          <module>
+                <class>Efatt_Module_Block</class>
+          </module>
+        </blocks>
     </global>
 </config>

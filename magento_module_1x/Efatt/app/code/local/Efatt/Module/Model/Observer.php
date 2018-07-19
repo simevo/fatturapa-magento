@@ -11,7 +11,9 @@ class Efatt_Module_Model_Observer
 
         if ($block instanceof Mage_Adminhtml_Block_Sales_Order_Invoice_View) {
 
-            $lUrl = "*/sales_invoice/viewinvoicespage/invoice_ids/" . $invoicesid;
+            $lUrl = "*/sales_invoice/editinvoice/invoice_ids/" . $invoicesid;
+
+            /* LA ROTTA DELL'INVOICE CONTROLLER E' INVECE "/sales_invoice/viewinvoicespage/invoice_ids/" . $invoicesid; */
 
             $block->addButton('test', array(
                 'label'     => "Formato elettronico",

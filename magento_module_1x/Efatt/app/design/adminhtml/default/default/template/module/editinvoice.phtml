@@ -1,0 +1,12 @@
+<?php 
+$lUrl = "*/sales_invoice/viewinvoicespage/invoice_ids/1"; 
+$mUrl = Mage::helper('adminhtml')->getUrl($lUrl);
+$fKey = Mage::getSingleton('core/session')->getFormKey();
+?>
+
+<form method="post" action='<?php echo $mUrl; ?>'>
+<input name="form_key" type="hidden" value='<?php echo $fKey ?>' />
+<button type="submit" >Invio</button>
+</form>
+
+
