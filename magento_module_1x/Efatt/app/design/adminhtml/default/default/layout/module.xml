@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <module_adminhtml_modulebackend_index>
+	<reference name="content">
+	  <block type="module/adminhtml_modulebackend" name="modulebackend" template="module/modulebackend.phtml"/>
+	</reference>
+  </module_adminhtml_modulebackend_index>
+</layout>

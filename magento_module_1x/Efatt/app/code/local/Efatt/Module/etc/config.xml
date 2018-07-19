@@ -18,6 +18,13 @@
             </adminhtml_widget_container_html_before>
         </events>
     </adminhtml>
+    <layout>
+      <updates>
+        <module>
+          <file>module.xml</file>
+        </module>
+      </updates>
+    </layout>
     <admin>
         <routers>
             <adminhtml>
@@ -43,7 +50,4 @@
         </helpers>
 
     </global>
-
-
-
 </config>
