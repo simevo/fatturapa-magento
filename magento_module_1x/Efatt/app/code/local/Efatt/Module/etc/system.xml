@@ -18,78 +18,78 @@
 					  <show_in_website>1</show_in_website>
 					  <show_in_store>1</show_in_store>
 				       <fields>
-                          <efatt_idpaese translate="label">
+                          <efatt_cedente_prestatore_idpaese translate="label">
                             <label>IdPaese</label>
 							<frontend_type>text</frontend_type>
                             <sort_order>6</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                          </efatt_idpaese>
-                          <efatt_idcodice translate="label">
+                          </efatt_cedente_prestatore_idpaese>
+                          <efatt_cedente_prestatore_idcodice translate="label">
                             <label>IdCodice</label>
 							<frontend_type>text</frontend_type>
                             <sort_order>7</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                          </efatt_idcodice>  
-                          <efatt_denominazione translate="label">
+                          </efatt_cedente_prestatore_idcodice>  
+                          <efatt_cedente_prestatore_denominazione translate="label">
                             <label>Denominazione</label>
 							<frontend_type>text</frontend_type>
                             <sort_order>0</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                          </efatt_denominazione> 
-                          <efatt_regimefiscale translate="label">
+                          </efatt_cedente_prestatore_denominazione> 
+                          <efatt_cedente_prestatore_regimefiscale translate="label">
                             <label>Regime Fiscale</label>
 							<frontend_type>text</frontend_type>
                             <sort_order>7</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                          </efatt_regimefiscale> 
-						  <efatt_indirizzo translate="label">
+                          </efatt_cedente_prestatore_regimefiscale> 
+						  <efatt_cedente_prestatore_indirizzo translate="label">
                             <label>Indirizzo</label>
 							<frontend_type>text</frontend_type>
                             <sort_order>1</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                          </efatt_indirizzo> 
-                          <efatt_cap translate="label">
+                          </efatt_cedente_prestatore_indirizzo> 
+                          <efatt_cedente_prestatore_cap translate="label">
                             <label>CAP</label>
 							<frontend_type>text</frontend_type>
                             <sort_order>2</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                          </efatt_cap> 
-                          <efatt_comune translate="label">
+                          </efatt_cedente_prestatore_cap> 
+                          <efatt_cedente_prestatore_comune translate="label">
                             <label>Comune</label>
 							<frontend_type>text</frontend_type>
                             <sort_order>3</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                          </efatt_comune> 
-                          <efatt_provincia translate="label">
+                          </efatt_cedente_prestatore_comune> 
+                          <efatt_cedente_prestatore_provincia translate="label">
                             <label>Provincia</label>
 							<frontend_type>text</frontend_type>
                             <sort_order>4</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                          </efatt_provincia> 
-                          <efatt_nazione translate="label">
+                          </efatt_cedente_prestatore_provincia> 
+                          <efatt_cedente_prestatore_nazione translate="label">
                             <label>Nazione</label>
 							<frontend_type>text</frontend_type>
                             <sort_order>5</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                          </efatt_nazione> 
+                          </efatt_cedente_prestatore_nazione> 
 					   </fields>
 					   </efatt>
 					</groups>

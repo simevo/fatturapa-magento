@@ -12,9 +12,11 @@ class Efatt_Module_Adminhtml_Sales_InvoiceController extends Mage_Adminhtml_Sale
     public function editinvoiceAction()
     {
 
-        $invoiceIds = $this->getRequest()->getParam('invoice_ids');
-
-        Mage::register('efatt-invoice-id', $invoiceIds); 
+        $invoiceIds         = $this->getRequest()->getParam('invoice_ids');
+        $cedente_prestatore = Mage::getStoreConfig('efatt/efatt');
+         
+        Mage::register('efatt-invoice-id', $invoiceIds);
+        Mage::register('efatt-cedente-prestatore', $cedente_prestatore);
 
         $this->loadLayout();
         $this->_title($this->__("Edit invoice"));
@@ -36,7 +38,7 @@ class Efatt_Module_Adminhtml_Sales_InvoiceController extends Mage_Adminhtml_Sale
         $bAddress = $order->getBillingAddress();
 
         /* store info */
-        $store = Mage::getStoreConfig('general/store_information');
+        $store = Mage::getStoreConfig('efatt/efatt');
 
         /* product info */
         $ordered_items = $order->getAllItems();

@@ -3,6 +3,7 @@ $lUrl = "*/sales_invoice/viewinvoicespage/invoice_ids/1";
 $mUrl = Mage::helper('adminhtml')->getUrl($lUrl);
 $fKey = Mage::getSingleton('core/session')->getFormKey();
 $fId  = Mage::registry('efatt-invoice-id'); 
+$cp   = Mage::registry('efatt-cedente-prestatore'); 
 ?>
 
 <div id="page:main-container">
@@ -21,27 +22,83 @@ $fId  = Mage::registry('efatt-invoice-id');
     <!--Order Information-->
     <div class="entry-edit">
         <div class="entry-edit-head">
-            <strong>Dati cedente prestatore</strong>
+            <strong>Dati Trasmissione</strong>
         </div>
         <div class="fieldset">
             <table cellspacing="0" class="form-list">
             <tbody><tr>
-                <td class="label"><label>Order Date</label></td>
-                <td class="value"><strong>17/lug/2018 16:55:22</strong></td>
-            </tr>
-                        <tr>
-                <td class="label"><label>Order Status</label></td>
-                <td class="value"><strong><span id="order_status">Processing</span></strong></td>
+                <td class="label"><label>Id paese</label></td>
+                <td class="value"><input type="text" name="dati_trasmissione_id_paese" value="<?php echo $cp['efatt_cedente_prestatore_idpaese'] ?>"></td>
             </tr>
             <tr>
-                <td class="label"><label>Purchased From</label></td>
-                <td class="value"><strong>Main Website<br>Main Website Store<br>Default Store View</strong></td>
+                <td class="label"><label>Id codice</label></td>
+                <td class="value"><input type="text" name="dati_trasmissione_id_codice" value="<?php echo $cp['efatt_cedente_prestatore_idcodice'] ?>"></td>
+            </tr>
+            <tr>
+                <td class="label"><label>Progressivo Invio</label></td>
+                <td class="value"><input type="text" name="dati_trasmissione_progressivo_invio"></td>
+            </tr>
+            <tr>
+                <td class="label"><label>Formato Trasmissione</label></td>
+                <td class="value"><input type="text" name="dati_trasmissione_formato_trasmissione"></td>
+            </tr>
+            <tr>
+                <td class="label"><label>Codice Destinatario</label></td>
+                <td class="value"><input type="text" name="dati_trasmissione_codice_destinatario"></td>
             </tr>
             </tbody></table>
         </div>
     </div>
 </div>
 
+<div class="box-right">
+    <!--Order Information-->
+    <div class="entry-edit">
+        <div class="entry-edit-head">
+            <strong>Cedente Prestatore</strong>
+        </div>
+        <div class="fieldset">
+            <table cellspacing="0" class="form-list">
+            <tbody><tr>
+                <td class="label"><label>Id paese</label></td>
+                <td class="value"><input type="text" name="efatt_cedente_prestatore_id_paese" value="<?php echo $cp['efatt_cedente_prestatore_idpaese'] ?>"></td>
+            </tr>
+            <tr>
+                <td class="label"><label>Id codice</label></td>
+                <td class="value"><input type="text" name="efatt_cedente_prestatore_id_codice" value="<?php echo $cp['efatt_cedente_prestatore_idcodice'] ?>"></td>
+            </tr>
+            <tr>
+                <td class="label"><label>Denominazione</label></td>
+                <td class="value"><input type="text" name="efatt_cedente_prestatore_denominazione" value="<?php echo $cp['efatt_cedente_prestatore_denominazione'] ?>"></td>
+            </tr>
+            <tr>
+                <td class="label"><label>Regime fiscale</label></td>
+                <td class="value"><input type="text" name="efatt_cedente_prestatore_regimefiscale" value="<?php echo $cp['efatt_cedente_prestatore_regimefiscale'] ?>"></td>
+            </tr>
+            <tr>
+                <td class="label"><label>Indirizzo</label></td>
+                <td class="value"><input type="text" name="efatt_cedente_prestatore_indirizzo" value="<?php echo $cp['efatt_cedente_prestatore_indirizzo'] ?>"></td>
+            </tr>
+            <tr>
+                <td class="label"><label>CAP</label></td>
+                <td class="value"><input type="text" name="efatt_cedente_prestatore_cap" value="<?php echo $cp['efatt_cedente_prestatore_cap'] ?>"></td>
+            </tr>
+            <tr>
+                <td class="label"><label>Comune</label></td>
+                <td class="value"><input type="text" name="efatt_cedente_prestatore_comune" value="<?php echo $cp['efatt_cedente_prestatore_comune'] ?>"></td>
+            </tr>
+            <tr>
+                <td class="label"><label>Provincia</label></td>
+                <td class="value"><input type="text" name="efatt_cedente_prestatore_provincia" value="<?php echo $cp['efatt_cedente_prestatore_provincia'] ?>"></td>
+            </tr>
+            <tr>
+                <td class="label"><label>Nazione</label></td>
+                <td class="value"><input type="text" name="efatt_cedente_prestatore_nazione" value="<?php echo $cp['efatt_cedente_prestatore_nazione'] ?>"></td>
+            </tr>
+            </tbody></table>
+        </div>
+    </div>
+</div>
 
 <button type="submit" >Invio</button>
 </form>
