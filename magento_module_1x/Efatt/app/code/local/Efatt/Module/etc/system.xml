@@ -5,7 +5,7 @@
 		<label>Fattura Elettronica</label>
 		<tab>sales</tab>
 		<frontend_type>text</frontend_type>
-		<sort_order>0</sort_order>
+		<sort_order>12</sort_order>
 		<show_in_default>1</show_in_default>
 		<show_in_website>1</show_in_website>
 		<show_in_store>1</show_in_store>            
@@ -21,7 +21,7 @@
                           <efatt_idpaese translate="label">
                             <label>IdPaese</label>
 							<frontend_type>text</frontend_type>
-                            <sort_order>0</sort_order>
+                            <sort_order>10</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
@@ -29,7 +29,7 @@
                           <efatt_idcodice translate="label">
                             <label>IdCodice</label>
 							<frontend_type>text</frontend_type>
-                            <sort_order>1</sort_order>
+                            <sort_order>9</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
@@ -37,7 +37,7 @@
                           <efatt_denominazione translate="label">
                             <label>Denominazione</label>
 							<frontend_type>text</frontend_type>
-                            <sort_order>2</sort_order>
+                            <sort_order>8</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
@@ -45,7 +45,7 @@
                           <efatt_regimefiscale translate="label">
                             <label>Regime Fiscale</label>
 							<frontend_type>text</frontend_type>
-                            <sort_order>3</sort_order>
+                            <sort_order>7</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
