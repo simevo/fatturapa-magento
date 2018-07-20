@@ -1,15 +1,11 @@
 <?php 
-$lUrl 		= "*/sales_invoice/viewinvoicespage/invoice_ids/1"; 
+$fId  		= Mage::registry('efatt-invoice-id');
+$lUrl 		= "*/sales_invoice/viewinvoicespage/invoice_id/" . $fId; 
 $mUrl 		= Mage::helper('adminhtml')->getUrl($lUrl);
-$fKey 		= Mage::getSingleton('core/session')->getFormKey();
-$fId  		= Mage::registry('efatt-invoice-id'); 
+$fKey 		= Mage::getSingleton('core/session')->getFormKey(); 
 $config   	= Mage::registry('efatt-config'); 
 $cc   		= Mage::registry('efatt-cessionario-committente');
 ?>
-
-<pre>
-<?php var_dump($config); ?>
-</pre>
 
 <form method="post" action='<?php echo $mUrl; ?>'>
 

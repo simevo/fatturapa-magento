@@ -12,13 +12,13 @@ class Efatt_Module_Adminhtml_Sales_InvoiceController extends Mage_Adminhtml_Sale
     public function editinvoiceAction()
     {
 
-        $invoiceIds         = $this->getRequest()->getParam('invoice_ids');
+        $invoiceId         = $this->getRequest()->getParam('invoice_id');
         $invoice            = Mage::getModel('sales/order_invoice')->load($invoiceIds);
         $config             = Mage::getStoreConfig('efatt');
         $order              = Mage::getModel('sales/order')->load($invoice->order_id);
         $bAddress           = $order->getBillingAddress();
          
-        Mage::register('efatt-invoice-id', $invoiceIds);
+        Mage::register('efatt-invoice-id', $invoiceId);
         Mage::register('efatt-config', $config);
         Mage::register('efatt-cessionario-committente', $bAddress);
 
