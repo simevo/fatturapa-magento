@@ -20,6 +20,7 @@
 				       <fields>
                           <idpaese translate="label">
                             <label>IdPaese</label>
+                            <comment> Codice del paese assegnante l’identifcativo fiscale al soggetto cedente/prestatore (secondo lo standard ISO 3166-1 alpha-2 code).</comment>
 							<frontend_type>text</frontend_type>
                             <sort_order>8</sort_order>
                             <show_in_default>1</show_in_default>
@@ -67,6 +68,7 @@
                           </regimefiscale> 
 						  <indirizzo translate="label">
                             <label>Indirizzo</label>
+                            <comment> Indirizzo della stabile organizzazione del cedente/prestatore del bene/servizio; deve essere valorizzato con il nome della via, piazza, etc., comprensivo, se si vuole, del numero civico.</comment>
 							<frontend_type>text</frontend_type>
                             <sort_order>3</sort_order>
                             <show_in_default>1</show_in_default>
@@ -99,6 +101,7 @@
                           </provincia> 
                           <nazione translate="label">
                             <label>Nazione</label>
+                            <comment> Codice della nazione espresso secondo lo standard ISO 3166-1 alpha-2 code.</comment>
 							<frontend_type>text</frontend_type>
                             <sort_order>7</sort_order>
                             <show_in_default>1</show_in_default>
@@ -117,6 +120,7 @@
 				       <fields>
                           <ufficio translate="label">
                             <label>Ufficio</label>
+                            <comment> Sigla della provincia ove ha sede l'Ufficio del Registro delle Imprese presso il quale è registrata la società.</comment>
 							<frontend_type>text</frontend_type>
                             <sort_order>0</sort_order>
                             <show_in_default>1</show_in_default>
@@ -125,6 +129,7 @@
                           </ufficio>
                           <numero_rea translate="label">
                             <label>Numero REA</label>
+                            <comment> Numero di repertorio con il quale la società è iscritta nel Registro delle Imprese</comment>
 							<frontend_type>text</frontend_type>
                             <sort_order>1</sort_order>
                             <show_in_default>1</show_in_default>
@@ -141,6 +146,7 @@
                           </capitale_sociale> 
                           <capitale_sociale translate="label">
                             <label>Capitale Sociale</label>
+                            <comment> Indica il capitale sociale quale somma effettivamente versata e quale risulta esistente dall’utlimo bilancio della società; questo campo è valorizzato nei soli casi di società di capitali (SpA, SApA, SRL).</comment>
 							<frontend_type>text</frontend_type>
                             <sort_order>3</sort_order>
                             <show_in_default>1</show_in_default>
@@ -149,7 +155,7 @@
                           </capitale_sociale> 
                           <socio_unico translate="label">
                             <label>Socio Unico</label>
-                            <comment> questo campo è valorizzato nei casi di società per azioni e a responsabilità limitata; indica se queste si compongono di un unico socio o di più soci.</comment>
+                            <comment> Questo campo è valorizzato nei casi di società per azioni e a responsabilità limitata; indica se queste si compongono di un unico socio o di più soci.</comment>
 							<frontend_type>select</frontend_type>
                             <sort_order>3</sort_order>
                             <show_in_default>1</show_in_default>
