@@ -1,11 +1,15 @@
 <?php 
-$lUrl = "*/sales_invoice/viewinvoicespage/invoice_ids/1"; 
-$mUrl = Mage::helper('adminhtml')->getUrl($lUrl);
-$fKey = Mage::getSingleton('core/session')->getFormKey();
-$fId  = Mage::registry('efatt-invoice-id'); 
-$cp   = Mage::registry('efatt-cedente-prestatore'); 
-$cc   = Mage::registry('efatt-cessionario-committente');
+$lUrl 		= "*/sales_invoice/viewinvoicespage/invoice_ids/1"; 
+$mUrl 		= Mage::helper('adminhtml')->getUrl($lUrl);
+$fKey 		= Mage::getSingleton('core/session')->getFormKey();
+$fId  		= Mage::registry('efatt-invoice-id'); 
+$config   	= Mage::registry('efatt-config'); 
+$cc   		= Mage::registry('efatt-cessionario-committente');
 ?>
+
+<pre>
+<?php var_dump($config); ?>
+</pre>
 
 <form method="post" action='<?php echo $mUrl; ?>'>
 
@@ -32,11 +36,11 @@ $cc   = Mage::registry('efatt-cessionario-committente');
             <table cellspacing="0" class="form-list">
             <tbody><tr>
                 <td class="label"><label>Id paese</label></td>
-                <td class="value"><input type="text" name="dati_trasmissione_id_paese" value="<?php echo $cp['efatt_cedente_prestatore_idpaese'] ?>"></td>
+                <td class="value"><input type="text" name="dati_trasmissione_id_paese" value="<?php echo $config['cedente_prestatore']['idpaese'] ?>"></td>
             </tr>
             <tr>
                 <td class="label"><label>Id codice</label></td>
-                <td class="value"><input type="text" name="dati_trasmissione_id_codice" value="<?php echo $cp['efatt_cedente_prestatore_idcodice'] ?>"></td>
+                <td class="value"><input type="text" name="dati_trasmissione_id_codice" value="<?php echo $config['cedente_prestatore']['idcodice'] ?>"></td>
             </tr>
             <tr>
                 <td class="label"><label>Progressivo Invio</label></td>
@@ -65,39 +69,39 @@ $cc   = Mage::registry('efatt-cessionario-committente');
             <table cellspacing="0" class="form-list">
             <tbody><tr>
                 <td class="label"><label>Id paese</label></td>
-                <td class="value"><input type="text" name="efatt_cedente_prestatore_id_paese" value="<?php echo $cp['efatt_cedente_prestatore_idpaese'] ?>"></td>
+                <td class="value"><input type="text" name="efatt_cedente_prestatore_id_paese" value="<?php echo $config['cedente_prestatore']['idpaese'] ?>"></td>
             </tr>
             <tr>
                 <td class="label"><label>Id codice</label></td>
-                <td class="value"><input type="text" name="efatt_cedente_prestatore_id_codice" value="<?php echo $cp['efatt_cedente_prestatore_idcodice'] ?>"></td>
+                <td class="value"><input type="text" name="efatt_cedente_prestatore_id_codice" value="<?php echo $config['cedente_prestatore']['idcodice'] ?>"></td>
             </tr>
             <tr>
                 <td class="label"><label>Denominazione</label></td>
-                <td class="value"><input type="text" name="efatt_cedente_prestatore_denominazione" value="<?php echo $cp['efatt_cedente_prestatore_denominazione'] ?>"></td>
+                <td class="value"><input type="text" name="efatt_cedente_prestatore_denominazione" value="<?php echo $config['cedente_prestatore']['denominazione'] ?>"></td>
             </tr>
             <tr>
                 <td class="label"><label>Regime fiscale</label></td>
-                <td class="value"><input type="text" name="efatt_cedente_prestatore_regimefiscale" value="<?php echo $cp['efatt_cedente_prestatore_regimefiscale'] ?>"></td>
+                <td class="value"><input type="text" name="efatt_cedente_prestatore_regimefiscale" value="<?php echo $config['cedente_prestatore']['regimefiscale'] ?>"></td>
             </tr>
             <tr>
                 <td class="label"><label>Indirizzo</label></td>
-                <td class="value"><input type="text" name="efatt_cedente_prestatore_indirizzo" value="<?php echo $cp['efatt_cedente_prestatore_indirizzo'] ?>"></td>
+                <td class="value"><input type="text" name="efatt_cedente_prestatore_indirizzo" value="<?php echo $config['cedente_prestatore']['indirizzo'] ?>"></td>
             </tr>
             <tr>
                 <td class="label"><label>CAP</label></td>
-                <td class="value"><input type="text" name="efatt_cedente_prestatore_cap" value="<?php echo $cp['efatt_cedente_prestatore_cap'] ?>"></td>
+                <td class="value"><input type="text" name="efatt_cedente_prestatore_cap" value="<?php echo $config['cedente_prestatore']['cap'] ?>"></td>
             </tr>
             <tr>
                 <td class="label"><label>Comune</label></td>
-                <td class="value"><input type="text" name="efatt_cedente_prestatore_comune" value="<?php echo $cp['efatt_cedente_prestatore_comune'] ?>"></td>
+                <td class="value"><input type="text" name="efatt_cedente_prestatore_comune" value="<?php echo $config['cedente_prestatore']['comune'] ?>"></td>
             </tr>
             <tr>
                 <td class="label"><label>Provincia</label></td>
-                <td class="value"><input type="text" name="efatt_cedente_prestatore_provincia" value="<?php echo $cp['efatt_cedente_prestatore_provincia'] ?>"></td>
+                <td class="value"><input type="text" name="efatt_cedente_prestatore_provincia" value="<?php echo $config['cedente_prestatore']['provincia'] ?>"></td>
             </tr>
             <tr>
                 <td class="label"><label>Nazione</label></td>
-                <td class="value"><input type="text" name="efatt_cedente_prestatore_nazione" value="<?php echo $cp['efatt_cedente_prestatore_nazione'] ?>"></td>
+                <td class="value"><input type="text" name="efatt_cedente_prestatore_nazione" value="<?php echo $config['cedente_prestatore']['nazione'] ?>"></td>
             </tr>
             </tbody></table>
         </div>
