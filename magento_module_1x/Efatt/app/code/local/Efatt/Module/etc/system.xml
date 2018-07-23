@@ -165,7 +165,8 @@
                           </socio_unico>
                           <stato_liquidazione translate="label">
                             <label>Stato Liquidazione</label>
-							<frontend_type>select</frontend_type>
+                            <comment> indica se la società si trova in stato di liquidazione oppure no.</comment>
+							             <frontend_type>select</frontend_type>
                             <sort_order>3</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
