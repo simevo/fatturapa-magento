@@ -14,6 +14,7 @@
 
 				    <CedentePrestatore_DatiAnagrafici_IdFiscaleIVA translate="label"> 
 					  <label>Cedente Prestatore - Dati Anagrafici - Id Fiscale IVA</label>
+            <comment>Questi campi consentono l’inserimento della partita IVA per i soggetti residenti in Italia, oppure dell’identificativo fiscale assegnato dall’autorità del proprio paese per i soggetti non residenti.</comment>
 					  <frontend_type>text</frontend_type>
 					  <sort_order>0</sort_order>
 					  <show_in_default>1</show_in_default>
@@ -42,87 +43,167 @@
              </CedentePrestatore_DatiAnagrafici_IdFiscaleIVA>
 
 
-            <cedente_prestatore translate="label">
+            <CedentePrestatore_DatiAnagrafici_Anagrafica translate="label">
+              <label>Cedente Prestatore - Dati Anagrafici - Anagrafica</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
               <fields>
-                          <denominazione translate="label">
-                            <label>Denominazione</label>
-							               <frontend_type>text</frontend_type>
-                            <sort_order>0</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                          </denominazione> 
-                          <nome translate="label">
-                            <label>Nome</label>
-							<frontend_type>text</frontend_type>
-                            <sort_order>1</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                          </nome> 
-                          <cognome translate="label">
-                            <label>Cognome</label>
-							<frontend_type>text</frontend_type>
-                            <sort_order>2</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                          </cognome> 
-                          <regimefiscale translate="label">
-							<label>Regime Fiscale</label>
+                  <Denominazione translate="label">
+                    <label>Denominazione</label>
+                    <comment>ditta, denominazione o ragione sociale del cedente/prestatore del bene/servizio da valorizzare nei casi di persona non fisica; la valorizzazione di questo campo è in alternativa a quella dei campi Nome e Cognome seguenti.</comment>
+			               <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                  </Denominazione> 
+                  <Nome translate="label">
+                    <label>Nome</label>
+                    <comment>nome del cedente/prestatore del bene/servizio da valorizzare nei casi di persona fisica; la valorizzazione di questo campo presuppone anche la valorizzazione del campo Cognome  ed è in alternativa a quella del campo Denominazione</comment>
+			              <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                  </Nome> 
+                  <Cognome translate="label">
+                    <label>Cognome</label>
+                    <comment>cognome del cedente/prestatore del bene/servizio da valorizzare nei casi di persona fisica; la valorizzazione di questo campo presuppone anche la valorizzazione del campo Nome  ed è in alternativa a quella del campo Denominazione.</comment>
+			              <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                  </Cognome> 
+              </fields>
+            </CedentePrestatore_DatiAnagrafici_Anagrafica>
+
+
+            <CedentePrestatore_DatiAnagrafici translate="label">
+              <label>Cedente Prestatore - Dati Anagrafici</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>2</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <fields>
+                <RegimeFiscale translate="label">
+							   <label>Regime Fiscale</label>
+                 <comment>RF01: Regime ordinario; RF02: Regime dei contribuenti minimi; RF03: Regime delle nuove iniziative produttive; RF04: Agricoltura e attività connesse e pesca; RF05: Vendita sali e tabacchi; RF06: Commercio dei fiammiferi; RF07: Editoria; RF08: Gestione di servizi di telefonia pubblica; RF09: Rivendita di documenti di trasporto pubblico e di sosta; RF10: Intrattenimenti, giochi e altre attività; RF11: Agenzie di viaggi e turismo; RF12: Agriturismo; RF13: Vendite a domicilio; RF14: Rivendita di beni usati, di oggetti d'arte, d'antiquariato o da collezione; RF15: Agenzie di vendite all'asta di oggetti d'arte, antiquariato o da collezione; RF16: IVA per cassa P.A.; RF17: IVA per cassa; RF19: Regime forfettario; RF18: Altro</comment>
 					        <frontend_type>select</frontend_type>
 					        <source_model>efatt_module/system_config_source_regimefiscale</source_model>
-					        <sort_order>7</sort_order>
+					        <sort_order>0</sort_order>
 					        <show_in_default>1</show_in_default>
-                          </regimefiscale> 
-						  <indirizzo translate="label">
-                            <label>Indirizzo</label>
-                            <comment> Indirizzo della stabile organizzazione del cedente/prestatore del bene/servizio; deve essere valorizzato con il nome della via, piazza, etc., comprensivo, se si vuole, del numero civico.</comment>
-							<frontend_type>text</frontend_type>
-                            <sort_order>3</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                          </indirizzo> 
-                          <cap translate="label">
-                            <label>CAP</label>
-							<frontend_type>text</frontend_type>
-                            <sort_order>4</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                          </cap> 
-                          <comune translate="label">
-                            <label>Comune</label>
-							<frontend_type>text</frontend_type>
-                            <sort_order>5</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                          </comune> 
-                          <provincia translate="label">
-                            <label>Provincia</label>
-							<frontend_type>text</frontend_type>
-                            <sort_order>6</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                          </provincia> 
-                          <nazione translate="label">
-                            <label>Nazione</label>
-                            <comment> Codice della nazione espresso secondo lo standard ISO 3166-1 alpha-2 code.</comment>
-							<frontend_type>text</frontend_type>
-                            <sort_order>7</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                          </nazione> 
+                  </RegimeFiscale> 
+              </fields>
+            </CedentePrestatore_DatiAnagrafici>
+
+
+              <CedentePrestatore_Sede  translate="label">
+              <label>CedentePrestatore - Sede</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>3</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <fields>           
+						  <Indirizzo translate="label">
+                  <label>Indirizzo</label>
+                  <comment> Indirizzo della stabile organizzazione del cedente/prestatore del bene/servizio; deve essere valorizzato con il nome della via, piazza, etc., comprensivo del numero civico.</comment>
+		             <frontend_type>text</frontend_type>
+                  <sort_order>0</sort_order>
+                  <show_in_default>1</show_in_default>
+                  <show_in_website>1</show_in_website>
+                  <show_in_store>1</show_in_store>
+                </Indirizzo> 
+                <CAP translate="label">
+                  <label>CAP</label>
+                  <comment>Codice di Avviamento Postale relativo all’indirizzo</comment>
+		             <frontend_type>text</frontend_type>
+                  <sort_order>1</sort_order>
+                  <show_in_default>1</show_in_default>
+                  <show_in_website>1</show_in_website>
+                  <show_in_store>1</show_in_store>
+                </CAP> 
+                <Comune translate="label">
+                  <label>Comune</label>
+                  <comment>comune cui si riferisce l’indirizzo</comment>
+		             <frontend_type>text</frontend_type>
+                  <sort_order>2</sort_order>
+                  <show_in_default>1</show_in_default>
+                  <show_in_website>1</show_in_website>
+                  <show_in_store>1</show_in_store>
+                </Comune> 
+                <Nazione translate="label">
+                  <label>Nazione</label>
+                  <comment> Codice della nazione espresso secondo lo standard ISO 3166-1 alpha-2 code.</comment>
+		             <frontend_type>text</frontend_type>
+                  <sort_order>3</sort_order>
+                  <show_in_default>1</show_in_default>
+                  <show_in_website>1</show_in_website>
+                  <show_in_store>1</show_in_store>
+                </Nazione> 
 					   </fields>
-					   </cedente_prestatore>
+					   </CedentePrestatore_Sede>
+
+
+              <CedentePrestatore_StabileOrganizzazione  translate="label">
+              <label>Cedente Prestatore - Stabile Organizzazione</label>
+              <comment>I campi indicati di seguito devono essere obbligatoriamente valorizzati nei soli casi in cui il cedente/prestatore è un soggetto non residente ed effettua la transazione oggetto del documento tramite l’organizzazione residente sul territorio nazionale. Si riferiscono alla stabile organizzazione in Italia.</comment>
+              <frontend_type>text</frontend_type>
+              <sort_order>4</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <fields>           
+              <Indirizzo translate="label">
+                  <label>Indirizzo</label>
+                  <comment>indirizzo della stabile organizzazione del cedente/prestatore del bene/servizio; deve essere valorizzato con il nome della via, piazza, etc., comprensivo del numero civico.</comment>
+                 <frontend_type>text</frontend_type>
+                  <sort_order>0</sort_order>
+                  <show_in_default>1</show_in_default>
+                  <show_in_website>1</show_in_website>
+                  <show_in_store>1</show_in_store>
+                </Indirizzo> 
+                <CAP translate="label">
+                  <label>CAP</label>
+                  <comment>Codice di Avviamento Postale relativo all’indirizzo</comment>
+                 <frontend_type>text</frontend_type>
+                  <sort_order>1</sort_order>
+                  <show_in_default>1</show_in_default>
+                  <show_in_website>1</show_in_website>
+                  <show_in_store>1</show_in_store>
+                </CAP> 
+                <Comune translate="label">
+                  <label>Comune</label>
+                  <comment>comune cui si riferisce l’indirizzo</comment>
+                 <frontend_type>text</frontend_type>
+                  <sort_order>2</sort_order>
+                  <show_in_default>1</show_in_default>
+                  <show_in_website>1</show_in_website>
+                  <show_in_store>1</show_in_store>
+                </Comune> 
+                <Nazione translate="label">
+                  <label>Nazione</label>
+                  <comment> Codice della nazione espresso secondo lo standard ISO 3166-1 alpha-2 code.</comment>
+                 <frontend_type>text</frontend_type>
+                  <sort_order>3</sort_order>
+                  <show_in_default>1</show_in_default>
+                  <show_in_website>1</show_in_website>
+                  <show_in_store>1</show_in_store>
+                </Nazione> 
+             </fields>
+             </CedentePrestatore_StabileOrganizzazione>
+
+
+
 					  <cedente_prestatore_rea translate="label"> 
 					  <label>Iscrizione REA</label>
 					  <frontend_type>text</frontend_type>
-					  <sort_order>1</sort_order>
+					  <sort_order>10</sort_order>
 					  <show_in_default>1</show_in_default>
 					  <show_in_website>1</show_in_website>
 					  <show_in_store>1</show_in_store>
@@ -187,7 +268,7 @@
 				      <vettore translate="label"> 
 					  <label>Anagrafica vettore</label>
 					  <frontend_type>text</frontend_type>
-					  <sort_order>1</sort_order>
+					  <sort_order>11</sort_order>
 					  <show_in_default>1</show_in_default>
 					  <show_in_website>1</show_in_website>
 					  <show_in_store>1</show_in_store>
