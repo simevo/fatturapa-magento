@@ -10,34 +10,43 @@
 		<show_in_website>1</show_in_website>
 		<show_in_store>1</show_in_store>            
 					<groups>
-				      <cedente_prestatore translate="label"> 
-					  <label>Dati Cedente Prestatore</label>
+
+
+				    <CedentePrestatore_DatiAnagrafici_IdFiscaleIVA translate="label"> 
+					  <label>Cedente Prestatore - Dati Anagrafici - Id Fiscale IVA</label>
 					  <frontend_type>text</frontend_type>
 					  <sort_order>0</sort_order>
 					  <show_in_default>1</show_in_default>
 					  <show_in_website>1</show_in_website>
 					  <show_in_store>1</show_in_store>
 				       <fields>
-                          <idpaese translate="label">
-                            <label>IdPaese</label>
-                            <comment> Codice del paese assegnante l’identifcativo fiscale al soggetto cedente/prestatore (secondo lo standard ISO 3166-1 alpha-2 code).</comment>
-							<frontend_type>text</frontend_type>
-                            <sort_order>8</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                          </idpaese>
-                          <idcodice translate="label">
-                            <label>IdCodice</label>
-							<frontend_type>text</frontend_type>
-                            <sort_order>9</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                          </idcodice>  
+                  <IdPaese translate="label">
+                    <label>Id Paese</label>
+                    <comment> Codice del paese assegnante l’identifcativo fiscale al soggetto cedente/prestatore (secondo lo standard ISO 3166-1 alpha-2 code).</comment>
+			             <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                  </IdPaese>
+                  <IdCodice translate="label">
+                    <label>Id Codice</label>
+                    <comment>numero di  identificazione fiscale del cedente/prestatore.</comment>
+			             <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                  </IdCodice>  
+                </fields>
+             </CedentePrestatore_DatiAnagrafici_IdFiscaleIVA>
+
+
+            <cedente_prestatore translate="label">
+              <fields>
                           <denominazione translate="label">
                             <label>Denominazione</label>
-							<frontend_type>text</frontend_type>
+							               <frontend_type>text</frontend_type>
                             <sort_order>0</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
