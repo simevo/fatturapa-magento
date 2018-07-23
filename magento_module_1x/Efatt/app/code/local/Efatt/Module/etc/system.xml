@@ -103,7 +103,7 @@
 
 
               <CedentePrestatore_Sede  translate="label">
-              <label>CedentePrestatore - Sede</label>
+              <label>Cedente Prestatore - Sede</label>
               <frontend_type>text</frontend_type>
               <sort_order>3</sort_order>
               <show_in_default>1</show_in_default>
@@ -200,105 +200,134 @@
 
 
 
-					  <cedente_prestatore_rea translate="label"> 
-					  <label>Iscrizione REA</label>
+					  <CedentePrestatore_IscrizioneREA  translate="label"> 
+					  <label>Cedente Prestatore - Iscrizione REA</label>
+            <comment>Questi campi devono essere obbligatoriamente valorizzati nei casi di società soggette al vincolo dell’iscrizione nel registro delle imprese ai sensi dell'art. 2250 del codice civile.</comment>
 					  <frontend_type>text</frontend_type>
-					  <sort_order>10</sort_order>
+					  <sort_order>5</sort_order>
 					  <show_in_default>1</show_in_default>
 					  <show_in_website>1</show_in_website>
 					  <show_in_store>1</show_in_store>
 				       <fields>
-                          <ufficio translate="label">
+                          <Ufficio translate="label">
                             <label>Ufficio</label>
                             <comment> Sigla della provincia ove ha sede l'Ufficio del Registro delle Imprese presso il quale è registrata la società.</comment>
-							<frontend_type>text</frontend_type>
+							             <frontend_type>text</frontend_type>
                             <sort_order>0</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                          </ufficio>
-                          <numero_rea translate="label">
+                          </Ufficio>
+                          <NumeroREA translate="label">
                             <label>Numero REA</label>
-                            <comment> Numero di repertorio con il quale la società è iscritta nel Registro delle Imprese</comment>
-							<frontend_type>text</frontend_type>
+                            <comment>Numero di repertorio con il quale la società è iscritta nel Registro delle Imprese</comment>
+							             <frontend_type>text</frontend_type>
                             <sort_order>1</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                          </numero_rea>  
-                          <capitale_sociale translate="label">
+                          </NumeroREA>  
+                          <CapitaleSociale translate="label">
                             <label>Capitale Sociale</label>
-							<frontend_type>text</frontend_type>
+                            <comment>Indica il capitale sociale quale somma effettivamente versata e quale risulta esistente dall’utlimo bilancio della società; questo campo è valorizzato nei soli casi di società di capitali (SpA, SApA, SRL).</comment>
+							             <frontend_type>text</frontend_type>
                             <sort_order>2</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                          </capitale_sociale> 
-                          <capitale_sociale translate="label">
-                            <label>Capitale Sociale</label>
-                            <comment> Indica il capitale sociale quale somma effettivamente versata e quale risulta esistente dall’utlimo bilancio della società; questo campo è valorizzato nei soli casi di società di capitali (SpA, SApA, SRL).</comment>
-							<frontend_type>text</frontend_type>
-                            <sort_order>3</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                          </capitale_sociale> 
-                          <socio_unico translate="label">
+                          </CapitaleSociale> 
+                          <SocioUnico translate="label">
                             <label>Socio Unico</label>
-                            <comment> Questo campo è valorizzato nei casi di società per azioni e a responsabilità limitata; indica se queste si compongono di un unico socio o di più soci.</comment>
-							<frontend_type>select</frontend_type>
-                            <sort_order>3</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                            <source_model>adminhtml/system_config_source_yesno</source_model>
-                          </socio_unico>
-                          <stato_liquidazione translate="label">
-                            <label>Stato Liquidazione</label>
-                            <comment> indica se la società si trova in stato di liquidazione oppure no.</comment>
+                            <comment>Questo campo è valorizzato nei casi di società per azioni e a responsabilità limitata; indica se queste si compongono di un unico socio o di più soci.</comment>
 							             <frontend_type>select</frontend_type>
                             <sort_order>3</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
-                          </stato_liquidazione>
+                          </SocioUnico>
+                          <StatoLiquidazione translate="label">
+                            <label>Stato Liquidazione</label>
+                            <comment>indica se la società si trova in stato di liquidazione oppure no.</comment>
+							             <frontend_type>select</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                          </StatoLiquidazione>
 					   </fields>
-					   </cedente_prestatore_rea>
-				      <vettore translate="label"> 
-					  <label>Anagrafica vettore</label>
-					  <frontend_type>text</frontend_type>
-					  <sort_order>11</sort_order>
-					  <show_in_default>1</show_in_default>
-					  <show_in_website>1</show_in_website>
-					  <show_in_store>1</show_in_store>
-				       <fields>
-                          <idpaese translate="label">
-                            <label>IdPaese</label>
-							<frontend_type>text</frontend_type>
-                            <sort_order>6</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                          </idpaese>
-                          <idcodice translate="label">
-                            <label>IdCodice</label>
-							<frontend_type>text</frontend_type>
-                            <sort_order>7</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                          </idcodice>  
-                          <denominazione translate="label">
-                            <label>Denominazione</label>
-							<frontend_type>text</frontend_type>
-                            <sort_order>0</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                          </denominazione> 
-					   </fields>
-					   </vettore>
+					   </CedentePrestatore_IscrizioneREA>
+
+             <CedentePrestatore_RappresentanteFiscale_DatiAnagrafici_IdFiscaleIVA translate="label">
+              <label>Cedente Prestatore - Rappresentante Fiscale - Dati Anagrafici - Id Fiscale IVA</label>
+            <comment>Dati obbligatori, qualora il cedente/prestatore si avvalga di un rappresentante fiscale in Italia, ai sensi del DPR 633 del 1972 e successive modifiche ed integrazioni.</comment>
+            <frontend_type>text</frontend_type>
+            <sort_order>6</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+               <fields>
+                <IdPaese translate="label">
+                    <label>Id Paese</label>
+                    <comment> Codice del paese assegnante l’identifcativo fiscale al soggetto cedente/prestatore (secondo lo standard ISO 3166-1 alpha-2 code).</comment>
+                   <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                  </IdPaese>
+                  <IdCodice translate="label">
+                    <label>Id Codice</label>
+                    <comment>numero di  identificazione fiscale del cedente/prestatore.</comment>
+                   <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                  </IdCodice>  
+              </fields>
+            </CedentePrestatore_RappresentanteFiscale_DatiAnagrafici_IdFiscaleIVA>
+
+             <CedentePrestatore_RappresentanteFiscale_DatiAnagrafici_Anagrafica translate="label">
+              <label>Cedente Prestatore - Rappresentante Fiscale - Dati Anagrafici - Anagrafica</label>
+              <comment>Dati obbligatori, qualora il cedente/prestatore si avvalga di un rappresentante fiscale in Italia, ai sensi del DPR 633 del 1972 e successive modifiche ed integrazioni.</comment>
+              <frontend_type>text</frontend_type>
+              <sort_order>7</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <fields>
+                  <Denominazione translate="label">
+                    <label>Denominazione</label>
+                    <comment>ditta, denominazione o ragione sociale del rappresentante fiscale del cedente/prestatore da valorizzare nei casi di persona non fisica; la valorizzazione di questo campo è in alternativa a quella dei campi Nome e Cognome seguenti.</comment>
+                     <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                  </Denominazione> 
+                  <Nome translate="label">
+                    <label>Nome</label>
+                    <comment>nome del rappresentante fiscale del cedente/prestatore da valorizzare nei casi di persona fisica; la valorizzazione di questo campo presuppone anche la valorizzazione del campo Cognome  ed è in alternativa a quella del campo Denominazione.</comment>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                  </Nome> 
+                  <Cognome translate="label">
+                    <label>Cognome</label>
+                    <comment>cognome del rappresentante fiscale del cedente/prestatore da valorizzare nei casi di persona fisica; la valorizzazione di questo campo presuppone anche la valorizzazione del campo Nome ed è in alternativa a quella del campo Denominazione.</comment>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                  </Cognome> 
+              </fields>
+            </CedentePrestatore_RappresentanteFiscale_DatiAnagrafici_Anagrafica>
+
 					</groups>
 		</efatt>
 	  </sections>
