@@ -7,10 +7,6 @@ $config   	= Mage::registry('efatt-config');
 $cc   		= Mage::registry('efatt-cessionario-committente');
 ?>
 
-<pre>
-<?php var_dump($config); ?>
-</pre>
-
 <div id="page:main-container">
 
 <form method="post" action='<?php echo $mUrl; ?>'>
@@ -59,6 +55,27 @@ $cc   		= Mage::registry('efatt-cessionario-committente');
             </tbody></table>
         </div>
     </div>
+
+    <!-- cedente prestatore from config -->
+    <?php foreach ($config as $key => $fields) { ?>
+    <div class="entry-edit">
+        <div class="entry-edit-head">
+            <strong><?php echo $key?></strong>
+        </div>
+        <div class="fieldset">
+            <table cellspacing="0" class="form-list">
+            <tbody>
+			<?php foreach ($fields as $field => $value) { ?>
+			<tr>
+                <td class="label"><label><?php echo $field ?></label></td>
+                <td class="value"><input type="text" name="<?php echo $key . '_' . $field ?>" value="<?php echo $value ?>"></td>
+            </tr>
+			<?php } ?>
+	</tbody></table>
+        </div>
+    </div>
+	<?php } ?>
+
 
     <!--Order Information-->
     <div class="entry-edit">
