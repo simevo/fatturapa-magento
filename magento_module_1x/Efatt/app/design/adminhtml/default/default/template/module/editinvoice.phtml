@@ -7,10 +7,6 @@ $config   	= Mage::registry('efatt-config');
 $cc   		= Mage::registry('efatt-cessionario-committente');
 ?>
 
-<pre>
-<?php var_dump($cc); ?>
-</pre>
-
 <div id="page:main-container">
 
 <form method="post" action='<?php echo $mUrl; ?>'>
@@ -155,7 +151,9 @@ $cc   		= Mage::registry('efatt-cessionario-committente');
             <table cellspacing="0" class="form-list">
             <tbody><tr>
                 <td class="label"><label>Tipo Documento</label></td>
-                <td class="value"><input type="text" name="DatiGenerali_DatiGeneraliDocumento_TipoDocumento"></td>
+                <td class="value"><input type="text" name="DatiGenerali_DatiGeneraliDocumento_TipoDocumento">
+				<p class="note">tipologia del documento oggetto della trasmissione (fattura, acconto/anticipo su fattura, nota di credito, parcella …).</p>
+                </td>
             </tr>
             <tr>
                 <td class="label"><label>Divisa</label></td>
