@@ -80,37 +80,17 @@ $cc   		= Mage::registry('efatt-cessionario-committente');
     <!--Order Information-->
     <div class="entry-edit">
         <div class="entry-edit-head">
-            <strong>Cessionario Committente</strong>
+            <strong>Cessionario Committente - Dati Anagrafici - Id Fiscale IVA</strong>
         </div>
         <div class="fieldset">
             <table cellspacing="0" class="form-list">
             <tbody><tr>
-                <td class="label"><label>Codice Fiscale</label></td>
-                <td class="value"><input type="text" name="cessionario_committente_codice_fiscale" value="<?php echo $cc['vat_id'] ?>"></td>
+                <td class="label"><label>Id Paese</label></td>
+                <td class="value"><input type="text" name="CessionarioCommittente_DatiAnagrafici_IdFiscaleIVA_IdPaese"></td>
             </tr>
             <tr>
-                <td class="label"><label>Denominazione</label></td>
-                <td class="value"><input type="text" name="cessionario_committente_denominazione" value="<?php echo $cc['company'] ?>"></td>
-            </tr>
-            <tr>
-                <td class="label"><label>Indirizzo</label></td>
-                <td class="value"><input type="text" name="cessionario_committente_indirizzo" value="<?php echo $cc['street'] ?>"></td>
-            </tr>
-            <tr>
-                <td class="label"><label>CAP</label></td>
-                <td class="value"><input type="text" name="cessionario_committente_cap" value="<?php echo $cc['postcode'] ?>"></td>
-            </tr>
-            <tr>
-                <td class="label"><label>Comune</label></td>
-                <td class="value"><input type="text" name="cessionario_committente_comune" value="<?php echo $cc['city'] ?>" ></td>
-            </tr>
-            <tr>
-                <td class="label"><label>Provincia</label></td>
-                <td class="value"><input type="text" name="cessionario_committente_provincia" value="<?php echo $cc['region'] ?>" ></td>
-            </tr>
-            <tr>
-                <td class="label"><label>Nazione</label></td>
-                <td class="value"><input type="text" name="cessionario_committente_nazione" value="<?php echo $cc['country_id'] ?>"></td>
+                <td class="label"><label>Id Codice</label></td>
+                <td class="value"><input type="text" name="CessionarioCommittente_DatiAnagrafici_IdFiscaleIVA_IdCodice"></td>
             </tr>
             </tbody></table>
         </div>
