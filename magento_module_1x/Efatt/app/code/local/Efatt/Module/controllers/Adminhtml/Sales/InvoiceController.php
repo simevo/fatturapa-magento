@@ -13,7 +13,7 @@ class Efatt_Module_Adminhtml_Sales_InvoiceController extends Mage_Adminhtml_Sale
     {
 
         $invoiceId          = $this->getRequest()->getParam('invoice_id');
-        $invoice            = Mage::getModel('sales/order_invoice')->load($invoiceIds);
+        $invoice            = Mage::getModel('sales/order_invoice')->load($invoiceId);
         $config             = Mage::getStoreConfig('efatt');
         $order              = Mage::getModel('sales/order')->load($invoice->order_id);
         $bAddress           = $order->getBillingAddress();

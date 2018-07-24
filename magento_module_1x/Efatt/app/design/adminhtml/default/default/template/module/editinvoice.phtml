@@ -107,15 +107,41 @@ $cc   		= Mage::registry('efatt-cessionario-committente');
             <table cellspacing="0" class="form-list">
             <tbody><tr>
                 <td class="label"><label>Denominazione</label></td>
-                <td class="value"><input type="text" name="CessionarioCommittente_DatiAnagrafici_Anagrafica_Denominazione"></td>
+                <td class="value"><input type="text" name="CessionarioCommittente_DatiAnagrafici_Anagrafica_Denominazione" value="<?php echo $cc['company'] ?>"></td>
             </tr>
             <tr>
                 <td class="label"><label>Nome</label></td>
-                <td class="value"><input type="text" name="CessionarioCommittente_DatiAnagrafici_Anagrafica_Nome"></td>
+                <td class="value"><input type="text" name="CessionarioCommittente_DatiAnagrafici_Anagrafica_Nome" value="<?php echo $cc['firstname'] ?>"></td>
             </tr>
             <tr>
                 <td class="label"><label>Cognome</label></td>
-                <td class="value"><input type="text" name="CessionarioCommittente_DatiAnagrafici_Anagrafica_Cognome"></td>
+                <td class="value"><input type="text" name="CessionarioCommittente_DatiAnagrafici_Anagrafica_Cognome" value="<?php echo $cc['lastname'] ?>"></td>
+            </tr>
+            </tbody></table>
+        </div>
+    </div>
+
+        <div class="entry-edit">
+        <div class="entry-edit-head">
+            <strong>Cessionario Committente - Sede</strong>
+        </div>
+        <div class="fieldset">
+            <table cellspacing="0" class="form-list">
+            <tbody><tr>
+                <td class="label"><label>Indirizzo</label></td>
+                <td class="value"><input type="text" name="CessionarioCommittente_Sede_Indirizzo" value="<?php echo $cc['street'] ?>"></td>
+            </tr>
+            <tr>
+                <td class="label"><label>CAP</label></td>
+                <td class="value"><input type="text" name="CessionarioCommittente_Sede_CAP" value="<?php echo $cc['postcode'] ?>"></td>
+            </tr>
+            <tr>
+                <td class="label"><label>Comune</label></td>
+                <td class="value"><input type="text" name="CessionarioCommittente_Sede_Comune" value="<?php echo $cc['city'] ?>"></td>
+            </tr>
+            <tr>
+                <td class="label"><label>Nazione</label></td>
+                <td class="value"><input type="text" name="CessionarioCommittente_Sede_Nazione" value="<?php echo $cc['country_id'] ?>"></td>
             </tr>
             </tbody></table>
         </div>
