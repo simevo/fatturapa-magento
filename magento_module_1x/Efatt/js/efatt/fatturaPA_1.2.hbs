@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:FatturaElettronica xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" versione="{{FatturaElettronica.versione}}" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 http://www.fatturapa.gov.it/export/fatturazione/sdi/fatturapa/v1.2/Schema_del_file_xml_FatturaPA_versione_1.2.xsd">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>{{FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.IdTrasmittente.IdPaese}}</IdPaese>
+        <IdCodice>{{FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.IdTrasmittente.IdCodice}}</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>{{FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.ProgressivoInvio}}</ProgressivoInvio>
+      <FormatoTrasmissione>{{FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.FormatoTrasmissione}}</FormatoTrasmissione>
+      {{#if FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.CodiceDestinatario}}
+      <CodiceDestinatario>{{FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.CodiceDestinatario}}</CodiceDestinatario>
+      {{/if}}
+      {{#if FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.ContattiTrasmittente}}
+      <ContattiTrasmittente>
+        {{#if FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.ContattiTrasmittente.Telefono}}
+        <Telefono>{{FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.ContattiTrasmittente.Telefono}}</Telefono>
+        {{/if}}
+        {{#if FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.ContattiTrasmittente.Email}}
+        <Email>{{FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.ContattiTrasmittente.Email}}</Email>
+        {{/if}}
+      </ContattiTrasmittente>
+      {{/if}}
+      {{#if FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.PECDestinatario}}
+      <PECDestinatario>{{FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.PECDestinatario}}</PECDestinatario>
+      {{/if}}
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>{{FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.IdFiscaleIVA.IdPaese}}</IdPaese>
+          <IdCodice>{{FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.IdFiscaleIVA.IdCodice}}</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          {{#if FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.Anagrafica.Denominazione}}
+          <Denominazione>{{FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.Anagrafica.Denominazione}}</Denominazione>
+          {{/if}}
+          {{#if FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.Anagrafica.Nome}}
+          <Nome>{{FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.Anagrafica.Nome}}</Nome>
+          {{/if}}
+          {{#if FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.Anagrafica.Cognome}}
+          <Cognome>{{FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.Anagrafica.Cognome}}</Cognome>
+          {{/if}}
+        </Anagrafica>
+        <RegimeFiscale>{{FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.RegimeFiscale}}</RegimeFiscale>
+        {{#if FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.CodiceFiscale}}
+        <CodiceFiscale>{{FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.CodiceFiscale}}</CodiceFiscale>
+        {{/if}}
+        {{#if FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.AlboProfessionale}}
+        <AlboProfessionale>{{FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.AlboProfessionale}}</AlboProfessionale>
+        {{/if}}
+        {{#if FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.ProvinciaAlbo}}
+        <ProvinciaAlbo>{{FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.ProvinciaAlbo}}</ProvinciaAlbo>
+        {{/if}}
+        {{#if FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.NumeroIscrizioneAlbo}}
+        <NumeroIscrizioneAlbo>{{FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.NumeroIscrizioneAlbo}}</NumeroIscrizioneAlbo>
+        {{/if}}
+        {{#if FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.DataIscrizioneAlbo}}
+        <DataIscrizioneAlbo>{{FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.DataIscrizioneAlbo}}</DataIscrizioneAlbo>
+        {{/if}}
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>{{FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.Sede.Indirizzo}}</Indirizzo>
+        <CAP>{{FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.Sede.CAP}}</CAP>
+        <Comune>{{FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.Sede.Comune}}</Comune>
+        {{#if FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.Sede.Provincia}}
+        <Provincia>{{FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.Sede.Provincia}}</Provincia>
+        {{/if}}
+        <Nazione>{{FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.Sede.Nazione}}</Nazione>
+        {{#if FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.Sede.NumeroCivico}}
+        <NumeroCivico>{{FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.Sede.NumeroCivico}}</NumeroCivico>
+        {{/if}}
+      </Sede>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        {{#if FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.DatiAnagrafici.CodiceFiscale}}
+        <CodiceFiscale>{{FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.DatiAnagrafici.CodiceFiscale}}</CodiceFiscale>
+        {{/if}}
+        <Anagrafica>
+          {{#if FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.DatiAnagrafici.Anagrafica.Denominazione}}
+          <Denominazione>{{FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.DatiAnagrafici.Anagrafica.Denominazione}}</Denominazione>
+          {{/if}}
+          {{#if FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.DatiAnagrafici.Anagrafica.Nome}}
+          <Nome>{{FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.DatiAnagrafici.Anagrafica.Nome}}</Nome>
+          {{/if}}
+          {{#if FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.DatiAnagrafici.Anagrafica.Cognome}}
+          <Cognome>{{FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.DatiAnagrafici.Anagrafica.Cognome}}</Cognome>
+          {{/if}}
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>{{FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.Sede.Indirizzo}}</Indirizzo>
+        <CAP>{{FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.Sede.CAP}}</CAP>
+        <Comune>{{FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.Sede.Comune}}</Comune>
+        {{#if FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.Sede.Provincia}}
+        <Provincia>{{FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.Sede.Provincia}}</Provincia>
+        {{/if}}
+        <Nazione>{{FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.Sede.Nazione}}</Nazione>
+        {{#if FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.Sede.NumeroCivico}}
+        <NumeroCivico>{{FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.Sede.NumeroCivico}}</NumeroCivico>
+        {{/if}}
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  {{#each FatturaElettronica.FatturaElettronicaBody}}
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>{{DatiGenerali.DatiGeneraliDocumento.TipoDocumento}}</TipoDocumento>
+        <Divisa>{{DatiGenerali.DatiGeneraliDocumento.Divisa}}</Divisa>
+        <Data>{{DatiGenerali.DatiGeneraliDocumento.Data}}</Data>
+        <Numero>{{DatiGenerali.DatiGeneraliDocumento.Numero}}</Numero>
+        {{#each DatiGenerali.DatiGeneraliDocumento.Causale}}
+        <Causale>{{this}}</Causale>
+        {{/each}}
+      </DatiGeneraliDocumento>
+      {{#each DatiGenerali.DatiOrdineAcquisto}}
+      <DatiOrdineAcquisto>
+        {{#each RiferimentoNumeroLinea}}
+        <RiferimentoNumeroLinea>{{this}}</RiferimentoNumeroLinea>
+        {{/each}}
+        <IdDocumento>{{IdDocumento}}</IdDocumento>
+        {{#if Data}}
+        <Data>{{Data}}</Data>
+        {{/if}}
+        {{#if NumItem}}
+        <NumItem>{{NumItem}}</NumItem>
+        {{/if}}
+        {{#if CodiceCUP}}
+        <CodiceCUP>{{CodiceCUP}}</CodiceCUP>
+        {{/if}}
+        {{#if CodiceCIG}}
+        <CodiceCIG>{{CodiceCIG}}</CodiceCIG>
+        {{/if}}
+        {{#if CodiceCommessaConvenzione}}
+        <CodiceCommessaConvenzione>{{CodiceCommessaConvenzione}}</CodiceCommessaConvenzione>
+        {{/if}}
+      </DatiOrdineAcquisto>
+      {{/each}}
+      {{#each DatiGenerali.DatiContratto}}
+      <DatiContratto>
+        {{#each RiferimentoNumeroLinea}}
+        <RiferimentoNumeroLinea>{{this}}</RiferimentoNumeroLinea>
+        {{/each}}
+        <IdDocumento>{{IdDocumento}}</IdDocumento>
+        {{#if Data}}
+        <Data>{{Data}}</Data>
+        {{/if}}
+        {{#if NumItem}}
+        <NumItem>{{NumItem}}</NumItem>
+        {{/if}}
+        {{#if CodiceCUP}}
+        <CodiceCUP>{{CodiceCUP}}</CodiceCUP>
+        {{/if}}
+        {{#if CodiceCIG}}
+        <CodiceCIG>{{CodiceCIG}}</CodiceCIG>
+        {{/if}}
+        {{#if CodiceCommessaConvenzione}}
+        <CodiceCommessaConvenzione>{{CodiceCommessaConvenzione}}</CodiceCommessaConvenzione>
+        {{/if}}
+      </DatiContratto>
+      {{/each}}
+      {{#each DatiGenerali.DatiConvenzione}}
+      <DatiConvenzione>
+        {{#each RiferimentoNumeroLinea}}
+        <RiferimentoNumeroLinea>{{this}}</RiferimentoNumeroLinea>
+        {{/each}}
+        <IdDocumento>{{IdDocumento}}</IdDocumento>
+        {{#if Data}}
+        <Data>{{Data}}</Data>
+        {{/if}}
+        {{#if NumItem}}
+        <NumItem>{{NumItem}}</NumItem>
+        {{/if}}
+        {{#if CodiceCUP}}
+        <CodiceCUP>{{CodiceCUP}}</CodiceCUP>
+        {{/if}}
+        {{#if CodiceCIG}}
+        <CodiceCIG>{{CodiceCIG}}</CodiceCIG>
+        {{/if}}
+        {{#if CodiceCommessaConvenzione}}
+        <CodiceCommessaConvenzione>{{CodiceCommessaConvenzione}}</CodiceCommessaConvenzione>
+        {{/if}}
+      </DatiConvenzione>
+      {{/each}}
+      {{#each DatiGenerali.DatiRicezione}}
+      <DatiRicezione>
+        {{#each RiferimentoNumeroLinea}}
+        <RiferimentoNumeroLinea>{{this}}</RiferimentoNumeroLinea>
+        {{/each}}
+        <IdDocumento>{{IdDocumento}}</IdDocumento>
+        {{#if Data}}
+        <Data>{{Data}}</Data>
+        {{/if}}
+        {{#if NumItem}}
+        <NumItem>{{NumItem}}</NumItem>
+        {{/if}}
+        {{#if CodiceCUP}}
+        <CodiceCUP>{{CodiceCUP}}</CodiceCUP>
+        {{/if}}
+        {{#if CodiceCIG}}
+        <CodiceCIG>{{CodiceCIG}}</CodiceCIG>
+        {{/if}}
+        {{#if CodiceCommessaConvenzione}}
+        <CodiceCommessaConvenzione>{{CodiceCommessaConvenzione}}</CodiceCommessaConvenzione>
+        {{/if}}
+      </DatiRicezione>
+      {{/each}}
+      {{#each DatiGenerali.DatiFattureCollegate}}
+      <DatiFattureCollegate>
+        {{#each RiferimentoNumeroLinea}}
+        <RiferimentoNumeroLinea>{{this}}</RiferimentoNumeroLinea>
+        {{/each}}
+        <IdDocumento>{{IdDocumento}}</IdDocumento>
+        {{#if Data}}
+        <Data>{{Data}}</Data>
+        {{/if}}
+        {{#if NumItem}}
+        <NumItem>{{NumItem}}</NumItem>
+        {{/if}}
+        {{#if CodiceCUP}}
+        <CodiceCUP>{{CodiceCUP}}</CodiceCUP>
+        {{/if}}
+        {{#if CodiceCIG}}
+        <CodiceCIG>{{CodiceCIG}}</CodiceCIG>
+        {{/if}}
+        {{#if CodiceCommessaConvenzione}}
+        <CodiceCommessaConvenzione>{{CodiceCommessaConvenzione}}</CodiceCommessaConvenzione>
+        {{/if}}
+      </DatiFattureCollegate>
+      {{/each}}
+      {{#if DatiGenerali.DatiTrasporto}}
+      <DatiTrasporto>
+        <DatiAnagraficiVettore>
+          <IdFiscaleIVA>
+            <IdPaese>{{DatiGenerali.DatiTrasporto.DatiAnagraficiVettore.IdFiscaleIVA.IdPaese}}</IdPaese>
+            <IdCodice>{{DatiGenerali.DatiTrasporto.DatiAnagraficiVettore.IdFiscaleIVA.IdCodice}}</IdCodice>
+          </IdFiscaleIVA>
+          <Anagrafica>
+            {{#if DatiGenerali.DatiTrasporto.DatiAnagraficiVettore.Anagrafica.Denominazione}}
+            <Denominazione>{{DatiGenerali.DatiTrasporto.DatiAnagraficiVettore.Anagrafica.Denominazione}}</Denominazione>
+            {{/if}}
+            {{#if DatiGenerali.DatiTrasporto.DatiAnagraficiVettore.Anagrafica.Nome}}
+            <Nome>{{DatiGenerali.DatiTrasporto.DatiAnagraficiVettore.Anagrafica.Nome}}</Nome>
+            {{/if}}
+            {{#if DatiGenerali.DatiTrasporto.DatiAnagraficiVettore.Anagrafica.Cognome}}
+            <Cognome>{{DatiGenerali.DatiTrasporto.DatiAnagraficiVettore.Anagrafica.Cognome}}</Cognome>
+            {{/if}}
+          </Anagrafica>
+        </DatiAnagraficiVettore>
+        <DataOraConsegna>{{DatiGenerali.DatiTrasporto.DataOraConsegna}}</DataOraConsegna>
+      </DatiTrasporto>
+      {{/if}}
+    </DatiGenerali>
+    <DatiBeniServizi>
+      {{#each DatiBeniServizi.DettaglioLinee}}
+      <DettaglioLinee>
+        <NumeroLinea>{{NumeroLinea}}</NumeroLinea>
+        <Descrizione>{{Descrizione}}</Descrizione>
+        {{#if Quantita}}
+        <Quantita>{{Quantita}}</Quantita>
+        {{/if}}
+        <PrezzoUnitario>{{PrezzoUnitario}}</PrezzoUnitario>
+        <PrezzoTotale>{{PrezzoTotale}}</PrezzoTotale>
+        <AliquotaIVA>{{AliquotaIVA}}</AliquotaIVA>
+        {{#if TipoCessionePrestazione}}
+        <TipoCessionePrestazione>{{TipoCessionePrestazione}}</TipoCessionePrestazione>
+        {{/if}}
+        {{#if UnitaMisura}}
+        <UnitaMisura>{{UnitaMisura}}</UnitaMisura>
+        {{/if}}
+        {{#if DataInizioPeriodo}}
+        <DataInizioPeriodo>{{DataInizioPeriodo}}</DataInizioPeriodo>
+        {{/if}}
+        {{#if DataFinePeriodo}}
+        <DataFinePeriodo>{{DataFinePeriodo}}</DataFinePeriodo>
+        {{/if}}
+        {{#if Ritenuta}}
+        <Ritenuta>{{Ritenuta}}</Ritenuta>
+        {{/if}}
+        {{#if Natura}}
+        <Natura>{{Natura}}</Natura>
+        {{/if}}
+        {{#if RiferimentoAmministrazione}}
+        <RiferimentoAmministrazione>{{RiferimentoAmministrazione}}</RiferimentoAmministrazione>
+        {{/if}}
+        {{#each CodiceArticolo}}
+        <CodiceArticolo>
+          <CodiceTipo>{{CodiceTipo}}</CodiceTipo>
+          <CodiceValore>{{CodiceValore}}</CodiceValore>
+        </CodiceArticolo>
+        {{/each}}
+        {{#each AltriDatiGestionali}}
+        <AltriDatiGestionali>
+          <TipoDato>{{TipoDato}}</TipoDato>
+          {{#if RiferimentoTesto}}
+          <RiferimentoTesto>{{RiferimentoTesto}}</RiferimentoTesto>
+          {{/if}}
+          {{#if RiferimentoNumero}}
+          <RiferimentoNumero>{{RiferimentoNumero}}</RiferimentoNumero>
+          {{/if}}
+          {{#if RiferimentoData}}
+          <RiferimentoData>{{RiferimentoData}}</RiferimentoData>
+          {{/if}}
+        </AltriDatiGestionali>
+        {{/each}}
+        {{#each ScontoMaggiorazione}}
+        <ScontoMaggiorazione></ScontoMaggiorazione>
+        {{/each}}
+      </DettaglioLinee>
+      {{/each}}
+      {{#each DatiBeniServizi.DatiRiepilogo}}
+      <DatiRiepilogo>
+        <AliquotaIVA>{{AliquotaIVA}}</AliquotaIVA>
+        <ImponibileImporto>{{ImponibileImporto}}</ImponibileImporto>
+        <Imposta>{{Imposta}}</Imposta>
+        {{#if Natura}}
+        <Natura>{{Natura}}</Natura>
+        {{/if}}
+        {{#if SpeseAccessorie}}
+        <SpeseAccessorie>{{SpeseAccessorie}}</SpeseAccessorie>
+        {{/if}}
+        {{#if Arrotondamento}}
+        <Arrotondamento>{{Arrotondamento}}</Arrotondamento>
+        {{/if}}
+        {{#if EsigibilitaIVA}}
+        <EsigibilitaIVA>{{EsigibilitaIVA}}</EsigibilitaIVA>
+        {{/if}}
+        {{#if RiferimentoNormativo}}
+        <RiferimentoNormativo>{{RiferimentoNormativo}}</RiferimentoNormativo>
+        {{/if}}
+      </DatiRiepilogo>
+      {{/each}}
+    </DatiBeniServizi>
+    {{#each DatiPagamento}}
+    <DatiPagamento>
+      <CondizioniPagamento>{{CondizioniPagamento}}</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>{{DettaglioPagamento.ModalitaPagamento}}</ModalitaPagamento>
+        <DataScadenzaPagamento>{{DettaglioPagamento.DataScadenzaPagamento}}</DataScadenzaPagamento>
+        <ImportoPagamento>{{DettaglioPagamento.ImportoPagamento}}</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+    {{/each}}
+  </FatturaElettronicaBody>
+  {{/each}}
+</p:FatturaElettronica>
