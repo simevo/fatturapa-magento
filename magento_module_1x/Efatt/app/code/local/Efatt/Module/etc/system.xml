@@ -30,6 +30,7 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <validate>required-entry</validate>
+                    <validate>validate-select</validate>
                     <source_model>adminhtml/system_config_source_country</source_model>
                   </IdPaese>
                   <IdCodice translate="label">
