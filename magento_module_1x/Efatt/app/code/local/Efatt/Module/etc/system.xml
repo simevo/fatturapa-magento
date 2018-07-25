@@ -42,7 +42,7 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <validate>required-entry</validate>
-                    <validate>validate-length maximum-length-11 minimum-length-11</validate>
+                    <validate>validate-length minimum-length-11 maximum-length-11</validate>
                   </IdCodice>  
                 </fields>
              </CedentePrestatore_DatiAnagrafici_IdFiscaleIVA>
@@ -64,6 +64,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
+                    <validate>validate-length maximum-length-99</validate>
                   </Denominazione> 
                   <Nome translate="label">
                     <label>Nome</label>
@@ -73,6 +74,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
+                    <validate>validate-alphanum-with-spaces validate-length maximum-length-99</validate>
                   </Nome> 
                   <Cognome translate="label">
                     <label>Cognome</label>
@@ -82,6 +84,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
+                    <validate>validate-alphanum-with-spaces validate-length maximum-length-99</validate>
                   </Cognome> 
               </fields>
             </CedentePrestatore_DatiAnagrafici_Anagrafica>
@@ -123,6 +126,7 @@
                   <show_in_default>1</show_in_default>
                   <show_in_website>1</show_in_website>
                   <show_in_store>1</show_in_store>
+                  <validate>validate-length maximum-length-99</validate>
                 </Indirizzo> 
                 <CAP translate="label">
                   <label>CAP</label>
@@ -132,6 +136,7 @@
                   <show_in_default>1</show_in_default>
                   <show_in_website>1</show_in_website>
                   <show_in_store>1</show_in_store>
+                  <validate>validate-length minimum-length-5 maximum-length-5</validate>
                 </CAP> 
                 <Comune translate="label">
                   <label>Comune</label>
@@ -141,6 +146,7 @@
                   <show_in_default>1</show_in_default>
                   <show_in_website>1</show_in_website>
                   <show_in_store>1</show_in_store>
+                  <validate>validate-alphanum-with-spaces validate-length maximum-length-99</validate>
                 </Comune> 
                 <Nazione translate="label">
                   <label>Nazione</label>
@@ -151,12 +157,13 @@
                   <show_in_website>1</show_in_website>
                   <show_in_store>1</show_in_store>
                   <source_model>adminhtml/system_config_source_country</source_model>
+                  <validate>validate-select</validate>
                 </Nazione> 
 					   </fields>
 					   </CedentePrestatore_Sede>
 
 
-              <CedentePrestatore_StabileOrganizzazione  translate="label">
+              <CedentePrestatore_StabileOrganizzazione translate="label">
               <label>Cedente Prestatore - Stabile Organizzazione</label>
               <comment>I campi indicati di seguito devono essere obbligatoriamente valorizzati nei soli casi in cui il cedente/prestatore è un soggetto non residente ed effettua la transazione oggetto del documento tramite l’organizzazione residente sul territorio nazionale. Si riferiscono alla stabile organizzazione in Italia.</comment>
               <frontend_type>text</frontend_type>
@@ -173,6 +180,7 @@
                   <show_in_default>1</show_in_default>
                   <show_in_website>1</show_in_website>
                   <show_in_store>1</show_in_store>
+                  <validate>validate-length maximum-length-99</validate>
                 </Indirizzo> 
                 <CAP translate="label">
                   <label>CAP</label>
@@ -182,6 +190,7 @@
                   <show_in_default>1</show_in_default>
                   <show_in_website>1</show_in_website>
                   <show_in_store>1</show_in_store>
+                  <validate>validate-length minimum-length-5 maximum-length-5</validate>
                 </CAP> 
                 <Comune translate="label">
                   <label>Comune</label>
@@ -191,6 +200,7 @@
                   <show_in_default>1</show_in_default>
                   <show_in_website>1</show_in_website>
                   <show_in_store>1</show_in_store>
+                  <validate>validate-alphanum-with-spaces validate-length maximum-length-99</validate>
                 </Comune> 
                 <Nazione translate="label">
                   <label>Nazione</label>
@@ -201,6 +211,7 @@
                   <show_in_website>1</show_in_website>
                   <show_in_store>1</show_in_store>
                   <source_model>adminhtml/system_config_source_country</source_model>
+                  <validate>validate-select</validate>
                 </Nazione> 
              </fields>
              </CedentePrestatore_StabileOrganizzazione>
@@ -224,6 +235,7 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
+                            <validate>validate-alpha validate-length minimum-length-2 maximum-length-2</validate>
                           </Ufficio>
                           <NumeroREA translate="label">
                             <label>Numero REA</label>
@@ -233,6 +245,7 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
+                            <validate>validate-alphanum validate-length minimum-length-4 maximum-length-99</validate>
                           </NumeroREA>  
                           <CapitaleSociale translate="label">
                             <label>Capitale Sociale</label>
@@ -242,6 +255,7 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
+                            <validate>validate-number validate-length minimum-length-1 maximum-length-99</validate>
                           </CapitaleSociale> 
                           <SocioUnico translate="label">
                             <label>Socio Unico</label>
@@ -252,6 +266,7 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <validate>validate-select</validate>
                           </SocioUnico>
                           <StatoLiquidazione translate="label">
                             <label>Stato Liquidazione</label>
@@ -284,6 +299,7 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <source_model>adminhtml/system_config_source_country</source_model>
+                    <validate>validate-select</validate>
                   </IdPaese>
                   <IdCodice translate="label">
                     <label>Id Codice</label>
@@ -293,6 +309,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
+                    <validate>validate-number validate-length minimum-length-1 maximum-length-11</validate>
                   </IdCodice>  
               </fields>
             </CedentePrestatore_RappresentanteFiscale_DatiAnagrafici_IdFiscaleIVA>
@@ -314,6 +331,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
+                    <validate>validate-length maximum-length-99</validate>
                   </Denominazione> 
                   <Nome translate="label">
                     <label>Nome</label>
@@ -323,6 +341,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
+                    <validate>validate-alphanum-with-spaces validate-length maximum-length-99</validate>
                   </Nome> 
                   <Cognome translate="label">
                     <label>Cognome</label>
@@ -332,6 +351,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
+                    <validate>validate-alphanum-with-spaces validate-length maximum-length-99</validate>
                   </Cognome> 
               </fields>
             </CedentePrestatore_RappresentanteFiscale_DatiAnagrafici_Anagrafica>
