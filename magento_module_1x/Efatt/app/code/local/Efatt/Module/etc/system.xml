@@ -106,6 +106,7 @@
 					        <sort_order>0</sort_order>
 					        <show_in_default>1</show_in_default>
                   </RegimeFiscale> 
+                  <validate>required-entry</validate>
               </fields>
             </CedentePrestatore_DatiAnagrafici>
 
@@ -245,7 +246,7 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                            <validate>validate-alphanum validate-length minimum-length-4 maximum-length-99</validate>
+                            <validate>validate-length minimum-length-4 maximum-length-99</validate>
                           </NumeroREA>  
                           <CapitaleSociale translate="label">
                             <label>Capitale Sociale</label>
