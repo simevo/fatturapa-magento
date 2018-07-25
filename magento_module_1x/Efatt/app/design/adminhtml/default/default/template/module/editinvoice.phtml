@@ -7,6 +7,8 @@ $config   	= Mage::registry('efatt-config');
 $cc   		= Mage::registry('efatt-cessionario-committente');
 $currencies = Mage::registry('efatt-currencies');
 $countryList = Mage::getResourceModel('directory/country_collection')->loadData()->toOptionArray(false);
+$fJsonUrl	= Mage::getBaseUrl('js') . "/efatt/fatturaPA_1.2_schema.json";
+$fXmlUrl	= Mage::getBaseUrl('js') . "/efatt/fatturaPA_1.2.hbs";
 ?>
 
 <div id="page:main-container">
@@ -196,6 +198,7 @@ $countryList = Mage::getResourceModel('directory/country_collection')->loadData(
 </form>
 </div>
 
+
 <script type="text/javascript">// <![CDATA[
 Calendar.setup({
     inputField : 'DatiGenerali_DatiGeneraliDocumento_Data',
@@ -205,6 +208,19 @@ Calendar.setup({
     singleClick : true
 });
 // ]]></script>
+
+<div id="fattura">
+	<input type="text" :value="FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.IdTrasmittente.IdCodice">
+
+	    <button type="button" v-on:click="generateJson();">Genera JSON</button>
+    <button type="button" v-on:click="generateXml();">Genera XML</button>
+    <button type="button" v-on:click="validateJson();">Valida JSON</button>    
+
+<!-- outside #fattura to avoid JSON circularity -->
+<input id="json" name="json" type="text" />
+<input id="xml" name="xml" type="text" />
+<input id="result" name="result" type="text" />
+</div>
 
 <script type="text/javascript">
     // configuration for jshint
@@ -375,7 +391,7 @@ Calendar.setup({
       methods: {
         validateJson: function() {
             var request = new XMLHttpRequest();
-            request.open("GET", "js/fatturaPA_1.2_schema.json");
+            request.open("GET", "<?php echo $fJsonUrl; ?>");
             request.onload = function() {
                 if (request.status == 200) {
                     if (request.responseText) {
@@ -395,7 +411,7 @@ Calendar.setup({
         },
         generateXml: function() {
             var request = new XMLHttpRequest();
-            request.open("GET", "js/fatturaPA_1.2.hbs");
+            request.open("GET", "<?php echo $fXmlUrl; ?>");
             request.onload = function() {
                 if (request.status == 200) {
                     if (request.responseText) {
