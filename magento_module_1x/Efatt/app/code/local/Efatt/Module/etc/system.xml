@@ -24,11 +24,13 @@
                   <IdPaese translate="label">
                     <label>Id Paese</label>
                     <comment> Codice del paese assegnante l’identifcativo fiscale al soggetto cedente/prestatore (secondo lo standard ISO 3166-1 alpha-2 code).</comment>
-			             <frontend_type>text</frontend_type>
+			             <frontend_type>select</frontend_type>
                     <sort_order>0</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
+                    <validate>required-entry</validate>
+                    <source_model>adminhtml/system_config_source_country</source_model>
                   </IdPaese>
                   <IdCodice translate="label">
                     <label>Id Codice</label>
@@ -140,11 +142,12 @@
                 <Nazione translate="label">
                   <label>Nazione</label>
                   <comment> Codice della nazione espresso secondo lo standard ISO 3166-1 alpha-2 code.</comment>
-		             <frontend_type>text</frontend_type>
+		             <frontend_type>select</frontend_type>
                   <sort_order>3</sort_order>
                   <show_in_default>1</show_in_default>
                   <show_in_website>1</show_in_website>
                   <show_in_store>1</show_in_store>
+                  <source_model>adminhtml/system_config_source_country</source_model>
                 </Nazione> 
 					   </fields>
 					   </CedentePrestatore_Sede>
@@ -189,11 +192,12 @@
                 <Nazione translate="label">
                   <label>Nazione</label>
                   <comment> Codice della nazione espresso secondo lo standard ISO 3166-1 alpha-2 code.</comment>
-                 <frontend_type>text</frontend_type>
+                 <frontend_type>select</frontend_type>
                   <sort_order>3</sort_order>
                   <show_in_default>1</show_in_default>
                   <show_in_website>1</show_in_website>
                   <show_in_store>1</show_in_store>
+                  <source_model>adminhtml/system_config_source_country</source_model>
                 </Nazione> 
              </fields>
              </CedentePrestatore_StabileOrganizzazione>
@@ -271,11 +275,12 @@
                 <IdPaese translate="label">
                     <label>Id Paese</label>
                     <comment> Codice del paese assegnante l’identifcativo fiscale al soggetto cedente/prestatore (secondo lo standard ISO 3166-1 alpha-2 code).</comment>
-                   <frontend_type>text</frontend_type>
+                   <frontend_type>select</frontend_type>
                     <sort_order>0</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
+                    <source_model>adminhtml/system_config_source_country</source_model>
                   </IdPaese>
                   <IdCodice translate="label">
                     <label>Id Codice</label>
