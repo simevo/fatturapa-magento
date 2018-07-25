@@ -167,7 +167,7 @@ $currencies = Mage::registry('efatt-currencies');
             </tr>
             <tr>
                 <td class="label"><label>Data</label></td>
-                <td class="value"><input type="text" name="DatiGenerali_DatiGeneraliDocumento_Data"></td>
+                <td class="value"><input type="text" name="DatiGenerali_DatiGeneraliDocumento_Data" id="DatiGenerali_DatiGeneraliDocumento_Data"></td>
             </tr>
             <tr>
                 <td class="label"><label>Numero</label></td>
@@ -185,3 +185,12 @@ $currencies = Mage::registry('efatt-currencies');
 </form>
 </div>
 
+<script type="text/javascript">// <![CDATA[
+Calendar.setup({
+    inputField : 'DatiGenerali_DatiGeneraliDocumento_Data',
+    ifFormat : '%Y-%m-%e',
+    button : 'date_from_trig',
+    align : 'Bl',
+    singleClick : true
+});
+// ]]></script>
