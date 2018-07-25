@@ -6,6 +6,7 @@ $fKey 		= Mage::getSingleton('core/session')->getFormKey();
 $config   	= Mage::registry('efatt-config'); 
 $cc   		= Mage::registry('efatt-cessionario-committente');
 $currencies = Mage::registry('efatt-currencies');
+$countryList = Mage::getResourceModel('directory/country_collection')->loadData()->toOptionArray(false);
 ?>
 
 <div id="page:main-container">
@@ -35,7 +36,12 @@ $currencies = Mage::registry('efatt-currencies');
             <tbody>
             <tr>
                 <td class="label"><label>Id paese</label></td>
-                <td class="value"><input type="text" name="DatiTrasmissione_IdTrasmittente_IdPaese"></td>
+                <td class="value">
+                <select name="DatiTrasmissione_IdTrasmittente_IdPaese">
+                <?php foreach ($countryList as $c => $ca) { ?>
+                <option <?php if($ca['value'] == 'IT') echo 'selected="selected"' ?> value="<?php echo $ca['value']; ?>"><?php echo $ca['value']; ?></option>
+                <?php } ?>
+				</td>
             </tr>
             <tr>
                 <td class="label"><label>Id codice</label></td>
@@ -86,7 +92,12 @@ $currencies = Mage::registry('efatt-currencies');
             <table cellspacing="0" class="form-list">
             <tbody><tr>
                 <td class="label"><label>Id Paese</label></td>
-                <td class="value"><input type="text" name="CessionarioCommittente_DatiAnagrafici_IdFiscaleIVA_IdPaese"></td>
+                <td class="value">
+                <select name="CessionarioCommittente_DatiAnagrafici_IdFiscaleIVA_IdPaese">
+                <?php foreach ($countryList as $c => $ca) { ?>
+                <option <?php if($ca['value'] == 'IT') echo 'selected="selected"' ?> value="<?php echo $ca['value']; ?>"><?php echo $ca['value']; ?></option>
+                <?php } ?>
+				</td>
             </tr>
             <tr>
                 <td class="label"><label>Id Codice</label></td>
