@@ -40,6 +40,8 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
+                    <validate>required-entry</validate>
+                    <validate>validate-length maximum-length-11 minimum-length-11</validate>
                   </IdCodice>  
                 </fields>
              </CedentePrestatore_DatiAnagrafici_IdFiscaleIVA>
