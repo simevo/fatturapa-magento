@@ -410,7 +410,7 @@
               </fields>
               </CedentePrestatore_ConcessionarioCommittente_DatiAnagrafici_Anagrafica>
              <CedentePrestatore_ConcessionarioCommittente_Sede translate="label">
-              <label>Cedente Prestatore - Concessionraio / Committente - Sede</label>
+              <label>Cedente Prestatore - Concessionario / Committente - Sede</label>
               <comment>indirizzo del cessionario/committente; deve essere valorizzato con il nome della via, piazza, etc., comprensivo, se si vuole, del numero civico.</comment>
               <frontend_type>text</frontend_type>
               <sort_order>10</sort_order>
@@ -460,7 +460,28 @@
                   <validate>validate-select</validate>
                 </Nazione> 
 			</fields>
-              </CedentePrestatore_ConcessionarioCommittente_Sede>              
+            </CedentePrestatore_ConcessionarioCommittente_Sede>
+            <SoggettoEmittente translate="label">
+              <label>Soggetto Emittente</label>
+              <comment>Nei casi di documenti emessi da un soggetto diverso dal cedente/prestatore va valorizzato il campo seguente.</comment>
+              <frontend_type>text</frontend_type>
+              <sort_order>11</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <fields>           
+			     <SoggettoEmittente translate="label">
+                  <label>Soggetto Emittente</label>
+                  <comment>codice che sta ad indicare se la fattura è stata emessa da parte del cessionario/committente ovvero da parte di un terzo per conto del cedente/prestatore.</comment>
+		          <frontend_type>text</frontend_type>
+                  <sort_order>0</sort_order>
+                  <show_in_default>1</show_in_default>
+                  <show_in_website>1</show_in_website>
+                  <show_in_store>1</show_in_store>
+                  <validate>validate-length maximum-length-99</validate>
+                </SoggettoEmittente>
+            </fields>
+            </SoggettoEmittente>               
 			</groups>
 		</efatt>
 	  </sections>
