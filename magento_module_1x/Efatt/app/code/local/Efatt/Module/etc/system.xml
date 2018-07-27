@@ -355,9 +355,61 @@
                   </Cognome> 
               </fields>
             </CedentePrestatore_RappresentanteFiscale_DatiAnagrafici_Anagrafica>
-<!-- pagine 11 documeto campi obbligatori 1.2.3 -->
-
-					</groups>
+			<!-- pagine 11 documeto campi obbligatori 1.2.3 -->
+			<CedentePrestatore_ConcessionarioCommittente_DatiAnagrafici_IdFiscaleIVA translate="label">
+			<label>Cedente Prestatore - Concessionario / Committente - Dati Anagrafici - ID Fiscale</label>
+            <comment>Dati obbligatori ai sensi del DPR 633 del 1972 e successive modifiche ed integrazioni.</comment>
+            <frontend_type>text</frontend_type>
+            <sort_order>8</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+               <fields>
+                <IdPaese translate="label">
+                    <label>Id Paese</label>
+                    <comment> Codice del paese assegnante l’identifcativo fiscale al soggetto cedente/prestatore (secondo lo standard ISO 3166-1 alpha-2 code).</comment>
+                   <frontend_type>select</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <source_model>adminhtml/system_config_source_country</source_model>
+                    <validate>validate-select</validate>
+                  </IdPaese>
+                  <IdCodice translate="label">
+                    <label>Id Codice</label>
+                    <comment>numero di  identificazione fiscale del cedente/prestatore.</comment>
+                   <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <validate>validate-number validate-length minimum-length-1 maximum-length-11</validate>
+                  </IdCodice>  
+              </fields>              
+			</CedentePrestatore_ConcessionarioCommittente_DatiAnagrafici_IdFiscaleIVA>
+             <CedentePrestatore_ConcessionarioCommittente_DatiAnagrafici_Anagrafica translate="label">
+              <label>Cedente Prestatore - Concessionraio / Committente - Dati Anagrafici - Anagrafica</label>
+              <comment>Dati obbligatori, qualora il cedente/prestatore si avvalga di un rappresentante fiscale in Italia, ai sensi del DPR 633 del 1972 e successive modifiche ed integrazioni.</comment>
+              <frontend_type>text</frontend_type>
+              <sort_order>9</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <fields>
+                  <IdCodice translate="label">
+                    <label>Codice Fiscale</label>
+                    <comment>numero di codice fiscale del cessionario/committente, se non agisce nell’esercizio di impresa, arte o professione.</comment>
+                   <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <validate>validate-alphanum validate-length minimum-length-11 maximum-length-11</validate>
+                  </IdCodice>  
+              </fields>
+              </CedentePrestatore_ConcessionarioCommittente_DatiAnagrafici_Anagrafica>
+			</groups>
 		</efatt>
 	  </sections>
 </config>
