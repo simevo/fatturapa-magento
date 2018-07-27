@@ -118,7 +118,7 @@
               <show_in_website>1</show_in_website>
               <show_in_store>1</show_in_store>
               <fields>           
-						  <Indirizzo translate="label">
+			     <Indirizzo translate="label">
                   <label>Indirizzo</label>
                   <comment> Indirizzo della stabile organizzazione del cedente/prestatore del bene/servizio; deve essere valorizzato con il nome della via, piazza, etc., comprensivo del numero civico.</comment>
 		             <frontend_type>text</frontend_type>
@@ -159,8 +159,8 @@
                   <source_model>adminhtml/system_config_source_country</source_model>
                   <validate>validate-select</validate>
                 </Nazione> 
-					   </fields>
-					   </CedentePrestatore_Sede>
+			</fields>
+			</CedentePrestatore_Sede>
 
 
               <CedentePrestatore_StabileOrganizzazione translate="label">
@@ -409,6 +409,58 @@
                   </IdCodice>  
               </fields>
               </CedentePrestatore_ConcessionarioCommittente_DatiAnagrafici_Anagrafica>
+             <CedentePrestatore_ConcessionarioCommittente_Sede translate="label">
+              <label>Cedente Prestatore - Concessionraio / Committente - Sede</label>
+              <comment>indirizzo del cessionario/committente; deve essere valorizzato con il nome della via, piazza, etc., comprensivo, se si vuole, del numero civico.</comment>
+              <frontend_type>text</frontend_type>
+              <sort_order>10</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <fields>           
+			     <Indirizzo translate="label">
+                  <label>Indirizzo</label>
+                  <comment> Indirizzo della stabile organizzazione del cedente/prestatore del bene/servizio; deve essere valorizzato con il nome della via, piazza, etc., comprensivo del numero civico.</comment>
+		          <frontend_type>text</frontend_type>
+                  <sort_order>0</sort_order>
+                  <show_in_default>1</show_in_default>
+                  <show_in_website>1</show_in_website>
+                  <show_in_store>1</show_in_store>
+                  <validate>validate-length maximum-length-99</validate>
+                </Indirizzo> 
+                <CAP translate="label">
+                  <label>CAP</label>
+                  <comment>Codice di Avviamento Postale relativo all’indirizzo</comment>
+		             <frontend_type>text</frontend_type>
+                  <sort_order>1</sort_order>
+                  <show_in_default>1</show_in_default>
+                  <show_in_website>1</show_in_website>
+                  <show_in_store>1</show_in_store>
+                  <validate>validate-length minimum-length-5 maximum-length-5</validate>
+                </CAP> 
+                <Comune translate="label">
+                  <label>Comune</label>
+                  <comment>comune cui si riferisce l’indirizzo</comment>
+		             <frontend_type>text</frontend_type>
+                  <sort_order>2</sort_order>
+                  <show_in_default>1</show_in_default>
+                  <show_in_website>1</show_in_website>
+                  <show_in_store>1</show_in_store>
+                  <validate>validate-alphanum-with-spaces validate-length maximum-length-99</validate>
+                </Comune> 
+                <Nazione translate="label">
+                  <label>Nazione</label>
+                  <comment> Codice della nazione espresso secondo lo standard ISO 3166-1 alpha-2 code.</comment>
+		             <frontend_type>select</frontend_type>
+                  <sort_order>3</sort_order>
+                  <show_in_default>1</show_in_default>
+                  <show_in_website>1</show_in_website>
+                  <show_in_store>1</show_in_store>
+                  <source_model>adminhtml/system_config_source_country</source_model>
+                  <validate>validate-select</validate>
+                </Nazione> 
+			</fields>
+              </CedentePrestatore_ConcessionarioCommittente_Sede>              
 			</groups>
 		</efatt>
 	  </sections>
