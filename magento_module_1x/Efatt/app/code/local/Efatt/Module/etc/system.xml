@@ -11,7 +11,6 @@
 		<show_in_store>1</show_in_store>            
 					<groups>
 
-
 				    <CedentePrestatore_DatiAnagrafici_IdFiscaleIVA translate="label"> 
 					  <label>Cedente Prestatore - Dati Anagrafici - Id Fiscale IVA</label>
             <comment>Questi campi consentono l’inserimento della partita IVA per i soggetti residenti in Italia, oppure dell’identificativo fiscale assegnato dall’autorità del proprio paese per i soggetti non residenti.</comment>
@@ -356,6 +355,7 @@
                   </Cognome> 
               </fields>
             </CedentePrestatore_RappresentanteFiscale_DatiAnagrafici_Anagrafica>
+<!-- pagine 11 documeto campi obbligatori 1.2.3 -->
 
 					</groups>
 		</efatt>
