@@ -1,514 +1,543 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <config>
-	  <sections>
-		<efatt  translate="label" module="module">                    
-		<label>Fattura Elettronica</label>
-		<tab>sales</tab>
-		<frontend_type>text</frontend_type>
-		<sort_order>12</sort_order>
-		<show_in_default>1</show_in_default>
-		<show_in_website>1</show_in_website>
-		<show_in_store>1</show_in_store>            
-					<groups>
-
-				    <CedentePrestatore_DatiAnagrafici_IdFiscaleIVA translate="label"> 
-					  <label>Cedente Prestatore - Dati Anagrafici - Id Fiscale IVA</label>
-            <comment>Questi campi consentono l’inserimento della partita IVA per i soggetti residenti in Italia, oppure dell’identificativo fiscale assegnato dall’autorità del proprio paese per i soggetti non residenti.</comment>
-					  <frontend_type>text</frontend_type>
-					  <sort_order>0</sort_order>
-					  <show_in_default>1</show_in_default>
-					  <show_in_website>1</show_in_website>
-					  <show_in_store>1</show_in_store>
-				       <fields>
-                  <IdPaese translate="label">
-                    <label>Id Paese</label>
-                    <comment> Codice del paese assegnante l’identifcativo fiscale al soggetto cedente/prestatore (secondo lo standard ISO 3166-1 alpha-2 code).</comment>
-			             <frontend_type>select</frontend_type>
+    <sections>
+        <efatt translate="label" module="module">
+            <label>Fattura Elettronica (cedente prestatore)</label>
+            <tab>sales</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>12</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <CedentePrestatore_DatiAnagrafici_IdFiscaleIVA translate="label">
+                    <label>Cedente Prestatore - Dati Anagrafici - Id Fiscale IVA</label>
+                    <comment>Questi campi consentono l’inserimento della partita IVA per i soggetti residenti in Italia, oppure dell’identificativo fiscale assegnato dall’autorità del proprio paese per i soggetti non residenti.</comment>
+                    <frontend_type>text</frontend_type>
                     <sort_order>0</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    <validate>required-entry</validate>
-                    <validate>validate-select</validate>
-                    <source_model>adminhtml/system_config_source_country</source_model>
-                  </IdPaese>
-                  <IdCodice translate="label">
-                    <label>Id Codice</label>
-                    <comment>numero di  identificazione fiscale del cedente/prestatore.</comment>
-			             <frontend_type>text</frontend_type>
-                    <sort_order>1</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
-                    <validate>required-entry</validate>
-                    <validate>validate-length minimum-length-11 maximum-length-11</validate>
-                  </IdCodice>  
-                </fields>
-             </CedentePrestatore_DatiAnagrafici_IdFiscaleIVA>
-
-
-            <CedentePrestatore_DatiAnagrafici_Anagrafica translate="label">
-              <label>Cedente Prestatore - Dati Anagrafici - Anagrafica</label>
-              <frontend_type>text</frontend_type>
-              <sort_order>1</sort_order>
-              <show_in_default>1</show_in_default>
-              <show_in_website>1</show_in_website>
-              <show_in_store>1</show_in_store>
-              <fields>
-                  <Denominazione translate="label">
-                    <label>Denominazione</label>
-                    <comment>ditta, denominazione o ragione sociale del cedente/prestatore del bene/servizio da valorizzare nei casi di persona non fisica; la valorizzazione di questo campo è in alternativa a quella dei campi Nome e Cognome seguenti.</comment>
-			               <frontend_type>text</frontend_type>
-                    <sort_order>0</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
-                    <validate>validate-length maximum-length-99</validate>
-                  </Denominazione> 
-                  <Nome translate="label">
-                    <label>Nome</label>
-                    <comment>nome del cedente/prestatore del bene/servizio da valorizzare nei casi di persona fisica; la valorizzazione di questo campo presuppone anche la valorizzazione del campo Cognome  ed è in alternativa a quella del campo Denominazione</comment>
-			              <frontend_type>text</frontend_type>
-                    <sort_order>1</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
-                    <validate>validate-alphanum-with-spaces validate-length maximum-length-99</validate>
-                  </Nome> 
-                  <Cognome translate="label">
-                    <label>Cognome</label>
-                    <comment>cognome del cedente/prestatore del bene/servizio da valorizzare nei casi di persona fisica; la valorizzazione di questo campo presuppone anche la valorizzazione del campo Nome  ed è in alternativa a quella del campo Denominazione.</comment>
-			              <frontend_type>text</frontend_type>
-                    <sort_order>2</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
-                    <validate>validate-alphanum-with-spaces validate-length maximum-length-99</validate>
-                  </Cognome> 
-              </fields>
-            </CedentePrestatore_DatiAnagrafici_Anagrafica>
-
-
-            <CedentePrestatore_DatiAnagrafici translate="label">
-              <label>Cedente Prestatore - Dati Anagrafici</label>
-              <frontend_type>text</frontend_type>
-              <sort_order>2</sort_order>
-              <show_in_default>1</show_in_default>
-              <show_in_website>1</show_in_website>
-              <show_in_store>1</show_in_store>
-              <fields>
-                <RegimeFiscale translate="label">
-							   <label>Regime Fiscale</label>
-                 <comment>RF01: Regime ordinario; RF02: Regime dei contribuenti minimi; RF03: Regime delle nuove iniziative produttive; RF04: Agricoltura e attività connesse e pesca; RF05: Vendita sali e tabacchi; RF06: Commercio dei fiammiferi; RF07: Editoria; RF08: Gestione di servizi di telefonia pubblica; RF09: Rivendita di documenti di trasporto pubblico e di sosta; RF10: Intrattenimenti, giochi e altre attività; RF11: Agenzie di viaggi e turismo; RF12: Agriturismo; RF13: Vendite a domicilio; RF14: Rivendita di beni usati, di oggetti d'arte, d'antiquariato o da collezione; RF15: Agenzie di vendite all'asta di oggetti d'arte, antiquariato o da collezione; RF16: IVA per cassa P.A.; RF17: IVA per cassa; RF19: Regime forfettario; RF18: Altro</comment>
-					        <frontend_type>select</frontend_type>
-					        <source_model>efatt_module/system_config_source_regimefiscale</source_model>
-					        <sort_order>0</sort_order>
-					        <show_in_default>1</show_in_default>
-                  </RegimeFiscale> 
-                  <validate>required-entry</validate>
-              </fields>
-            </CedentePrestatore_DatiAnagrafici>
-
-
-              <CedentePrestatore_Sede  translate="label">
-              <label>Cedente Prestatore - Sede</label>
-              <frontend_type>text</frontend_type>
-              <sort_order>3</sort_order>
-              <show_in_default>1</show_in_default>
-              <show_in_website>1</show_in_website>
-              <show_in_store>1</show_in_store>
-              <fields>           
-			     <Indirizzo translate="label">
-                  <label>Indirizzo</label>
-                  <comment> Indirizzo della stabile organizzazione del cedente/prestatore del bene/servizio; deve essere valorizzato con il nome della via, piazza, etc., comprensivo del numero civico.</comment>
-		             <frontend_type>text</frontend_type>
-                  <sort_order>0</sort_order>
-                  <show_in_default>1</show_in_default>
-                  <show_in_website>1</show_in_website>
-                  <show_in_store>1</show_in_store>
-                  <validate>validate-length maximum-length-99</validate>
-                </Indirizzo> 
-                <CAP translate="label">
-                  <label>CAP</label>
-                  <comment>Codice di Avviamento Postale relativo all’indirizzo</comment>
-		             <frontend_type>text</frontend_type>
-                  <sort_order>1</sort_order>
-                  <show_in_default>1</show_in_default>
-                  <show_in_website>1</show_in_website>
-                  <show_in_store>1</show_in_store>
-                  <validate>validate-length minimum-length-5 maximum-length-5</validate>
-                </CAP> 
-                <Comune translate="label">
-                  <label>Comune</label>
-                  <comment>comune cui si riferisce l’indirizzo</comment>
-		             <frontend_type>text</frontend_type>
-                  <sort_order>2</sort_order>
-                  <show_in_default>1</show_in_default>
-                  <show_in_website>1</show_in_website>
-                  <show_in_store>1</show_in_store>
-                  <validate>validate-alphanum-with-spaces validate-length maximum-length-99</validate>
-                </Comune> 
-                <Nazione translate="label">
-                  <label>Nazione</label>
-                  <comment> Codice della nazione espresso secondo lo standard ISO 3166-1 alpha-2 code.</comment>
-		             <frontend_type>select</frontend_type>
-                  <sort_order>3</sort_order>
-                  <show_in_default>1</show_in_default>
-                  <show_in_website>1</show_in_website>
-                  <show_in_store>1</show_in_store>
-                  <source_model>adminhtml/system_config_source_country</source_model>
-                  <validate>validate-select</validate>
-                </Nazione> 
-			</fields>
-			</CedentePrestatore_Sede>
-
-              <CedentePrestatore_StabileOrganizzazione translate="label">
-              <label>Cedente Prestatore - Stabile Organizzazione</label>
-              <comment>I campi indicati di seguito devono essere obbligatoriamente valorizzati nei soli casi in cui il cedente/prestatore è un soggetto non residente ed effettua la transazione oggetto del documento tramite l’organizzazione residente sul territorio nazionale. Si riferiscono alla stabile organizzazione in Italia.</comment>
-              <frontend_type>text</frontend_type>
-              <sort_order>4</sort_order>
-              <show_in_default>1</show_in_default>
-              <show_in_website>1</show_in_website>
-              <show_in_store>1</show_in_store>
-              <fields> 
-            <soggetto_non_residente translate="label">
-              <label>Il cedente/prestatore è un soggetto non residente ed effettua la transazione tramite l’organizzazione residente sul territorio nazionale?</label>
-              <frontend_type>select</frontend_type>
-              <sort_order>0</sort_order>       
-              <source_model>adminhtml/system_config_source_yesno</source_model>
-              <show_in_default>1</show_in_default>
-              <show_in_website>1</show_in_website>
-              <show_in_store>0</show_in_store>
-            </soggetto_non_residente>            
-              <Indirizzo translate="label">
-                  <label>Indirizzo</label>
-                  <comment>indirizzo della stabile organizzazione del cedente/prestatore del bene/servizio; deve essere valorizzato con il nome della via, piazza, etc., comprensivo del numero civico.</comment>
-                 <frontend_type>text</frontend_type>
-                  <sort_order>1</sort_order>
-                  <show_in_default>1</show_in_default>
-                  <show_in_website>1</show_in_website>
-                  <show_in_store>1</show_in_store>
-                  <depends><soggetto_non_residente>1</soggetto_non_residente></depends>
-                  <validate>validate-length maximum-length-99</validate>
-                </Indirizzo> 
-                <CAP translate="label">
-                  <label>CAP</label>
-                  <comment>Codice di Avviamento Postale relativo all’indirizzo</comment>
-                 <frontend_type>text</frontend_type>
-                  <sort_order>2</sort_order>
-                  <show_in_default>1</show_in_default>
-                  <show_in_website>1</show_in_website>
-                  <show_in_store>1</show_in_store>
-                  <depends><soggetto_non_residente>1</soggetto_non_residente></depends>
-                  <validate>validate-length minimum-length-5 maximum-length-5</validate>
-                </CAP> 
-                <Comune translate="label">
-                  <label>Comune</label>
-                  <comment>comune cui si riferisce l’indirizzo</comment>
-                 <frontend_type>text</frontend_type>
-                  <sort_order>3</sort_order>
-                  <show_in_default>1</show_in_default>
-                  <show_in_website>1</show_in_website>
-                  <show_in_store>1</show_in_store>
-                  <depends><soggetto_non_residente>1</soggetto_non_residente></depends>
-                  <validate>validate-alphanum-with-spaces validate-length maximum-length-99</validate>
-                </Comune> 
-                <Nazione translate="label">
-                  <label>Nazione</label>
-                  <comment> Codice della nazione espresso secondo lo standard ISO 3166-1 alpha-2 code.</comment>
-                 <frontend_type>select</frontend_type>
-                  <sort_order>4</sort_order>
-                  <show_in_default>1</show_in_default>
-                  <show_in_website>1</show_in_website>
-                  <show_in_store>1</show_in_store>
-                  <source_model>adminhtml/system_config_source_country</source_model>
-                  <depends><soggetto_non_residente>1</soggetto_non_residente></depends>
-                  <validate>validate-select</validate>
-                </Nazione> 
-             </fields>
-             </CedentePrestatore_StabileOrganizzazione>
-
-					  <CedentePrestatore_IscrizioneREA  translate="label"> 
-					  <label>Cedente Prestatore - Iscrizione REA</label>
-            <comment>Questi campi devono essere obbligatoriamente valorizzati nei casi di società soggette al vincolo dell’iscrizione nel registro delle imprese ai sensi dell'art. 2250 del codice civile.</comment>
-					  <frontend_type>text</frontend_type>
-					  <sort_order>5</sort_order>
-					  <show_in_default>1</show_in_default>
-					  <show_in_website>1</show_in_website>
-					  <show_in_store>1</show_in_store>
-				       <fields>
-            <registro_imprese translate="label">
-              <label>È una società soggette al vincolo dell’iscrizione nel registro delle imprese?</label>
-              <frontend_type>select</frontend_type>
-              <sort_order>0</sort_order>       
-              <source_model>adminhtml/system_config_source_yesno</source_model>
-              <show_in_default>1</show_in_default>
-              <show_in_website>1</show_in_website>
-              <show_in_store>0</show_in_store>
-            </registro_imprese>                
-                          <Ufficio translate="label">
-                            <label>Ufficio</label>
-                            <comment> Sigla della provincia ove ha sede l'Ufficio del Registro delle Imprese presso il quale è registrata la società.</comment>
-							             <frontend_type>text</frontend_type>
+                    <fields>
+                        <IdPaese translate="label">
+                            <label>Id Paese</label>
+                            <comment>Codice del paese assegnante l’identifcativo fiscale al soggetto cedente/prestatore (secondo lo standard ISO 3166-1 alpha-2 code).</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                            <validate>validate-select</validate>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                        </IdPaese>
+                        <IdCodice translate="label">
+                            <label>Id Codice</label>
+                            <comment>numero di  identificazione fiscale del cedente/prestatore.</comment>
+                            <frontend_type>text</frontend_type>
                             <sort_order>1</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                            <depends><registro_imprese>1</registro_imprese></depends>
-                            <validate>validate-alpha validate-length minimum-length-2 maximum-length-2</validate>
-                          </Ufficio>
-                          <NumeroREA translate="label">
-                            <label>Numero REA</label>
-                            <comment>Numero di repertorio con il quale la società è iscritta nel Registro delle Imprese</comment>
-							             <frontend_type>text</frontend_type>
-                            <sort_order>2</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                            <depends><registro_imprese>1</registro_imprese></depends>
-                            <validate>validate-length minimum-length-4 maximum-length-99</validate>
-                          </NumeroREA>  
-                          <CapitaleSociale translate="label">
-                            <label>Capitale Sociale</label>
-                            <comment>Indica il capitale sociale quale somma effettivamente versata e quale risulta esistente dall’utlimo bilancio della società; questo campo è valorizzato nei soli casi di società di capitali (SpA, SApA, SRL).</comment>
-							             <frontend_type>text</frontend_type>
-                            <sort_order>3</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                            <depends><registro_imprese>1</registro_imprese></depends>
-                            <validate>validate-number validate-length minimum-length-1 maximum-length-99</validate>
-                          </CapitaleSociale> 
-                          <SocioUnico translate="label">
-                            <label>Socio Unico</label>
-                            <comment>Questo campo è valorizzato nei casi di società per azioni e a responsabilità limitata; indica se queste si compongono di un unico socio o di più soci.</comment>
-							             <frontend_type>select</frontend_type>
-                            <sort_order>4</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                            <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <depends><registro_imprese>1</registro_imprese></depends>
-                            <validate>validate-select</validate>
-                          </SocioUnico>
-                          <StatoLiquidazione translate="label">
-                            <label>Stato Liquidazione</label>
-                            <comment>indica se la società si trova in stato di liquidazione oppure no.</comment>
-							             <frontend_type>select</frontend_type>
-                            <sort_order>5</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                            <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <depends><registro_imprese>1</registro_imprese></depends>
-                          </StatoLiquidazione>
-					   </fields>
-					   </CedentePrestatore_IscrizioneREA>
-
-             <CedentePrestatore_RappresentanteFiscale_DatiAnagrafici_Anagrafica translate="label">
-              <label>Cedente Prestatore - Rappresentante Fiscale - Dati Anagrafici</label>
-            <comment>Dati obbligatori, qualora il cedente/prestatore si avvalga di un rappresentante fiscale in Italia, ai sensi del DPR 633 del 1972 e successive modifiche ed integrazioni.</comment>
-            <frontend_type>text</frontend_type>
-            <sort_order>6</sort_order>
-            <show_in_default>1</show_in_default>
-            <show_in_website>1</show_in_website>
-            <show_in_store>1</show_in_store>
-            <fields>
-            <rappresentante_fiscale translate="label">
-              <label>Il cedente/prestatore si avvale di un rappresentante fiscale in Italia?</label>
-              <frontend_type>select</frontend_type>
-              <sort_order>0</sort_order>       
-              <source_model>adminhtml/system_config_source_yesno</source_model>
-              <show_in_default>1</show_in_default>
-              <show_in_website>1</show_in_website>
-              <show_in_store>0</show_in_store>
-            </rappresentante_fiscale>
-                <IdPaese translate="label">
-                    <label>Id Paese</label>
-                    <comment> Codice del paese assegnante l’identifcativo fiscale al soggetto cedente/prestatore (secondo lo standard ISO 3166-1 alpha-2 code).</comment>
-                   <frontend_type>select</frontend_type>
-                    <sort_order>0</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
-                    <source_model>adminhtml/system_config_source_country</source_model>
-                    <depends><rappresentante_fiscale>1</rappresentante_fiscale></depends>
-                    <validate>validate-select</validate>
-                  </IdPaese>
-                  <IdCodice translate="label">
-                    <label>Id Codice</label>
-                    <comment>numero di  identificazione fiscale del cedente/prestatore.</comment>
-                   <frontend_type>text</frontend_type>
+                            <validate>required-entry</validate>
+                            <validate>validate-length minimum-length-11 maximum-length-11</validate>
+                        </IdCodice>
+                    </fields>
+                </CedentePrestatore_DatiAnagrafici_IdFiscaleIVA>
+                <CedentePrestatore_DatiAnagrafici_Anagrafica translate="label">
+                    <label>Cedente Prestatore - Dati Anagrafici - Anagrafica</label>
+                    <frontend_type>text</frontend_type>
                     <sort_order>1</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    <depends><rappresentante_fiscale>1</rappresentante_fiscale></depends>
-                    <validate>validate-number validate-length minimum-length-1 maximum-length-11</validate>
-                  </IdCodice>  
-
-                  <Denominazione translate="label">
-                    <label>Denominazione</label>
-                    <comment>ditta, denominazione o ragione sociale del rappresentante fiscale del cedente/prestatore da valorizzare nei casi di persona non fisica; la valorizzazione di questo campo è in alternativa a quella dei campi Nome e Cognome seguenti.</comment>
-                     <frontend_type>text</frontend_type>
+                    <fields>
+                        <Denominazione translate="label">
+                            <label>Denominazione</label>
+                            <comment>ditta, denominazione o ragione sociale del cedente/prestatore del bene/servizio da valorizzare nei casi di persona non fisica; la valorizzazione di questo campo è in alternativa a quella dei campi Nome e Cognome seguenti.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-length maximum-length-99</validate>
+                        </Denominazione>
+                        <Nome translate="label">
+                            <label>Nome</label>
+                            <comment>nome del cedente/prestatore del bene/servizio da valorizzare nei casi di persona fisica; la valorizzazione di questo campo presuppone anche la valorizzazione del campo Cognome  ed è in alternativa a quella del campo Denominazione</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-alphanum-with-spaces validate-length maximum-length-99</validate>
+                        </Nome>
+                        <Cognome translate="label">
+                            <label>Cognome</label>
+                            <comment>cognome del cedente/prestatore del bene/servizio da valorizzare nei casi di persona fisica; la valorizzazione di questo campo presuppone anche la valorizzazione del campo Nome  ed è in alternativa a quella del campo Denominazione.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-alphanum-with-spaces validate-length maximum-length-99</validate>
+                        </Cognome>
+                    </fields>
+                </CedentePrestatore_DatiAnagrafici_Anagrafica>
+                <CedentePrestatore_DatiAnagrafici translate="label">
+                    <label>Cedente Prestatore - Dati Anagrafici</label>
+                    <frontend_type>text</frontend_type>
                     <sort_order>2</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    <depends><rappresentante_fiscale>1</rappresentante_fiscale></depends>
-                    <validate>validate-length maximum-length-99</validate>
-                  </Denominazione> 
-                  <Nome translate="label">
-                    <label>Nome</label>
-                    <comment>nome del rappresentante fiscale del cedente/prestatore da valorizzare nei casi di persona fisica; la valorizzazione di questo campo presuppone anche la valorizzazione del campo Cognome  ed è in alternativa a quella del campo Denominazione.</comment>
+                    <fields>
+                        <RegimeFiscale translate="label">
+                            <label>Regime Fiscale</label>
+                            <comment>RF01: Regime ordinario; RF02: Regime dei contribuenti minimi; RF03: Regime delle nuove iniziative produttive; RF04: Agricoltura e attività connesse e pesca; RF05: Vendita sali e tabacchi; RF06: Commercio dei fiammiferi; RF07: Editoria; RF08: Gestione di servizi di telefonia pubblica; RF09: Rivendita di documenti di trasporto pubblico e di sosta; RF10: Intrattenimenti, giochi e altre attività; RF11: Agenzie di viaggi e turismo; RF12: Agriturismo; RF13: Vendite a domicilio; RF14: Rivendita di beni usati, di oggetti d'arte, d'antiquariato o da collezione; RF15: Agenzie di vendite all'asta di oggetti d'arte, antiquariato o da collezione; RF16: IVA per cassa P.A.; RF17: IVA per cassa; RF19: Regime forfettario; RF18: Altro</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>efatt_module/system_config_source_regimefiscale</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </RegimeFiscale>
+                        <validate>required-entry</validate>
+                    </fields>
+                </CedentePrestatore_DatiAnagrafici>
+                <CedentePrestatore_Sede translate="label">
+                    <label>Cedente Prestatore - Sede</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>3</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    <depends><rappresentante_fiscale>1</rappresentante_fiscale></depends>
-                    <validate>validate-alphanum-with-spaces validate-length maximum-length-99</validate>
-                  </Nome> 
-                  <Cognome translate="label">
-                    <label>Cognome</label>
-                    <comment>cognome del rappresentante fiscale del cedente/prestatore da valorizzare nei casi di persona fisica; la valorizzazione di questo campo presuppone anche la valorizzazione del campo Nome ed è in alternativa a quella del campo Denominazione.</comment>
+                    <fields>
+                        <Indirizzo translate="label">
+                            <label>Indirizzo</label>
+                            <comment>Indirizzo della stabile organizzazione del cedente/prestatore del bene/servizio; deve essere valorizzato con il nome della via, piazza, etc., comprensivo del numero civico.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-length maximum-length-99</validate>
+                        </Indirizzo>
+                        <CAP translate="label">
+                            <label>CAP</label>
+                            <comment>Codice di Avviamento Postale relativo all’indirizzo</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-length minimum-length-5 maximum-length-5</validate>
+                        </CAP>
+                        <Comune translate="label">
+                            <label>Comune</label>
+                            <comment>comune cui si riferisce l’indirizzo</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-alphanum-with-spaces validate-length maximum-length-99</validate>
+                        </Comune>
+                        <Nazione translate="label">
+                            <label>Nazione</label>
+                            <comment>Codice della nazione espresso secondo lo standard ISO 3166-1 alpha-2 code.</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <validate>validate-select</validate>
+                        </Nazione>
+                    </fields>
+                </CedentePrestatore_Sede>
+                <CedentePrestatore_StabileOrganizzazione translate="label">
+                    <label>Cedente Prestatore - Stabile Organizzazione</label>
+                    <comment>I campi indicati di seguito devono essere obbligatoriamente valorizzati nei soli casi in cui il cedente/prestatore è un soggetto non residente ed effettua la transazione oggetto del documento tramite l’organizzazione residente sul territorio nazionale. Si riferiscono alla stabile organizzazione in Italia.</comment>
                     <frontend_type>text</frontend_type>
                     <sort_order>4</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    <depends><rappresentante_fiscale>1</rappresentante_fiscale></depends>
-                    <validate>validate-alphanum-with-spaces validate-length maximum-length-99</validate>
-                  </Cognome> 
-              </fields>
-            </CedentePrestatore_RappresentanteFiscale_DatiAnagrafici_Anagrafica>
-			<!-- pagine 11 documeto campi obbligatori 1.2.3 -->
-			<CedentePrestatore_ConcessionarioCommittente_DatiAnagrafici_IdFiscaleIVA translate="label">
-			<label>Cedente Prestatore - Concessionario / Committente - Dati Anagrafici - ID Fiscale</label>
-            <comment>Dati obbligatori ai sensi del DPR 633 del 1972 e successive modifiche ed integrazioni.</comment>
+                    <fields>
+                        <soggetto_non_residente translate="label">
+                            <label>Il cedente/prestatore è un soggetto non residente ed effettua la transazione tramite l’organizzazione residente sul territorio nazionale?</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>0</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </soggetto_non_residente>
+                        <Indirizzo translate="label">
+                            <label>Indirizzo</label>
+                            <comment>indirizzo della stabile organizzazione del cedente/prestatore del bene/servizio; deve essere valorizzato con il nome della via, piazza, etc., comprensivo del numero civico.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <soggetto_non_residente>1</soggetto_non_residente>
+                            </depends>
+                            <validate>validate-length maximum-length-99</validate>
+                        </Indirizzo>
+                        <CAP translate="label">
+                            <label>CAP</label>
+                            <comment>Codice di Avviamento Postale relativo all’indirizzo</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <soggetto_non_residente>1</soggetto_non_residente>
+                            </depends>
+                            <validate>validate-length minimum-length-5 maximum-length-5</validate>
+                        </CAP>
+                        <Comune translate="label">
+                            <label>Comune</label>
+                            <comment>comune cui si riferisce l’indirizzo</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <soggetto_non_residente>1</soggetto_non_residente>
+                            </depends>
+                            <validate>validate-alphanum-with-spaces validate-length maximum-length-99</validate>
+                        </Comune>
+                        <Nazione translate="label">
+                            <label>Nazione</label>
+                            <comment>Codice della nazione espresso secondo lo standard ISO 3166-1 alpha-2 code.</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <depends>
+                                <soggetto_non_residente>1</soggetto_non_residente>
+                            </depends>
+                            <validate>validate-select</validate>
+                        </Nazione>
+                    </fields>
+                </CedentePrestatore_StabileOrganizzazione>
+                <CedentePrestatore_IscrizioneREA translate="label">
+                    <label>Cedente Prestatore - Iscrizione REA</label>
+                    <comment>Questi campi devono essere obbligatoriamente valorizzati nei casi di società soggette al vincolo dell’iscrizione nel registro delle imprese ai sensi dell'art. 2250 del codice civile.</comment>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>5</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <registro_imprese translate="label">
+                            <label>È una società soggette al vincolo dell’iscrizione nel registro delle imprese?</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>0</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </registro_imprese>
+                        <Ufficio translate="label">
+                            <label>Ufficio</label>
+                            <comment>Sigla della provincia ove ha sede l'Ufficio del Registro delle Imprese presso il quale è registrata la società.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <registro_imprese>1</registro_imprese>
+                            </depends>
+                            <validate>validate-alpha validate-length minimum-length-2 maximum-length-2</validate>
+                        </Ufficio>
+                        <NumeroREA translate="label">
+                            <label>Numero REA</label>
+                            <comment>Numero di repertorio con il quale la società è iscritta nel Registro delle Imprese</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <registro_imprese>1</registro_imprese>
+                            </depends>
+                            <validate>validate-length minimum-length-4 maximum-length-99</validate>
+                        </NumeroREA>
+                        <CapitaleSociale translate="label">
+                            <label>Capitale Sociale</label>
+                            <comment>Indica il capitale sociale quale somma effettivamente versata e quale risulta esistente dall’utlimo bilancio della società; questo campo è valorizzato nei soli casi di società di capitali (SpA, SApA, SRL).</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <registro_imprese>1</registro_imprese>
+                            </depends>
+                            <validate>validate-number validate-length minimum-length-1 maximum-length-99</validate>
+                        </CapitaleSociale>
+                        <SocioUnico translate="label">
+                            <label>Socio Unico</label>
+                            <comment>Questo campo è valorizzato nei casi di società per azioni e a responsabilità limitata; indica se queste si compongono di un unico socio o di più soci.</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <depends>
+                                <registro_imprese>1</registro_imprese>
+                            </depends>
+                            <validate>validate-select</validate>
+                        </SocioUnico>
+                        <StatoLiquidazione translate="label">
+                            <label>Stato Liquidazione</label>
+                            <comment>indica se la società si trova in stato di liquidazione oppure no.</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <depends>
+                                <registro_imprese>1</registro_imprese>
+                            </depends>
+                        </StatoLiquidazione>
+                    </fields>
+                </CedentePrestatore_IscrizioneREA>
+                <CedentePrestatore_RappresentanteFiscale_DatiAnagrafici_Anagrafica translate="label">
+                    <label>Cedente Prestatore - Rappresentante Fiscale - Dati Anagrafici</label>
+                    <comment>Dati obbligatori, qualora il cedente/prestatore si avvalga di un rappresentante fiscale in Italia, ai sensi del DPR 633 del 1972 e successive modifiche ed integrazioni.</comment>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>6</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <rappresentante_fiscale translate="label">
+                            <label>Il cedente/prestatore si avvale di un rappresentante fiscale in Italia?</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>0</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </rappresentante_fiscale>
+                        <IdPaese translate="label">
+                            <label>Id Paese</label>
+                            <comment>Codice del paese assegnante l’identifcativo fiscale al soggetto cedente/prestatore (secondo lo standard ISO 3166-1 alpha-2 code).</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <depends>
+                                <rappresentante_fiscale>1</rappresentante_fiscale>
+                            </depends>
+                            <validate>validate-select</validate>
+                        </IdPaese>
+                        <IdCodice translate="label">
+                            <label>Id Codice</label>
+                            <comment>numero di  identificazione fiscale del cedente/prestatore.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <rappresentante_fiscale>1</rappresentante_fiscale>
+                            </depends>
+                            <validate>validate-number validate-length minimum-length-1 maximum-length-11</validate>
+                        </IdCodice>
+                        <Denominazione translate="label">
+                            <label>Denominazione</label>
+                            <comment>ditta, denominazione o ragione sociale del rappresentante fiscale del cedente/prestatore da valorizzare nei casi di persona non fisica; la valorizzazione di questo campo è in alternativa a quella dei campi Nome e Cognome seguenti.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <rappresentante_fiscale>1</rappresentante_fiscale>
+                            </depends>
+                            <validate>validate-length maximum-length-99</validate>
+                        </Denominazione>
+                        <Nome translate="label">
+                            <label>Nome</label>
+                            <comment>nome del rappresentante fiscale del cedente/prestatore da valorizzare nei casi di persona fisica; la valorizzazione di questo campo presuppone anche la valorizzazione del campo Cognome  ed è in alternativa a quella del campo Denominazione.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <rappresentante_fiscale>1</rappresentante_fiscale>
+                            </depends>
+                            <validate>validate-alphanum-with-spaces validate-length maximum-length-99</validate>
+                        </Nome>
+                        <Cognome translate="label">
+                            <label>Cognome</label>
+                            <comment>cognome del rappresentante fiscale del cedente/prestatore da valorizzare nei casi di persona fisica; la valorizzazione di questo campo presuppone anche la valorizzazione del campo Nome ed è in alternativa a quella del campo Denominazione.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <rappresentante_fiscale>1</rappresentante_fiscale>
+                            </depends>
+                            <validate>validate-alphanum-with-spaces validate-length maximum-length-99</validate>
+                        </Cognome>
+                    </fields>
+                </CedentePrestatore_RappresentanteFiscale_DatiAnagrafici_Anagrafica>
+            </groups>
+        </efatt>
+    </sections>
+    <sections>
+        <efatt translate="label" module="module">
+            <label>Fattura Elettronica (concessionraio/committente)</label>
+            <tab>sales</tab>
             <frontend_type>text</frontend_type>
-            <sort_order>7</sort_order>
+            <sort_order>12</sort_order>
             <show_in_default>1</show_in_default>
             <show_in_website>1</show_in_website>
             <show_in_store>1</show_in_store>
-               <fields>
-                <IdPaese translate="label">
-                    <label>Id Paese</label>
-                    <comment> Codice del paese assegnante l’identifcativo fiscale al soggetto cedente/prestatore (secondo lo standard ISO 3166-1 alpha-2 code).</comment>
-                   <frontend_type>select</frontend_type>
-                    <sort_order>0</sort_order>
+            <groups>
+                <CedentePrestatore_ConcessionarioCommittente_DatiAnagrafici_IdFiscaleIVA translate="label">
+                    <label>Cedente Prestatore - Concessionario / Committente - Dati Anagrafici - ID Fiscale</label>
+                    <comment>Dati obbligatori ai sensi del DPR 633 del 1972 e successive modifiche ed integrazioni.</comment>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>7</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    <source_model>adminhtml/system_config_source_country</source_model>
-                    <validate>validate-select</validate>
-                  </IdPaese>
-                  <IdCodice translate="label">
-                    <label>Id Codice</label>
-                    <comment>numero di  identificazione fiscale del cedente/prestatore.</comment>
-                   <frontend_type>text</frontend_type>
-                    <sort_order>1</sort_order>
+                    <fields>
+                        <IdPaese translate="label">
+                            <label>Id Paese</label>
+                            <comment>Codice del paese assegnante l’identifcativo fiscale al soggetto cedente/prestatore (secondo lo standard ISO 3166-1 alpha-2 code).</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <validate>validate-select</validate>
+                        </IdPaese>
+                        <IdCodice translate="label">
+                            <label>Id Codice</label>
+                            <comment>numero di  identificazione fiscale del cedente/prestatore.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-number validate-length minimum-length-1 maximum-length-11</validate>
+                        </IdCodice>
+                    </fields>
+                </CedentePrestatore_ConcessionarioCommittente_DatiAnagrafici_IdFiscaleIVA>
+                <CedentePrestatore_ConcessionarioCommittente_DatiAnagrafici_Anagrafica translate="label">
+                    <label>Cedente Prestatore - Concessionraio / Committente - Dati Anagrafici - Anagrafica</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>8</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    <validate>validate-number validate-length minimum-length-1 maximum-length-11</validate>
-                  </IdCodice>  
-              </fields>              
-			</CedentePrestatore_ConcessionarioCommittente_DatiAnagrafici_IdFiscaleIVA>
-      <CedentePrestatore_ConcessionarioCommittente_DatiAnagrafici_Anagrafica translate="label">
-              <label>Cedente Prestatore - Concessionraio / Committente - Dati Anagrafici - Anagrafica</label>
-              <frontend_type>text</frontend_type>
-              <sort_order>8</sort_order>
-              <show_in_default>1</show_in_default>
-              <show_in_website>1</show_in_website>
-              <show_in_store>1</show_in_store>
-              <fields>
-                  <IdCodice translate="label">
-                    <label>Codice Fiscale</label>
-                    <comment>numero di codice fiscale del cessionario/committente, se non agisce nell’esercizio di impresa, arte o professione.</comment>
-                   <frontend_type>text</frontend_type>
-                    <sort_order>0</sort_order>
+                    <fields>
+                        <IdCodice translate="label">
+                            <label>Codice Fiscale</label>
+                            <comment>numero di codice fiscale del cessionario/committente, se non agisce nell’esercizio di impresa, arte o professione.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-alphanum validate-length minimum-length-11 maximum-length-11</validate>
+                        </IdCodice>
+                    </fields>
+                </CedentePrestatore_ConcessionarioCommittente_DatiAnagrafici_Anagrafica>
+                <CedentePrestatore_ConcessionarioCommittente_Sede translate="label">
+                    <label>Cedente Prestatore - Concessionario / Committente - Sede</label>
+                    <comment>indirizzo del cessionario/committente; deve essere valorizzato con il nome della via, piazza, etc., comprensivo, se si vuole, del numero civico.</comment>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>9</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    <validate>validate-alphanum validate-length minimum-length-11 maximum-length-11</validate>
-                  </IdCodice>  
-              </fields>
-              </CedentePrestatore_ConcessionarioCommittente_DatiAnagrafici_Anagrafica>
-             <CedentePrestatore_ConcessionarioCommittente_Sede translate="label">
-              <label>Cedente Prestatore - Concessionario / Committente - Sede</label>
-              <comment>indirizzo del cessionario/committente; deve essere valorizzato con il nome della via, piazza, etc., comprensivo, se si vuole, del numero civico.</comment>
-              <frontend_type>text</frontend_type>
-              <sort_order>9</sort_order>
-              <show_in_default>1</show_in_default>
-              <show_in_website>1</show_in_website>
-              <show_in_store>1</show_in_store>
-              <fields>           
-			     <Indirizzo translate="label">
-                  <label>Indirizzo</label>
-                  <comment> Indirizzo della stabile organizzazione del cedente/prestatore del bene/servizio; deve essere valorizzato con il nome della via, piazza, etc., comprensivo del numero civico.</comment>
-		          <frontend_type>text</frontend_type>
-                  <sort_order>0</sort_order>
-                  <show_in_default>1</show_in_default>
-                  <show_in_website>1</show_in_website>
-                  <show_in_store>1</show_in_store>
-                  <validate>validate-length maximum-length-99</validate>
-                </Indirizzo> 
-                <CAP translate="label">
-                  <label>CAP</label>
-                  <comment>Codice di Avviamento Postale relativo all’indirizzo</comment>
-		             <frontend_type>text</frontend_type>
-                  <sort_order>1</sort_order>
-                  <show_in_default>1</show_in_default>
-                  <show_in_website>1</show_in_website>
-                  <show_in_store>1</show_in_store>
-                  <validate>validate-length minimum-length-5 maximum-length-5</validate>
-                </CAP> 
-                <Comune translate="label">
-                  <label>Comune</label>
-                  <comment>comune cui si riferisce l’indirizzo</comment>
-		             <frontend_type>text</frontend_type>
-                  <sort_order>2</sort_order>
-                  <show_in_default>1</show_in_default>
-                  <show_in_website>1</show_in_website>
-                  <show_in_store>1</show_in_store>
-                  <validate>validate-alphanum-with-spaces validate-length maximum-length-99</validate>
-                </Comune> 
-                <Nazione translate="label">
-                  <label>Nazione</label>
-                  <comment> Codice della nazione espresso secondo lo standard ISO 3166-1 alpha-2 code.</comment>
-		             <frontend_type>select</frontend_type>
-                  <sort_order>3</sort_order>
-                  <show_in_default>1</show_in_default>
-                  <show_in_website>1</show_in_website>
-                  <show_in_store>1</show_in_store>
-                  <source_model>adminhtml/system_config_source_country</source_model>
-                  <validate>validate-select</validate>
-                </Nazione> 
-			</fields>
-            </CedentePrestatore_ConcessionarioCommittente_Sede>
-            <SoggettoEmittente translate="label">
-              <label>Soggetto Emittente</label>
-              <comment>Nei casi di documenti emessi da un soggetto diverso dal cedente/prestatore va valorizzato il campo seguente.</comment>
-              <frontend_type>text</frontend_type>
-              <sort_order>10</sort_order>
-              <show_in_default>1</show_in_default>
-              <show_in_website>1</show_in_website>
-              <show_in_store>1</show_in_store>
-              <fields>           
-			     <SoggettoEmittente translate="label">
-                  <label>Soggetto Emittente</label>
-                  <comment>codice che sta ad indicare se la fattura è stata emessa da parte del cessionario/committente ovvero da parte di un terzo per conto del cedente/prestatore.</comment>
-		          <frontend_type>text</frontend_type>
-                  <sort_order>0</sort_order>
-                  <show_in_default>1</show_in_default>
-                  <show_in_website>1</show_in_website>
-                  <show_in_store>1</show_in_store>
-                  <validate>validate-length maximum-length-99</validate>
+                    <fields>
+                        <Indirizzo translate="label">
+                            <label>Indirizzo</label>
+                            <comment>Indirizzo della stabile organizzazione del cedente/prestatore del bene/servizio; deve essere valorizzato con il nome della via, piazza, etc., comprensivo del numero civico.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-length maximum-length-99</validate>
+                        </Indirizzo>
+                        <CAP translate="label">
+                            <label>CAP</label>
+                            <comment>Codice di Avviamento Postale relativo all’indirizzo</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-length minimum-length-5 maximum-length-5</validate>
+                        </CAP>
+                        <Comune translate="label">
+                            <label>Comune</label>
+                            <comment>comune cui si riferisce l’indirizzo</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-alphanum-with-spaces validate-length maximum-length-99</validate>
+                        </Comune>
+                        <Nazione translate="label">
+                            <label>Nazione</label>
+                            <comment>Codice della nazione espresso secondo lo standard ISO 3166-1 alpha-2 code.</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <validate>validate-select</validate>
+                        </Nazione>
+                    </fields>
+                </CedentePrestatore_ConcessionarioCommittente_Sede>
+                <SoggettoEmittente translate="label">
+                    <label>Soggetto Emittente</label>
+                    <comment>Nei casi di documenti emessi da un soggetto diverso dal cedente/prestatore va valorizzato il campo seguente.</comment>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <SoggettoEmittente translate="label">
+                            <label>Soggetto Emittente</label>
+                            <comment>codice che sta ad indicare se la fattura è stata emessa da parte del cessionario/committente ovvero da parte di un terzo per conto del cedente/prestatore.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-length maximum-length-99</validate>
+                        </SoggettoEmittente>
+                    </fields>
                 </SoggettoEmittente>
-            </fields>
-            </SoggettoEmittente>               
-			</groups>
-		</efatt>
-	  </sections>
+            </groups>
+        </efatt>
+    </sections>
 </config>
