@@ -5,7 +5,7 @@
             <label>Fattura Elettronica (cedente prestatore)</label>
             <tab>sales</tab>
             <frontend_type>text</frontend_type>
-            <sort_order>12</sort_order>
+            <sort_order>0</sort_order>
             <show_in_default>1</show_in_default>
             <show_in_website>1</show_in_website>
             <show_in_store>1</show_in_store>
@@ -399,19 +399,6 @@
                         </Cognome>
                     </fields>
                 </CedentePrestatore_RappresentanteFiscale_DatiAnagrafici_Anagrafica>
-            </groups>
-        </efatt>
-    </sections>
-    <sections>
-        <efatt translate="label" module="module">
-            <label>Fattura Elettronica (concessionraio/committente)</label>
-            <tab>sales</tab>
-            <frontend_type>text</frontend_type>
-            <sort_order>12</sort_order>
-            <show_in_default>1</show_in_default>
-            <show_in_website>1</show_in_website>
-            <show_in_store>1</show_in_store>
-            <groups>
                 <CedentePrestatore_ConcessionarioCommittente_DatiAnagrafici_IdFiscaleIVA translate="label">
                     <label>Cedente Prestatore - Concessionario / Committente - Dati Anagrafici - ID Fiscale</label>
                     <comment>Dati obbligatori ai sensi del DPR 633 del 1972 e successive modifiche ed integrazioni.</comment>
