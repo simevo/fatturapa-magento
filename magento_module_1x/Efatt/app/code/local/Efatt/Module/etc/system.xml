@@ -170,46 +170,59 @@
               <show_in_default>1</show_in_default>
               <show_in_website>1</show_in_website>
               <show_in_store>1</show_in_store>
-              <fields>           
+              <fields> 
+            <soggetto_non_residente translate="label">
+              <label>Il cedente/prestatore è un soggetto non residente ed effettua la transazione tramite l’organizzazione residente sul territorio nazionale?</label>
+              <frontend_type>select</frontend_type>
+              <sort_order>0</sort_order>       
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+            </soggetto_non_residente>            
               <Indirizzo translate="label">
                   <label>Indirizzo</label>
                   <comment>indirizzo della stabile organizzazione del cedente/prestatore del bene/servizio; deve essere valorizzato con il nome della via, piazza, etc., comprensivo del numero civico.</comment>
                  <frontend_type>text</frontend_type>
-                  <sort_order>0</sort_order>
+                  <sort_order>1</sort_order>
                   <show_in_default>1</show_in_default>
                   <show_in_website>1</show_in_website>
                   <show_in_store>1</show_in_store>
+                  <depends><soggetto_non_residente>1</soggetto_non_residente></depends>
                   <validate>validate-length maximum-length-99</validate>
                 </Indirizzo> 
                 <CAP translate="label">
                   <label>CAP</label>
                   <comment>Codice di Avviamento Postale relativo all’indirizzo</comment>
                  <frontend_type>text</frontend_type>
-                  <sort_order>1</sort_order>
+                  <sort_order>2</sort_order>
                   <show_in_default>1</show_in_default>
                   <show_in_website>1</show_in_website>
                   <show_in_store>1</show_in_store>
+                  <depends><soggetto_non_residente>1</soggetto_non_residente></depends>
                   <validate>validate-length minimum-length-5 maximum-length-5</validate>
                 </CAP> 
                 <Comune translate="label">
                   <label>Comune</label>
                   <comment>comune cui si riferisce l’indirizzo</comment>
                  <frontend_type>text</frontend_type>
-                  <sort_order>2</sort_order>
+                  <sort_order>3</sort_order>
                   <show_in_default>1</show_in_default>
                   <show_in_website>1</show_in_website>
                   <show_in_store>1</show_in_store>
+                  <depends><soggetto_non_residente>1</soggetto_non_residente></depends>
                   <validate>validate-alphanum-with-spaces validate-length maximum-length-99</validate>
                 </Comune> 
                 <Nazione translate="label">
                   <label>Nazione</label>
                   <comment> Codice della nazione espresso secondo lo standard ISO 3166-1 alpha-2 code.</comment>
                  <frontend_type>select</frontend_type>
-                  <sort_order>3</sort_order>
+                  <sort_order>4</sort_order>
                   <show_in_default>1</show_in_default>
                   <show_in_website>1</show_in_website>
                   <show_in_store>1</show_in_store>
                   <source_model>adminhtml/system_config_source_country</source_model>
+                  <depends><soggetto_non_residente>1</soggetto_non_residente></depends>
                   <validate>validate-select</validate>
                 </Nazione> 
              </fields>
@@ -224,56 +237,70 @@
 					  <show_in_website>1</show_in_website>
 					  <show_in_store>1</show_in_store>
 				       <fields>
+            <registro_imprese translate="label">
+              <label>È una società soggette al vincolo dell’iscrizione nel registro delle imprese?</label>
+              <frontend_type>select</frontend_type>
+              <sort_order>0</sort_order>       
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+            </registro_imprese>                
                           <Ufficio translate="label">
                             <label>Ufficio</label>
                             <comment> Sigla della provincia ove ha sede l'Ufficio del Registro delle Imprese presso il quale è registrata la società.</comment>
 							             <frontend_type>text</frontend_type>
-                            <sort_order>0</sort_order>
+                            <sort_order>1</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
+                            <depends><registro_imprese>1</registro_imprese></depends>
                             <validate>validate-alpha validate-length minimum-length-2 maximum-length-2</validate>
                           </Ufficio>
                           <NumeroREA translate="label">
                             <label>Numero REA</label>
                             <comment>Numero di repertorio con il quale la società è iscritta nel Registro delle Imprese</comment>
 							             <frontend_type>text</frontend_type>
-                            <sort_order>1</sort_order>
+                            <sort_order>2</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
+                            <depends><registro_imprese>1</registro_imprese></depends>
                             <validate>validate-length minimum-length-4 maximum-length-99</validate>
                           </NumeroREA>  
                           <CapitaleSociale translate="label">
                             <label>Capitale Sociale</label>
                             <comment>Indica il capitale sociale quale somma effettivamente versata e quale risulta esistente dall’utlimo bilancio della società; questo campo è valorizzato nei soli casi di società di capitali (SpA, SApA, SRL).</comment>
 							             <frontend_type>text</frontend_type>
-                            <sort_order>2</sort_order>
+                            <sort_order>3</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
+                            <depends><registro_imprese>1</registro_imprese></depends>
                             <validate>validate-number validate-length minimum-length-1 maximum-length-99</validate>
                           </CapitaleSociale> 
                           <SocioUnico translate="label">
                             <label>Socio Unico</label>
                             <comment>Questo campo è valorizzato nei casi di società per azioni e a responsabilità limitata; indica se queste si compongono di un unico socio o di più soci.</comment>
 							             <frontend_type>select</frontend_type>
-                            <sort_order>3</sort_order>
+                            <sort_order>4</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <depends><registro_imprese>1</registro_imprese></depends>
                             <validate>validate-select</validate>
                           </SocioUnico>
                           <StatoLiquidazione translate="label">
                             <label>Stato Liquidazione</label>
                             <comment>indica se la società si trova in stato di liquidazione oppure no.</comment>
 							             <frontend_type>select</frontend_type>
-                            <sort_order>4</sort_order>
+                            <sort_order>5</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <depends><registro_imprese>1</registro_imprese></depends>
                           </StatoLiquidazione>
 					   </fields>
 					   </CedentePrestatore_IscrizioneREA>
@@ -300,7 +327,7 @@
                     <label>Id Paese</label>
                     <comment> Codice del paese assegnante l’identifcativo fiscale al soggetto cedente/prestatore (secondo lo standard ISO 3166-1 alpha-2 code).</comment>
                    <frontend_type>select</frontend_type>
-                    <sort_order>1</sort_order>
+                    <sort_order>0</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
@@ -312,7 +339,7 @@
                     <label>Id Codice</label>
                     <comment>numero di  identificazione fiscale del cedente/prestatore.</comment>
                    <frontend_type>text</frontend_type>
-                    <sort_order>2</sort_order>
+                    <sort_order>1</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
@@ -324,7 +351,7 @@
                     <label>Denominazione</label>
                     <comment>ditta, denominazione o ragione sociale del rappresentante fiscale del cedente/prestatore da valorizzare nei casi di persona non fisica; la valorizzazione di questo campo è in alternativa a quella dei campi Nome e Cognome seguenti.</comment>
                      <frontend_type>text</frontend_type>
-                    <sort_order>3</sort_order>
+                    <sort_order>2</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
@@ -335,7 +362,7 @@
                     <label>Nome</label>
                     <comment>nome del rappresentante fiscale del cedente/prestatore da valorizzare nei casi di persona fisica; la valorizzazione di questo campo presuppone anche la valorizzazione del campo Cognome  ed è in alternativa a quella del campo Denominazione.</comment>
                     <frontend_type>text</frontend_type>
-                    <sort_order>4</sort_order>
+                    <sort_order>3</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
@@ -346,7 +373,7 @@
                     <label>Cognome</label>
                     <comment>cognome del rappresentante fiscale del cedente/prestatore da valorizzare nei casi di persona fisica; la valorizzazione di questo campo presuppone anche la valorizzazione del campo Nome ed è in alternativa a quella del campo Denominazione.</comment>
                     <frontend_type>text</frontend_type>
-                    <sort_order>5</sort_order>
+                    <sort_order>4</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
@@ -360,7 +387,7 @@
 			<label>Cedente Prestatore - Concessionario / Committente - Dati Anagrafici - ID Fiscale</label>
             <comment>Dati obbligatori ai sensi del DPR 633 del 1972 e successive modifiche ed integrazioni.</comment>
             <frontend_type>text</frontend_type>
-            <sort_order>0</sort_order>
+            <sort_order>7</sort_order>
             <show_in_default>1</show_in_default>
             <show_in_website>1</show_in_website>
             <show_in_store>1</show_in_store>
@@ -388,10 +415,10 @@
                   </IdCodice>  
               </fields>              
 			</CedentePrestatore_ConcessionarioCommittente_DatiAnagrafici_IdFiscaleIVA>
-             <CedentePrestatore_ConcessionarioCommittente_DatiAnagrafici_Anagrafica translate="label">
+      <CedentePrestatore_ConcessionarioCommittente_DatiAnagrafici_Anagrafica translate="label">
               <label>Cedente Prestatore - Concessionraio / Committente - Dati Anagrafici - Anagrafica</label>
               <frontend_type>text</frontend_type>
-              <sort_order>1</sort_order>
+              <sort_order>8</sort_order>
               <show_in_default>1</show_in_default>
               <show_in_website>1</show_in_website>
               <show_in_store>1</show_in_store>
@@ -412,7 +439,7 @@
               <label>Cedente Prestatore - Concessionario / Committente - Sede</label>
               <comment>indirizzo del cessionario/committente; deve essere valorizzato con il nome della via, piazza, etc., comprensivo, se si vuole, del numero civico.</comment>
               <frontend_type>text</frontend_type>
-              <sort_order>2</sort_order>
+              <sort_order>9</sort_order>
               <show_in_default>1</show_in_default>
               <show_in_website>1</show_in_website>
               <show_in_store>1</show_in_store>
@@ -464,7 +491,7 @@
               <label>Soggetto Emittente</label>
               <comment>Nei casi di documenti emessi da un soggetto diverso dal cedente/prestatore va valorizzato il campo seguente.</comment>
               <frontend_type>text</frontend_type>
-              <sort_order>11</sort_order>
+              <sort_order>10</sort_order>
               <show_in_default>1</show_in_default>
               <show_in_website>1</show_in_website>
               <show_in_store>1</show_in_store>
