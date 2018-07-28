@@ -162,7 +162,6 @@
 			</fields>
 			</CedentePrestatore_Sede>
 
-
               <CedentePrestatore_StabileOrganizzazione translate="label">
               <label>Cedente Prestatore - Stabile Organizzazione</label>
               <comment>I campi indicati di seguito devono essere obbligatoriamente valorizzati nei soli casi in cui il cedente/prestatore è un soggetto non residente ed effettua la transazione oggetto del documento tramite l’organizzazione residente sul territorio nazionale. Si riferiscono alla stabile organizzazione in Italia.</comment>
@@ -215,8 +214,6 @@
                 </Nazione> 
              </fields>
              </CedentePrestatore_StabileOrganizzazione>
-
-
 
 					  <CedentePrestatore_IscrizioneREA  translate="label"> 
 					  <label>Cedente Prestatore - Iscrizione REA</label>
@@ -281,76 +278,79 @@
 					   </fields>
 					   </CedentePrestatore_IscrizioneREA>
 
-             <CedentePrestatore_RappresentanteFiscale_DatiAnagrafici_IdFiscaleIVA translate="label">
-              <label>Cedente Prestatore - Rappresentante Fiscale - Dati Anagrafici - Id Fiscale IVA</label>
+             <CedentePrestatore_RappresentanteFiscale_DatiAnagrafici_Anagrafica translate="label">
+              <label>Cedente Prestatore - Rappresentante Fiscale - Dati Anagrafici</label>
             <comment>Dati obbligatori, qualora il cedente/prestatore si avvalga di un rappresentante fiscale in Italia, ai sensi del DPR 633 del 1972 e successive modifiche ed integrazioni.</comment>
             <frontend_type>text</frontend_type>
             <sort_order>6</sort_order>
             <show_in_default>1</show_in_default>
             <show_in_website>1</show_in_website>
             <show_in_store>1</show_in_store>
-               <fields>
+            <fields>
+            <rappresentante_fiscale translate="label">
+              <label>Il cedente/prestatore si avvale di un rappresentante fiscale in Italia?</label>
+              <frontend_type>select</frontend_type>
+              <sort_order>0</sort_order>       
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+            </rappresentante_fiscale>
                 <IdPaese translate="label">
                     <label>Id Paese</label>
                     <comment> Codice del paese assegnante l’identifcativo fiscale al soggetto cedente/prestatore (secondo lo standard ISO 3166-1 alpha-2 code).</comment>
                    <frontend_type>select</frontend_type>
-                    <sort_order>0</sort_order>
+                    <sort_order>1</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <source_model>adminhtml/system_config_source_country</source_model>
+                    <depends><rappresentante_fiscale>1</rappresentante_fiscale></depends>
                     <validate>validate-select</validate>
                   </IdPaese>
                   <IdCodice translate="label">
                     <label>Id Codice</label>
                     <comment>numero di  identificazione fiscale del cedente/prestatore.</comment>
                    <frontend_type>text</frontend_type>
-                    <sort_order>1</sort_order>
+                    <sort_order>2</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
+                    <depends><rappresentante_fiscale>1</rappresentante_fiscale></depends>
                     <validate>validate-number validate-length minimum-length-1 maximum-length-11</validate>
                   </IdCodice>  
-              </fields>
-            </CedentePrestatore_RappresentanteFiscale_DatiAnagrafici_IdFiscaleIVA>
 
-             <CedentePrestatore_RappresentanteFiscale_DatiAnagrafici_Anagrafica translate="label">
-              <label>Cedente Prestatore - Rappresentante Fiscale - Dati Anagrafici - Anagrafica</label>
-              <comment>Dati obbligatori, qualora il cedente/prestatore si avvalga di un rappresentante fiscale in Italia, ai sensi del DPR 633 del 1972 e successive modifiche ed integrazioni.</comment>
-              <frontend_type>text</frontend_type>
-              <sort_order>7</sort_order>
-              <show_in_default>1</show_in_default>
-              <show_in_website>1</show_in_website>
-              <show_in_store>1</show_in_store>
-              <fields>
                   <Denominazione translate="label">
                     <label>Denominazione</label>
                     <comment>ditta, denominazione o ragione sociale del rappresentante fiscale del cedente/prestatore da valorizzare nei casi di persona non fisica; la valorizzazione di questo campo è in alternativa a quella dei campi Nome e Cognome seguenti.</comment>
                      <frontend_type>text</frontend_type>
-                    <sort_order>0</sort_order>
+                    <sort_order>3</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
+                    <depends><rappresentante_fiscale>1</rappresentante_fiscale></depends>
                     <validate>validate-length maximum-length-99</validate>
                   </Denominazione> 
                   <Nome translate="label">
                     <label>Nome</label>
                     <comment>nome del rappresentante fiscale del cedente/prestatore da valorizzare nei casi di persona fisica; la valorizzazione di questo campo presuppone anche la valorizzazione del campo Cognome  ed è in alternativa a quella del campo Denominazione.</comment>
                     <frontend_type>text</frontend_type>
-                    <sort_order>1</sort_order>
+                    <sort_order>4</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
+                    <depends><rappresentante_fiscale>1</rappresentante_fiscale></depends>
                     <validate>validate-alphanum-with-spaces validate-length maximum-length-99</validate>
                   </Nome> 
                   <Cognome translate="label">
                     <label>Cognome</label>
                     <comment>cognome del rappresentante fiscale del cedente/prestatore da valorizzare nei casi di persona fisica; la valorizzazione di questo campo presuppone anche la valorizzazione del campo Nome ed è in alternativa a quella del campo Denominazione.</comment>
                     <frontend_type>text</frontend_type>
-                    <sort_order>2</sort_order>
+                    <sort_order>5</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
+                    <depends><rappresentante_fiscale>1</rappresentante_fiscale></depends>
                     <validate>validate-alphanum-with-spaces validate-length maximum-length-99</validate>
                   </Cognome> 
               </fields>
@@ -360,7 +360,7 @@
 			<label>Cedente Prestatore - Concessionario / Committente - Dati Anagrafici - ID Fiscale</label>
             <comment>Dati obbligatori ai sensi del DPR 633 del 1972 e successive modifiche ed integrazioni.</comment>
             <frontend_type>text</frontend_type>
-            <sort_order>8</sort_order>
+            <sort_order>0</sort_order>
             <show_in_default>1</show_in_default>
             <show_in_website>1</show_in_website>
             <show_in_store>1</show_in_store>
@@ -390,9 +390,8 @@
 			</CedentePrestatore_ConcessionarioCommittente_DatiAnagrafici_IdFiscaleIVA>
              <CedentePrestatore_ConcessionarioCommittente_DatiAnagrafici_Anagrafica translate="label">
               <label>Cedente Prestatore - Concessionraio / Committente - Dati Anagrafici - Anagrafica</label>
-              <comment>Dati obbligatori, qualora il cedente/prestatore si avvalga di un rappresentante fiscale in Italia, ai sensi del DPR 633 del 1972 e successive modifiche ed integrazioni.</comment>
               <frontend_type>text</frontend_type>
-              <sort_order>9</sort_order>
+              <sort_order>1</sort_order>
               <show_in_default>1</show_in_default>
               <show_in_website>1</show_in_website>
               <show_in_store>1</show_in_store>
@@ -401,7 +400,7 @@
                     <label>Codice Fiscale</label>
                     <comment>numero di codice fiscale del cessionario/committente, se non agisce nell’esercizio di impresa, arte o professione.</comment>
                    <frontend_type>text</frontend_type>
-                    <sort_order>1</sort_order>
+                    <sort_order>0</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
@@ -413,7 +412,7 @@
               <label>Cedente Prestatore - Concessionario / Committente - Sede</label>
               <comment>indirizzo del cessionario/committente; deve essere valorizzato con il nome della via, piazza, etc., comprensivo, se si vuole, del numero civico.</comment>
               <frontend_type>text</frontend_type>
-              <sort_order>10</sort_order>
+              <sort_order>2</sort_order>
               <show_in_default>1</show_in_default>
               <show_in_website>1</show_in_website>
               <show_in_store>1</show_in_store>
