@@ -17,13 +17,41 @@ $json = $jsonDecoded->properties;
 foreach ($json as $n1 => $n2) {
     echo $n1 . "<br>";
     foreach ($n2->properties as $n3 => $n4) {
-        echo $n1 . "." . $n3 . "<br>";
+        $type   = $n4->type;
+        $title  = $n4->title;
+        $node   = $n1 . "." . $n3;
+        echo $node . " - " . $type . "<br>";
+        if($type != "object") {
+            echo "<strong><label>" . $title . "</label></strong><br>";
+            echo "<input type='text' :value='" . $node . "'><br>";
+        }
         foreach ($n4->properties as $n5 => $n6) {
-            echo $n1 . "." . $n3 . "." . $n5 . "<br>";
+            $type   = $n6->type;
+            $title  = $n6->title;
+            $node   = $n1 . "." . $n3 . "." . $n5;
+            echo $node . " - " . $type . "<br>";
+            if($type != "object") {
+                echo "<strong><label>" . $title . "</label></strong><br>";
+                echo "<input type='text' :value='" . $node . "'><br>";
+            }
             foreach ($n6->properties as $n7 => $n8) {
-                echo $n1 . "." . $n3 . "." . $n5 . "." . $n7 . "<br>";
+                $type   = $n8->type;
+                $title  = $n8->title;
+                $node   = $n1 . "." . $n3 . "." . $n5 . "." . $n7;
+                echo $node . " - " . $type . "<br>";
+                if($type != "object") {
+                    echo "<strong><label>" . $title . "</label></strong><br>";
+                    echo "<input type='text' :value='" . $node . "'><br>";
+                }
                 foreach ($n8->properties as $n9 => $n10) {
-                    echo $n1 . "." . $n3 . "." . $n5 . "." . $n7 . "." . $n9 . "<br>";
+                    $type   = $n10->type;
+                    $title  = $n10->title;
+                    $node   = $n1 . "." . $n3 . "." . $n5 . "." . $n7 . "." . $n9;
+                    echo $node . " - " . $type . "<br>";
+                    if($type != "object") {
+                        echo "<strong><label>" . $title . "</label></strong><br>";
+                        echo "<input type='text' :value='" . $node . "'><br>";
+                    }
                 }
             }
         }
