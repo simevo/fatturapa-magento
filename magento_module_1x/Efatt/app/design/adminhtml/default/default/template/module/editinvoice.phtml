@@ -14,31 +14,25 @@ $json = file_get_contents($fJsonUrl);
 $jsonDecoded = json_decode($json);
 $json = $jsonDecoded->properties;
 
-function printInput($type, $title, $node) {
+function printInput($type, $title, $node, $k) {
 
-    if($type != "object") {
+        if($title == "") $title = $k;
+        
         echo "<strong><label>" . $title . "</label></strong><br>";
         echo "<input type='text' :value='" . $node . "'><br>";
-    }
+    
 }
 
 function parseChildren($el, $n) {
 
-    foreach ($el->properties as $k => $v) {
+    foreach ($el as $k => $v) {
         $n .= "." . $k;
         $type   = $v->type;
         $title  = $v->title;
-        echo $n . " - " . $type . "<br>";
-        printInput($type, $title, $node);
-        parseChildren($v, $k);
-    }
-
-    foreach ($el->additionalProperties as $k => $v) {
-        $n .= "." . $k;
-        $type   = $v->type;
-        $title  = $v->title;
-        echo $n . " - " . $type . "<br>";
-        printInput($type, $title, $node);
+        //echo $n . " - " . $type . "<br>";
+        if(isset($type) && $type != "object") {
+            printInput($type, $title, $node, $k);
+        }
         parseChildren($v, $k);
     }
 
