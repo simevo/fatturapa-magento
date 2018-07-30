@@ -22,17 +22,24 @@ function printInput($type, $title, $node) {
     }
 }
 
-function parseChildren($el) {
+function parseChildren($el, $n) {
 
-    $c = 1;
     foreach ($el->properties as $k => $v) {
+        $n .= "." . $k;
         $type   = $v->type;
         $title  = $v->title;
-        echo $title . " - " . $type . "<br>";
+        echo $n . " - " . $type . "<br>";
         printInput($type, $title, $node);
-        parseChildren($v);
-        $c++;
-        if($c >= 10) break;
+        parseChildren($v, $k);
+    }
+
+    foreach ($el->additionalProperties as $k => $v) {
+        $n .= "." . $k;
+        $type   = $v->type;
+        $title  = $v->title;
+        echo $n . " - " . $type . "<br>";
+        printInput($type, $title, $node);
+        parseChildren($v, $k);
     }
 
 }
@@ -40,7 +47,7 @@ function parseChildren($el) {
 foreach ($json as $k => $v) {
     echo $k . "<br>";
 
-    parseChildren($v);
+    parseChildren($v, $k);
 }
 
 die;
