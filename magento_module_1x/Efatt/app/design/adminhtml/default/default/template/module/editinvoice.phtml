@@ -15,9 +15,19 @@ $jsonDecoded = json_decode($json);
 $json = $jsonDecoded->properties;
 
 foreach ($json as $n1 => $n2) {
-    echo "<pre>";
-    var_dump($n2);
-    echo "</pre>";
+    echo $n1 . "<br>";
+    foreach ($n2->properties as $n3 => $n4) {
+        echo $n1 . "." . $n3 . "<br>";
+        foreach ($n4->properties as $n5 => $n6) {
+            echo $n1 . "." . $n3 . "." . $n5 . "<br>";
+            foreach ($n6->properties as $n7 => $n8) {
+                echo $n1 . "." . $n3 . "." . $n5 . "." . $n7 . "<br>";
+                foreach ($n8->properties as $n9 => $n10) {
+                    echo $n1 . "." . $n3 . "." . $n5 . "." . $n7 . "." . $n9 . "<br>";
+                }
+            }
+        }
+    }
 }
 
 die;
