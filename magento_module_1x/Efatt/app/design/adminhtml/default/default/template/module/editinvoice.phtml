@@ -17,10 +17,21 @@ $json = $jsonDecoded->properties;
 function printInput($type, $title, $node, $k) {
 
         if($title == "") $title = $k;
-        
+
         echo "<strong><label>" . $title . "</label></strong><br>";
         echo "<input type='text' :value='" . $node . "'><br>";
     
+}
+
+function printPanel($title, $k) {
+    $panelTitle = $title;
+    if($title == "") $panelTitle = $k;
+    echo '</div>';
+    echo '<div class="entry-edit">';
+    echo '<div class="entry-edit-head">';
+    echo '<strong>' . $panelTitle . '</strong>';
+    echo '</div>';
+    echo '<div class="fieldset">';
 }
 
 function parseChildren($el, $n) {
@@ -30,6 +41,8 @@ function parseChildren($el, $n) {
         $type   = $v->type;
         $title  = $v->title;
         //echo $n . " - " . $type . "<br>";
+        if($type == "object") printPanel($title, $k);
+
         if(isset($type) && $type != "object") {
             printInput($type, $title, $node, $k);
         }
@@ -39,8 +52,7 @@ function parseChildren($el, $n) {
 }
 
 foreach ($json as $k => $v) {
-    echo $k . "<br>";
-
+    
     parseChildren($v, $k);
 }
 
