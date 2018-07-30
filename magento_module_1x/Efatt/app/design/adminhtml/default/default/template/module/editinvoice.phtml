@@ -455,7 +455,7 @@ foreach ($json as $n1 => $n2) {
         },
         validateJson: function() {
             var request = new XMLHttpRequest();
-            request.open("GET", "<?php echo Mage::getBaseUrl('js'); ?>/fatturaPA_1.2_schema.json");
+            request.open("GET", "<?php echo Mage::getBaseUrl('js'); ?>/efatt/fatturaPA_1.2_schema.json");
             request.onload = function() {
                 if (request.status == 200) {
                     if (request.responseText) {
@@ -475,7 +475,7 @@ foreach ($json as $n1 => $n2) {
         },
         generateXml: function() {
             var request = new XMLHttpRequest();
-            request.open("GET", "<?php echo Mage::getBaseUrl('js'); ?>/fatturaPA_1.2.hbs");
+            request.open("GET", "<?php echo Mage::getBaseUrl('js'); ?>/efatt/fatturaPA_1.2.hbs");
             request.onload = function() {
                 if (request.status == 200) {
                     if (request.responseText) {
