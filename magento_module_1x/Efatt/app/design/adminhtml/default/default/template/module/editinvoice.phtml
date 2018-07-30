@@ -14,12 +14,18 @@ $json = file_get_contents($fJsonUrl);
 $jsonDecoded = json_decode($json);
 $json = $jsonDecoded->properties;
 
-function printInput($type, $title, $node, $k) {
+function printInput($type, $title, $node, $k, $mandatory) {
 
         if($title == "") $title = $k;
 
+        if($mandatory == "Y") {
+            $border = " style='border-color: red;' ";
+        } else {
+            $border = "";
+        }
+
         echo "<strong><label>" . $title . "</label></strong><br>";
-        echo "<input type='text' :value='" . $node . "'><br>";
+        echo "<input " . $border . " type='text' :value='" . $node . "'><br>";
     
 }
 
@@ -34,25 +40,33 @@ function printPanel($title, $k) {
     echo '<div class="fieldset">';
 }
 
-function parseChildren($el, $n) {
+function parseChildren($el, $n, $mandatory = "") {
 
     foreach ($el as $k => $v) {
         $n .= "." . $k;
+
+        if($k == "properties") {
+            $mandatory = "Y";
+        } 
+        if($k == "additionalProperties") {
+            $mandatory = "N";
+        }
+
         $type   = $v->type;
         $title  = $v->title;
         //echo $n . " - " . $type . "<br>";
         if($type == "object") printPanel($title, $k);
 
         if(isset($type) && $type != "object") {
-            printInput($type, $title, $node, $k);
+            printInput($type, $title, $node, $k, $mandatory);
         }
-        parseChildren($v, $k);
+        parseChildren($v, $k, $mandatory);
     }
 
 }
 
 foreach ($json as $k => $v) {
-    
+
     parseChildren($v, $k);
 }
 
