@@ -11,9 +11,9 @@ $fJsonUrl	= Mage::getBaseUrl('js') . "/efatt/fatturaPA_1.2_schema.json";
 $fXmlUrl	= Mage::getBaseUrl('js') . "/efatt/fatturaPA_1.2.hbs";
 
 $json = file_get_contents($fJsonUrl);
-$json = json_decode($json);
-$json = $json->properties->FatturaElettronica->properties->FatturaElettronicaHeader;
-var_dump($header->properties->DatiTrasmissione);
+$jsonDecoded = json_decode($json);
+$json = $jsonDecoded->properties;
+$json = json_encode($json);
 ?>
 
 <div id="page:main-container">
@@ -215,9 +215,10 @@ Calendar.setup({
 // ]]></script>
 
 <div id="fattura">
-	<input type="text" name="root[FatturaElettronica][versione]">
-
-	    <button type="button" v-on:click="generateJson();">Genera JSON</button>
+	<form id = "efattForm">
+	<input type="text" name="FatturaElettronica.versione">
+	<input type="text" name="FatturaElettronica.versione.keaa">
+	    <button type="button" onclick="toJson();">Genera JSON</button>
     <button type="button" v-on:click="generateXml();">Genera XML</button>
     <button type="button" v-on:click="validateJson();">Valida JSON</button>    
 
@@ -225,7 +226,15 @@ Calendar.setup({
 <input id="json" name="json" type="text" />
 <input id="xml" name="xml" type="text" />
 <input id="result" name="result" type="text" />
+</form>
 </div>
+
+<script type= "text/javascript">
+function toJson() {
+
+}
+
+</script>
 
 <script type="text/javascript">
     // configuration for jshint
@@ -239,9 +248,7 @@ Calendar.setup({
       created: function () {
           // TODO ?
       },
-      data: {
-      		FatturaElettronica: []
-      },
+      data: <?php echo $json; ?>,
       methods: {
         validateJson: function() {
             var request = new XMLHttpRequest();
