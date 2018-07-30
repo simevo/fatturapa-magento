@@ -1,0 +1,16 @@
+{
+  "FatturaElettronica": {
+    "versione": "FPA12",
+    "FatturaElettronicaHeader": {
+      "DatiTrasmissione": {
+        "IdTrasmittente": {
+          "IdPaese": "TC",
+          "IdCodice": "XXXXXXXXXX"
+        },
+        "ProgressivoInvio": "XXXXX",
+        "FormatoTrasmissione": "XXXXX",
+        "CodiceDestinatario": "XXXXXX"
+      }
+    }
+  }
+}

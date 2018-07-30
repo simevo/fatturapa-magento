@@ -58,7 +58,7 @@ foreach ($json as $n1 => $n2) {
     }
 }
 
-die;
+// die;
 ?>
 
 <div id="page:main-container">
@@ -77,7 +77,7 @@ die;
 
 <input name="form_key" type="hidden" value='<?php echo $fKey ?>' />
 
-<div class="box">
+<div id="fattura" class="box">
     <!--Order Information-->
     <div class="entry-edit">
         <div class="entry-edit-head">
@@ -89,7 +89,7 @@ die;
             <tr>
                 <td class="label"><label>Id paese</label></td>
                 <td class="value">
-                <select name="DatiTrasmissione_IdTrasmittente_IdPaese">
+                <select v-model="FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.IdTrasmittente.IdPaese">
                 <?php foreach ($countryList as $c => $ca) { ?>
                 <option <?php if($ca['value'] == 'IT') echo 'selected="selected"' ?> value="<?php echo $ca['value']; ?>"><?php echo $ca['value']; ?></option>
                 <?php } ?>
@@ -97,19 +97,19 @@ die;
             </tr>
             <tr>
                 <td class="label"><label>Id codice</label></td>
-                <td class="value"><input type="text" name="DatiTrasmissione_IdTrasmittente_IdCodice"></td>
+                <td class="value"><input type="text" v-model="FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.IdTrasmittente.IdCodice"></td>
             </tr>
             <tr>
                 <td class="label"><label>Progressivo Invio</label></td>
-                <td class="value"><input type="text" name="DatiTrasmissione_ProgressivoInvio"></td>
+                <td class="value"><input type="text" v-model="FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.ProgressivoInvio"></td>
             </tr>
             <tr>
                 <td class="label"><label>Formato Trasmissione</label></td>
-                <td class="value"><input type="text" name="DatiTrasmissione_FormatoTrasmissione"></td>
+                <td class="value"><input type="text" v-model="FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.FormatoTrasmissione"></td>
             </tr>
             <tr>
                 <td class="label"><label>Codice Destinatario</label></td>
-                <td class="value"><input type="text" name="DatiTrasmissione_CodiceDestinatario"></td>
+                <td class="value"><input type="text" v-model="FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.CodiceDestinatario"></td>
             </tr>
             </tbody></table>
         </div>
@@ -240,16 +240,262 @@ die;
         </div>
     </div>
 
-
+    <button type="button" v-on:click="loadJson();">Carica dati</button>
+    <button type="button" v-on:click="generateJson();">Genera JSON</button>
+    <button type="button" v-on:click="generateXml();">Genera XML</button>
+    <button type="button" v-on:click="validateJson();">Valida JSON</button>    
 
 <!-- end page -->    
 </div>
 
+<!-- outside #fattura to avoid JSON circularity -->
+<input id="json" name="json" type="text" />
+<input id="xml" name="xml" type="text" />
+<input id="result" name="result" type="text" />
+
 </form>
 </div>
 
-
 <script type="text/javascript">// <![CDATA[
+    // configuration for jshint
+    /* jshint browser: true, devel: true */
+    /* global Vue, Handlebars, jsonSchema */
+    
+    "use strict";
+    
+    function merge(target, source) {
+        if (typeof target === 'object') {
+            for (var key in target) {
+                if ((key !== '__proto__') && (key in source)) {
+                    target[key] = merge(target[key], source[key]);
+                }
+            }
+        } else if (typeof target !== 'function') {
+            target = source;
+        }
+        return target;
+    }
+
+    var app = new Vue({
+      el: '#fattura',
+      created: function () {
+          // TODO ?
+      },
+      data: {
+        // empty data
+        "FatturaElettronica": {
+            "versione": "",
+            "FatturaElettronicaHeader": {
+            "DatiTrasmissione": {
+                "IdTrasmittente": {
+                "IdPaese": "",
+                "IdCodice": ""
+                },
+                "ProgressivoInvio": "",
+                "FormatoTrasmissione": "",
+                "CodiceDestinatario": ""
+            },
+            "CedentePrestatore": {
+                "DatiAnagrafici": {
+                "IdFiscaleIVA": {
+                    "IdPaese": "",
+                    "IdCodice": ""
+                },
+                "Anagrafica": {
+                    "Denominazione": ""
+                },
+                "RegimeFiscale": ""
+                },
+                "Sede": {
+                "Indirizzo": "",
+                "CAP": "",
+                "Comune": "",
+                "Provincia": "",
+                "Nazione": ""
+                }
+            },
+            "CessionarioCommittente": {
+                "DatiAnagrafici": {
+                "CodiceFiscale": "",
+                "Anagrafica": {
+                    "Denominazione": ""
+                }
+                },
+                "Sede": {
+                "Indirizzo": "",
+                "CAP": "",
+                "Comune": "",
+                "Provincia": "",
+                "Nazione": ""
+                }
+            }
+            },
+            "FatturaElettronicaBody": [
+            {
+                "DatiGenerali": {
+                "DatiGeneraliDocumento": {
+                    "TipoDocumento": "",
+                    "Divisa": "",
+                    "Data": "",
+                    "Numero": "",
+                    "Causale": [
+                    "",
+                    ""
+                    ]
+                },
+                "DatiOrdineAcquisto": [
+                    {
+                    "RiferimentoNumeroLinea": [
+                        ""
+                    ],
+                    "IdDocumento": "",
+                    "NumItem": "",
+                    "CodiceCUP": "",
+                    "CodiceCIG": ""
+                    }
+                ],
+                "DatiContratto": [
+                    {
+                    "RiferimentoNumeroLinea": [
+                        ""
+                    ],
+                    "IdDocumento": "",
+                    "Data": "",
+                    "NumItem": "",
+                    "CodiceCUP": "",
+                    "CodiceCIG": ""
+                    }
+                ],
+                "DatiConvenzione": [
+                    {
+                    "RiferimentoNumeroLinea": [
+                        ""
+                    ],
+                    "IdDocumento": "",
+                    "NumItem": "",
+                    "CodiceCUP": "",
+                    "CodiceCIG": ""
+                    }
+                ],
+                "DatiRicezione": [
+                    {
+                    "RiferimentoNumeroLinea": [
+                        ""
+                    ],
+                    "IdDocumento": "",
+                    "NumItem": "",
+                    "CodiceCUP": "",
+                    "CodiceCIG": ""
+                    }
+                ],
+                "DatiTrasporto": {
+                    "DatiAnagraficiVettore": {
+                    "IdFiscaleIVA": {
+                        "IdPaese": "",
+                        "IdCodice": ""
+                    },
+                    "Anagrafica": {
+                        "Denominazione": ""
+                    }
+                    },
+                    "DataOraConsegna": ""
+                }
+                },
+                "DatiBeniServizi": {
+                "DettaglioLinee": [
+                    {
+                    "NumeroLinea": "",
+                    "Descrizione": "",
+                    "Quantita": "",
+                    "PrezzoUnitario": "",
+                    "PrezzoTotale": "",
+                    "AliquotaIVA": ""
+                    }
+                ],
+                "DatiRiepilogo": [
+                    {
+                    "AliquotaIVA": "",
+                    "ImponibileImporto": "",
+                    "Imposta": "",
+                    "EsigibilitaIVA": ""
+                    }
+                ]
+                },
+                "DatiPagamento": [
+                {
+                    "CondizioniPagamento": "",
+                    "DettaglioPagamento": {
+                    "ModalitaPagamento": "",
+                    "DataScadenzaPagamento": "",
+                    "ImportoPagamento": ""
+                    }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      mounted: function() {
+          this.loadJson();
+      },
+      methods: {
+        loadJson: function() {
+            var self = this;
+            var request = new XMLHttpRequest();
+            request.open("GET", "<?php echo Mage::getBaseUrl('js'); ?>/efatt/fattura.json");
+            request.onload = function() {
+                if (request.status == 200) {
+                    if (request.responseText) {
+                        var new_data = JSON.parse(request.responseText);
+                        merge(self.FatturaElettronica, new_data.FatturaElettronica);
+                    }
+                }
+            };
+            request.send();
+        },
+        validateJson: function() {
+            var request = new XMLHttpRequest();
+            request.open("GET", "<?php echo Mage::getBaseUrl('js'); ?>/fatturaPA_1.2_schema.json");
+            request.onload = function() {
+                if (request.status == 200) {
+                    if (request.responseText) {
+                        var schema = request.responseText;
+                        var json = JSON.stringify(this);
+                        var result = jsonSchema.validate(json, schema);
+                        document.getElementById("result").value = JSON.stringify(result);
+                    }
+                }
+            };
+            request.send();
+        },
+        generateJson: function() {
+            var json = JSON.stringify(this.FatturaElettronica);
+            console.log(json);
+            document.getElementById("json").value = json;
+        },
+        generateXml: function() {
+            var request = new XMLHttpRequest();
+            request.open("GET", "<?php echo Mage::getBaseUrl('js'); ?>/fatturaPA_1.2.hbs");
+            request.onload = function() {
+                if (request.status == 200) {
+                    if (request.responseText) {
+                        var source = request.responseText;
+                        var template = Handlebars.compile(source);
+                        var context = this;
+                        var xml = template(context);
+                        document.getElementById("xml").value = xml;
+                    }
+                }
+            };
+            request.send();
+        },
+      }
+    });
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log("DOM fully loaded and parsed");
+    });
+
 Calendar.setup({
     inputField : 'DatiGenerali_DatiGeneraliDocumento_Data',
     ifFormat : '%Y-%m-%e',
