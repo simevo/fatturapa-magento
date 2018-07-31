@@ -13,63 +13,6 @@ $fXmlUrl	= Mage::getBaseUrl('js') . "/efatt/fatturaPA_1.2.hbs";
 $json = file_get_contents($fJsonUrl);
 $jsonDecoded = json_decode($json);
 $json = $jsonDecoded->properties;
-
-function printInput($type, $title, $node, $k, $mandatory) {
-
-        if($title == "") $title = $k;
-
-        if($mandatory == "Y") {
-            $border = " style='border-color: red;' ";
-        } else {
-            $border = "";
-        }
-
-        echo "<strong><label>" . $title . "</label></strong><br>";
-        echo "<input " . $border . " type='text' :value='" . $node . "'><br>";
-    
-}
-
-function printPanel($title, $k) {
-    $panelTitle = $k;
-    echo '</div>';
-    echo '<div class="entry-edit">';
-    echo '<div class="entry-edit-head collapseable">';
-    echo '<strong>' . $panelTitle . '</strong>';
-    echo '</div>';
-    echo '<div class="fieldset">';
-}
-
-function parseChildren($el, $n, $mandatory = "") {
-
-    foreach ($el as $k => $v) {
-        $n .= "." . $k;
-
-        if($k == "properties") {
-            $mandatory = "Y";
-        } 
-        if($k == "additionalProperties") {
-            $mandatory = "N";
-        }
-
-        $type   = $v->type;
-        $title  = $v->title;
-        //echo $n . " - " . $type . "<br>";
-        if($type == "object") printPanel($title, $k);
-
-        if(isset($type) && $type != "object") {
-            printInput($type, $title, $node, $k, $mandatory);
-        }
-        parseChildren($v, $k, $mandatory);
-    }
-
-}
-
-foreach ($json as $k => $v) {
-
-    parseChildren($v, $k);
-}
-
-die;
 ?>
 
 <div id="page:main-container">
@@ -89,169 +32,71 @@ die;
 <input name="form_key" type="hidden" value='<?php echo $fKey ?>' />
 
 <div class="box">
-    <!--Order Information-->
-    <div class="entry-edit">
-        <div class="entry-edit-head">
-            <strong>Dati Trasmissione</strong>
-        </div>
-        <div class="fieldset">
-            <table cellspacing="0" class="form-list">
-            <tbody>
-            <tr>
-                <td class="label"><label>Id paese</label></td>
-                <td class="value">
-                <select name="DatiTrasmissione_IdTrasmittente_IdPaese">
-                <?php foreach ($countryList as $c => $ca) { ?>
-                <option <?php if($ca['value'] == 'IT') echo 'selected="selected"' ?> value="<?php echo $ca['value']; ?>"><?php echo $ca['value']; ?></option>
-                <?php } ?>
-				</td>
-            </tr>
-            <tr>
-                <td class="label"><label>Id codice</label></td>
-                <td class="value"><input type="text" name="DatiTrasmissione_IdTrasmittente_IdCodice"></td>
-            </tr>
-            <tr>
-                <td class="label"><label>Progressivo Invio</label></td>
-                <td class="value"><input type="text" name="DatiTrasmissione_ProgressivoInvio"></td>
-            </tr>
-            <tr>
-                <td class="label"><label>Formato Trasmissione</label></td>
-                <td class="value"><input type="text" name="DatiTrasmissione_FormatoTrasmissione"></td>
-            </tr>
-            <tr>
-                <td class="label"><label>Codice Destinatario</label></td>
-                <td class="value"><input type="text" name="DatiTrasmissione_CodiceDestinatario"></td>
-            </tr>
-            </tbody></table>
-        </div>
-    </div>
 
-    <!-- cedente prestatore from config -->
-    <?php foreach ($config as $key => $fields) { ?>
-    <div class="entry-edit">
-        <div class="entry-edit-head">
-            <strong><?php echo $key?></strong>
-        </div>
-        <div class="fieldset">
-            <table cellspacing="0" class="form-list">
-            <tbody>
-			<?php foreach ($fields as $field => $value) { ?>
-			<tr>
-                <td class="label"><label><?php echo $field ?></label></td>
-                <td class="value"><input type="text" name="<?php echo $key . '_' . $field ?>" value="<?php echo $value ?>"></td>
-            </tr>
-			<?php } ?>
-	</tbody></table>
-        </div>
-    </div>
-	<?php } ?>
+<?php
+function printInput($type, $title, $node, $k, $mandatory) {
 
+        if($title == "") $title = $k;
 
-    <div class="entry-edit">
-        <div class="entry-edit-head">
-            <strong>Cessionario Committente - Dati Anagrafici - Id Fiscale IVA</strong>
-        </div>
-        <div class="fieldset">
-            <table cellspacing="0" class="form-list">
-            <tbody><tr>
-                <td class="label"><label>Id Paese</label></td>
-                <td class="value">
-                <select name="CessionarioCommittente_DatiAnagrafici_IdFiscaleIVA_IdPaese">
-                <?php foreach ($countryList as $c => $ca) { ?>
-                <option <?php if($ca['value'] == 'IT') echo 'selected="selected"' ?> value="<?php echo $ca['value']; ?>"><?php echo $ca['value']; ?></option>
-                <?php } ?>
-				</td>
-            </tr>
-            <tr>
-                <td class="label"><label>Id Codice</label></td>
-                <td class="value"><input type="text" name="CessionarioCommittente_DatiAnagrafici_IdFiscaleIVA_IdCodice"></td>
-            </tr>
-            </tbody></table>
-        </div>
-    </div>
+        if($mandatory == "Y") {
+            $border = " style='border-color: red;' ";
+        } else {
+            $border = "";
+        }
 
-    <div class="entry-edit">
-        <div class="entry-edit-head">
-            <strong>Cessionario Committente - Dati Anagrafici - Anagrafica</strong>
-        </div>
-        <div class="fieldset">
-            <table cellspacing="0" class="form-list">
-            <tbody><tr>
-                <td class="label"><label>Denominazione</label></td>
-                <td class="value"><input type="text" name="CessionarioCommittente_DatiAnagrafici_Anagrafica_Denominazione" value="<?php echo $cc['company'] ?>"></td>
-            </tr>
-            <tr>
-                <td class="label"><label>Nome</label></td>
-                <td class="value"><input type="text" name="CessionarioCommittente_DatiAnagrafici_Anagrafica_Nome" value="<?php echo $cc['firstname'] ?>"></td>
-            </tr>
-            <tr>
-                <td class="label"><label>Cognome</label></td>
-                <td class="value"><input type="text" name="CessionarioCommittente_DatiAnagrafici_Anagrafica_Cognome" value="<?php echo $cc['lastname'] ?>"></td>
-            </tr>
-            </tbody></table>
-        </div>
-    </div>
+        echo '<tr><td><label>' . $title . '</label></td></tr>';
+        echo "<tr><td><input " . $border . " type='text' :value='" . $node . "'></td></tr>";
+    
+}
 
-        <div class="entry-edit">
-        <div class="entry-edit-head">
-            <strong>Cessionario Committente - Sede</strong>
-        </div>
-        <div class="fieldset">
-            <table cellspacing="0" class="form-list">
-            <tbody><tr>
-                <td class="label"><label>Indirizzo</label></td>
-                <td class="value"><input type="text" name="CessionarioCommittente_Sede_Indirizzo" value="<?php echo $cc['street'] ?>"></td>
-            </tr>
-            <tr>
-                <td class="label"><label>CAP</label></td>
-                <td class="value"><input type="text" name="CessionarioCommittente_Sede_CAP" value="<?php echo $cc['postcode'] ?>"></td>
-            </tr>
-            <tr>
-                <td class="label"><label>Comune</label></td>
-                <td class="value"><input type="text" name="CessionarioCommittente_Sede_Comune" value="<?php echo $cc['city'] ?>"></td>
-            </tr>
-            <tr>
-                <td class="label"><label>Nazione</label></td>
-                <td class="value"><input type="text" name="CessionarioCommittente_Sede_Nazione" value="<?php echo $cc['country_id'] ?>"></td>
-            </tr>
-            </tbody></table>
-        </div>
-    </div>
+function printPanel($title, $k, $start = 'N') {
+    $panelTitle = $k;
+    if($start == 'N') {
+        echo '</tbody>';
+        echo '</div>';
+        echo '</div>';
+    }   
+    echo '<div class="entry-edit">';
+    echo '<div class="entry-edit-head collapseable">';
+    echo '<strong>' . $panelTitle . '</strong>';
+    echo '</div>';
+    echo '<div class="fieldset">';
+    echo '<p>' . $title . '</p>';
+    echo '<table cellspacing="0" class="form-list">';
+    echo '<tbody>';
+}
 
-    <div class="entry-edit">
-        <div class="entry-edit-head">
-            <strong>Dati Generali - Dati Generali Documento</strong>
-        </div>
-        <div class="fieldset">
-            <table cellspacing="0" class="form-list">
-            <tbody><tr>
-                <td class="label"><label>Tipo Documento</label></td>
-                <td class="value"><input type="text" name="DatiGenerali_DatiGeneraliDocumento_TipoDocumento">
-				<p class="note">tipologia del documento oggetto della trasmissione (fattura, acconto/anticipo su fattura, nota di credito, parcella …).</p>
-                </td>
-            </tr>
-            <tr>
-                <td class="label"><label>Divisa</label></td>
-                <td class="value">
-                <select name="DatiGenerali_DatiGeneraliDocumento_Divisa">
-                <?php foreach ($currencies as $s => $d) { ?>
-                <option <?php if($s == "EUR") echo "selected='selected' " ?> value="<?php echo $s ?>"><?php echo $d ?></option>
-                <?php } ?>
-				</select>
-            </tr>
-            <tr>
-                <td class="label"><label>Data</label></td>
-                <td class="value"><input type="text" name="DatiGenerali_DatiGeneraliDocumento_Data" id="DatiGenerali_DatiGeneraliDocumento_Data"></td>
-            </tr>
-            <tr>
-                <td class="label"><label>Numero</label></td>
-                <td class="value"><input type="text" name="DatiGenerali_DatiGeneraliDocumento_Numero"></td>
-            </tr>
-            </tbody></table>
-        </div>
-    </div>
+function parseChildren($el, $n, $mandatory = "", $start = 'N') {
 
+    foreach ($el as $k => $v) {
+        $n .= "." . $k;
 
+        if($k == "properties") {
+            $mandatory = "Y";
+        } 
+        if($k == "additionalProperties") {
+            $mandatory = "N";
+        }
+
+        $type   = $v->type;
+        $title  = $v->title;
+        //echo $n . " - " . $type . "<br>";
+        if($type == "object") printPanel($title, $k, $start);
+
+        if(isset($type) && $type != "object") {
+            printInput($type, $title, $node, $k, $mandatory);
+        }
+        parseChildren($v, $k, $mandatory);
+    }
+
+}
+
+foreach ($json as $k => $v) {
+
+    parseChildren($v, $k, 'Y');
+}
+
+?>
 
 <!-- end page -->    
 </div>
@@ -261,6 +106,8 @@ die;
 
 
 <script type="text/javascript">// <![CDATA[
+
+/*
 Calendar.setup({
     inputField : 'DatiGenerali_DatiGeneraliDocumento_Data',
     ifFormat : '%Y-%m-%e',
@@ -268,6 +115,8 @@ Calendar.setup({
     align : 'Bl',
     singleClick : true
 });
+
+*/
 // ]]></script>
 
   
