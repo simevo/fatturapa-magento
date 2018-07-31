@@ -30,11 +30,10 @@ function printInput($type, $title, $node, $k, $mandatory) {
 }
 
 function printPanel($title, $k) {
-    $panelTitle = $title;
-    if($title == "") $panelTitle = $k;
+    $panelTitle = $k;
     echo '</div>';
     echo '<div class="entry-edit">';
-    echo '<div class="entry-edit-head">';
+    echo '<div class="entry-edit-head collapseable">';
     echo '<strong>' . $panelTitle . '</strong>';
     echo '</div>';
     echo '<div class="fieldset">';
