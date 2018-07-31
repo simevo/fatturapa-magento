@@ -33,6 +33,16 @@ $json = $jsonDecoded->properties;
 
 <div class="box">
 
+<!--
+<div class="entry-edit">
+<div class="entry-edit-head collapseable">
+<strong>Fattura Elettronica</strong>
+</div>
+<div class="fieldset">
+<table cellspacing="0" class="form-list">
+<tbody>
+-->
+
 <?php
 function printInput($type, $title, $node, $k, $mandatory) {
 
@@ -49,13 +59,11 @@ function printInput($type, $title, $node, $k, $mandatory) {
     
 }
 
-function printPanel($title, $k, $start = 'N') {
+function printPanel($title, $k) {
     $panelTitle = $k;
-    if($start == 'N') {
-        echo '</tbody>';
-        echo '</div>';
-        echo '</div>';
-    }   
+    echo '</tbody>';
+    echo '</div>';
+    echo '</div>';  
     echo '<div class="entry-edit">';
     echo '<div class="entry-edit-head collapseable">';
     echo '<strong>' . $panelTitle . '</strong>';
@@ -66,34 +74,31 @@ function printPanel($title, $k, $start = 'N') {
     echo '<tbody>';
 }
 
-function parseChildren($el, $n, $mandatory = "", $start = 'N') {
+function parseChildren($el, $n, $mandatory = "", $prevType = "") {
 
     foreach ($el as $k => $v) {
         $n .= "." . $k;
 
-        if($k == "properties") {
-            $mandatory = "Y";
-        } 
-        if($k == "additionalProperties") {
-            $mandatory = "N";
-        }
+        if($k == "properties") $mandatory = "Y";
+        
+        if($k == "additionalProperties") $mandatory = "N";
 
         $type   = $v->type;
         $title  = $v->title;
         //echo $n . " - " . $type . "<br>";
-        if($type == "object") printPanel($title, $k, $start);
+        if($type == "object") printPanel($title, $k);
 
         if(isset($type) && $type != "object") {
             printInput($type, $title, $node, $k, $mandatory);
         }
-        parseChildren($v, $k, $mandatory);
+        parseChildren($v, $k, $mandatory, $prevType);
     }
 
 }
 
 foreach ($json as $k => $v) {
 
-    parseChildren($v, $k, 'Y');
+    parseChildren($v, $k);
 }
 
 ?>
