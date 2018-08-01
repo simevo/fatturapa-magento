@@ -7,12 +7,39 @@ $config   	= Mage::registry('efatt-config');
 $cc   		= Mage::registry('efatt-cessionario-committente');
 $currencies = Mage::registry('efatt-currencies');
 $countryList = Mage::getResourceModel('directory/country_collection')->loadData()->toOptionArray(false);
-$fJsonUrl	= Mage::getBaseUrl('js') . "/efatt/fatturaPA_1.2_schema.json";
-$fXmlUrl	= Mage::getBaseUrl('js') . "/efatt/fatturaPA_1.2.hbs";
 
-$json = file_get_contents($fJsonUrl);
-$jsonDecoded = json_decode($json);
-$json = $jsonDecoded;
+// TODO: impostare questi tre valori server-side:
+// 1. numero di elementi nel vettore FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DatiRiepilogo
+$numeroLinee = 4;
+// 2. numero di elementi nel vettore FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DettaglioLinee
+$numeroRiepiloghi = 10;
+// 3. JSON della fattura, serializzato a stringa per inizializzazione del form; può essere incompleto !
+$data = <<<EOS
+{
+  "FatturaElettronica": {
+    "versione": "questo si",
+    "FatturaElettronicaHeader": {
+      "DatiTrasmissione": {
+        "IdTrasmittente": {
+          "IdCodice": "anche questo"
+        },
+        "CodiceDestinatario": "pure questo"
+      },
+      "CedentePrestatore": {
+        "DatiAnagrafici": {
+          "IdFiscaleIVA": {
+            "IdCodice": "yes"
+          },
+          "Provincia": "perchè no"
+        }
+      },
+      "CessionarioCommittente": {
+        "Provincia": "tutte le provincie"
+      }
+    }
+  }
+}
+EOS;
 ?>
 
 <div id="page:main-container">
@@ -31,80 +58,796 @@ $json = $jsonDecoded;
 
 <input name="form_key" type="hidden" value='<?php echo $fKey ?>' />
 
-<div class="box">
+<!-- outside #fattura to avoid JSON circularity -->
+<input id="json" name="json" type="text" />
+<input id="xml" name="xml" type="text" />
+<input id="result" name="result" type="text" />
 
-<!--
-<div class="entry-edit">
-<div class="entry-edit-head collapseable">
-<strong>Fattura Elettronica</strong>
-</div>
-<div class="fieldset">
-<table cellspacing="0" class="form-list">
-<tbody>
--->
+<div id="fattura" class="box">
 
-<?php
-function printInput($type, $title, $node, $k, $mandatory) {
+<button type="button" v-on:click="generateJson();">Genera JSON</button>
+<button type="button" v-on:click="generateXml();">Genera XML</button>
+<button type="button" v-on:click="validateJson();">Valida JSON</button> 
 
-        if($title == "") $title = $k;
+<!-- code below generated with tweaked json-schema-form-php -->
+<div class="section-object">
+    <div class="entry-edit-head collapseable">
+        <a id="" href="#" onclick="return false;">Fattura Elettronica v 1.2</a>
+    </div>
+    <fieldset class="config collapseable" id="">
+        <legend>Fattura Elettronica v 1.2</legend>
+        <div>
+            <div class="section-object">
+                <div class="entry-edit-head collapseable">
+                    <a id="FatturaElettronica" href="#" onclick="return false;">Fattura Elettronica Italiana</a>
+                </div>
+                <fieldset class="config collapseable" id="FatturaElettronica">
+                    <legend>Fattura Elettronica Italiana</legend>
+                    <div>
+                        <div>
+                            <label for="FatturaElettronica-versione">Versione documento</label>
+                            <input type="string" v-model="FatturaElettronica.versione" id="FatturaElettronica-versione">
+                            <p class="note">
+                                <span>FPR12: Fattura tra Privati, FPA12: Fattura verso Pubblica Amministrazione</span>
+                            </p>
+                        </div>
 
-        if($mandatory == "Y") {
-            $border = " style='border-color: red;' ";
-        } else {
-            $border = "";
-        }
+                    </div>
+                    <div>
+                        <div class="section-object">
+                            <div class="entry-edit-head collapseable">
+                                <a id="FatturaElettronica-FatturaElettronicaHeader" href="#" onclick="return false;">Intestazione della Fattura Elettronica</a>
+                            </div>
+                            <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaHeader">
+                                <legend>Intestazione della Fattura Elettronica</legend>
+                                <div>
+                                    <div class="section-object">
+                                        <div class="entry-edit-head collapseable">
+                                            <a id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione" href="#" onclick="return false;">Dati per il recapito del documento elettronico</a>
+                                        </div>
+                                        <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione">
+                                            <legend>Dati per il recapito del documento elettronico</legend>
+                                            <div>
+                                                <div class="section-object">
+                                                    <div class="entry-edit-head collapseable">
+                                                        <a id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-IdTrasmittente" href="#" onclick="return false;">Identificativo fiscale del soggetto trasmittente</a>
+                                                    </div>
+                                                    <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-IdTrasmittente">
+                                                        <legend>Identificativo fiscale del soggetto trasmittente</legend>
+                                                        <div>
+                                                            <div>
+                                                                <label for="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-IdTrasmittente-IdPaese">Codice della nazione assegnante l’identificativo fiscale al soggetto trasmittente</label>
+                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.IdTrasmittente.IdPaese" id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-IdTrasmittente-IdPaese">
+                                                                <p class="note">
+                                                                    <span>Espressa secondo lo standard ISO 3166-1 alpha-2 code (https://it.wikipedia.org/wiki/ISO_3166-1_alpha-2), es: Italia: IT, Francia: FR, Svizzera: CH, San Marino: SM, Città del Vaticano: VA, Austria: AT, Slovenia: SI</span>
+                                                                </p>
+                                                            </div>
 
-        echo '<label>' . $title . '</label><br>';
-        echo "<input " . $border . " type='text' :value='" . $node . "'><br>";
-    
-}
+                                                        </div>
+                                                        <div>
+                                                            <div>
+                                                                <label for="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-IdTrasmittente-IdCodice">Numero di identificazione fiscale del soggetto trasmittente (per i soggetti stabiliti nel territorio dello Stato Italiano corrisponde al Codice Fiscale; per i non residenti si fa riferimento all’identificativo fiscale assegnato dall’autorità del paese di residenza)</label>
+                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.IdTrasmittente.IdCodice" id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-IdTrasmittente-IdCodice">
+                                                            </div>
 
-function printPanel($title, $k) {
-    $panelTitle = $k;
-    echo '<h2><strong>' . $title . '</strong></h2>';
-}
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div>
+                                                    <label for="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-ProgressivoInvio">Progressivo che il soggetto trasmittente attribuisce al file che inoltra al Sistema di Interscambio per una propria finalità di identificazione univoca</label>
+                                                    <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.ProgressivoInvio" id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-ProgressivoInvio">
+                                                </div>
 
-function parseChildren($el, $n, $mandatory = "") {
+                                            </div>
+                                            <div>
+                                                <div>
+                                                    <label for="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-FormatoTrasmissione">Codice identificativo del tipo di trasmissione che si sta effettuando e del relativo formato</label>
+                                                    <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.FormatoTrasmissione" id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-FormatoTrasmissione">
+                                                </div>
 
-    foreach ($el as $k => $v) {
-        $n .= "." . $k;
+                                            </div>
+                                            <div>
+                                                <div>
+                                                    <label for="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-CodiceDestinatario">Identifica il soggetto al quale è destinata la fattura</label>
+                                                    <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.CodiceDestinatario" id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-CodiceDestinatario">
+                                                    <p class="note">
+                                                        <span>Per PA: Codice Ufficio (6 caratteri, vedi https://www.indicepa.gov.it/). Per fatturazione verso privati, codice del canale di ricezione accreditato nel  Sistema di Interscambio (7 caratteri) oppure ‘0000000’ se riceve tramite PEC</span>
+                                                    </p>
+                                                </div>
 
-        if($k == "properties") $mandatory = "Y";
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="section-object">
+                                        <div class="entry-edit-head collapseable">
+                                            <a id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore" href="#" onclick="return false;">Dati del Cedente / Prestatore del bene / servizio</a>
+                                        </div>
+                                        <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore">
+                                            <legend>Dati del Cedente / Prestatore del bene / servizio</legend>
+                                            <div>
+                                                <div class="section-object">
+                                                    <div class="entry-edit-head collapseable">
+                                                        <a id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici" href="#" onclick="return false;">Dati anagrafici del cedente/prestatore</a>
+                                                    </div>
+                                                    <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici">
+                                                        <legend>Dati anagrafici del cedente/prestatore</legend>
+                                                        <div>
+                                                            <div class="section-object">
+                                                                <div class="entry-edit-head collapseable">
+                                                                    <a id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-IdFiscaleIVA" href="#" onclick="return false;">Dati identificativi ai fini IVA del soggetto cedente/prestatore</a>
+                                                                </div>
+                                                                <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-IdFiscaleIVA">
+                                                                    <legend>Dati identificativi ai fini IVA del soggetto cedente/prestatore</legend>
+                                                                    <div>
+                                                                        <div>
+                                                                            <label for="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-IdFiscaleIVA-IdPaese">Codice del paese assegnante l’identificativo fiscale al soggetto cedente/prestatore</label>
+                                                                            <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.IdFiscaleIVA.IdPaese" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-IdFiscaleIVA-IdPaese">
+                                                                            <p class="note">
+                                                                                <span>Sigla della nazione espressa secondo lo standard ISO 3166-1 alpha-2 code (https://it.wikipedia.org/wiki/ISO_3166-1_alpha-2), es: Italia: IT, Francia: FR, Svizzera: CH, San Marino: SM, Città del Vaticano: VA, Austria: AT, Slovenia: SI</span>
+                                                                            </p>
+                                                                        </div>
 
-        if($k == "additionalProperties") $mandatory = "N";
+                                                                    </div>
+                                                                    <div>
+                                                                        <div>
+                                                                            <label for="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-IdFiscaleIVA-IdCodice">Numero di identificazione fiscale del soggetto cedente/prestatore (per i soggetti stabiliti nel territorio dello Stato Italiano corrisponde al Codice Fiscale; per i non residenti si fa riferimento all’identificativo fiscale assegnato dall’autorità del paese di residenza)</label>
+                                                                            <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.IdFiscaleIVA.IdCodice" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-IdFiscaleIVA-IdCodice">
+                                                                        </div>
 
-        $type   = $v->type;
-        $title  = $v->title;
-        //echo $n . " - " . $type . "<br>";
-        if($type == "object") printPanel($title, $k);
+                                                                    </div>
+                                                                </fieldset>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="section-object">
+                                                                <div class="entry-edit-head collapseable">
+                                                                    <a id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-Anagrafica" href="#" onclick="return false;">Anagrafica</a>
+                                                                </div>
+                                                                <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-Anagrafica">
+                                                                    <legend>Anagrafica</legend>
+                                                                    <div>
+                                                                        <div>
+                                                                            <label for="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-Anagrafica-Denominazione">Ditta, denominazione o ragione sociale del cedente/prestatore (compilare nei casi di persona non fisica)</label>
+                                                                            <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.Anagrafica.Denominazione" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-Anagrafica-Denominazione">
+                                                                            <p class="note">
+                                                                                <span>Questo campo è in alternativa ai campi Nome e Cognome</span>
+                                                                            </p>
+                                                                        </div>
 
-        if(isset($type) && $type != "object") {
-            printInput($type, $title, $node, $k, $mandatory);
-        }
-        parseChildren($v, $k, $mandatory);
-    }
+                                                                    </div>
+                                                                    <div>
+                                                                        <div>
+                                                                            <label for="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-Anagrafica-Nome">Nome del cedente/prestatore (compilare nei casi di persona fisica)</label>
+                                                                            <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.Anagrafica.Nome" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-Anagrafica-Nome">
+                                                                            <p class="note">
+                                                                                <span>Questo campo va compilato insieme al Cognome ed è in alternativa al campo Denominazione</span>
+                                                                            </p>
+                                                                        </div>
 
-}
+                                                                    </div>
+                                                                    <div>
+                                                                        <div>
+                                                                            <label for="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-Anagrafica-Cognome">Cognome del cedente/prestatore (compilare nei casi di persona fisica)</label>
+                                                                            <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.Anagrafica.Cognome" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-Anagrafica-Cognome">
+                                                                            <p class="note">
+                                                                                <span>Questo campo va compilato insieme al Nome ed è in alternativa al campo Denominazione</span>
+                                                                            </p>
+                                                                        </div>
 
-parseChildren($json, "");
+                                                                    </div>
+                                                                </fieldset>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div>
+                                                                <label for="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-RegimeFiscale">Regime fiscale del cedente/prestatore</label>
+                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.RegimeFiscale" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-RegimeFiscale">
+                                                                <p class="note">
+                                                                    <span>RF01: Regime ordinario; RF02: Regime dei contribuenti minimi; RF03: Regime delle nuove iniziative produttive; RF04: Agricoltura e attività connesse e pesca; RF05: Vendita sali e tabacchi; RF06: Commercio dei fiammiferi; RF07: Editoria; RF08: Gestione di servizi di telefonia pubblica; RF09: Rivendita di documenti di trasporto pubblico e di sosta; RF10: Intrattenimenti, giochi e altre attività; RF11: Agenzie di viaggi e turismo; RF12: Agriturismo; RF13: Vendite a domicilio; RF14: Rivendita di beni usati, di oggetti d&#039;arte, d&#039;antiquariato o da collezione; RF15: Agenzie di vendite all&#039;asta di oggetti d&#039;arte, antiquariato o da collezione; RF16: IVA per cassa P.A.; RF17: IVA per cassa; RF19: Regime forfettario; RF18: Altro</span>
+                                                                </p>
+                                                            </div>
 
-/*
-foreach ($json as $k => $v) {
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="section-object">
+                                                    <div class="entry-edit-head collapseable">
+                                                        <a id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-Sede" href="#" onclick="return false;">Sede legale per le società e del domicilio fiscale per le ditte individuali e i lavoratori autonomi</a>
+                                                    </div>
+                                                    <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-Sede">
+                                                        <legend>Sede legale per le società e del domicilio fiscale per le ditte individuali e i lavoratori autonomi</legend>
+                                                        <div>
+                                                            <div>
+                                                                <label for="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-Sede-Indirizzo">Indirizzo del cedente/prestatore: via / piazza / ... nome e (opzionale) numero civico</label>
+                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.Sede.Indirizzo" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-Sede-Indirizzo">
+                                                                <p class="note">
+                                                                    <span>Il numero civico può anche essere indicato separatamente nel campo apposito</span>
+                                                                </p>
+                                                            </div>
 
-    parseChildren($v, $k);
-}
-*/
+                                                        </div>
+                                                        <div>
+                                                            <div>
+                                                                <label for="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-Sede-CAP">Codice di Avviamento Postale</label>
+                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.Sede.CAP" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-Sede-CAP">
+                                                            </div>
 
+                                                        </div>
+                                                        <div>
+                                                            <div>
+                                                                <label for="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-Sede-Comune">Comune</label>
+                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.Sede.Comune" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-Sede-Comune">
+                                                            </div>
+
+                                                        </div>
+                                                        <div>
+                                                            <div>
+                                                                <label for="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-Sede-Nazione">Codice della nazione</label>
+                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.Sede.Nazione" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-Sede-Nazione">
+                                                                <p class="note">
+                                                                    <span>Espressa secondo lo standard ISO 3166-1 alpha-2 code (https://it.wikipedia.org/wiki/ISO_3166-1_alpha-2), es: Italia: IT, Francia: FR, Svizzera: CH, San Marino: SM, Città del Vaticano: VA, Austria: AT, Slovenia: SI</span>
+                                                                </p>
+                                                            </div>
+
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="section-object">
+                                        <div class="entry-edit-head collapseable">
+                                            <a id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente" href="#" onclick="return false;">Dati del Cessionario / Committente</a>
+                                        </div>
+                                        <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente">
+                                            <legend>Dati del Cessionario / Committente</legend>
+                                            <div>
+                                                <div class="section-object">
+                                                    <div class="entry-edit-head collapseable">
+                                                        <a id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici" href="#" onclick="return false;">Dati anagrafici del cessionario/committente</a>
+                                                    </div>
+                                                    <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici">
+                                                        <legend>Dati anagrafici del cessionario/committente</legend>
+                                                        <div>
+                                                            <div class="section-object">
+                                                                <div class="entry-edit-head collapseable">
+                                                                    <a id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici-Anagrafica" href="#" onclick="return false;">Anagrafica</a>
+                                                                </div>
+                                                                <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici-Anagrafica">
+                                                                    <legend>Anagrafica</legend>
+                                                                    <div>
+                                                                        <div>
+                                                                            <label for="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici-Anagrafica-Denominazione">Ditta, denominazione o ragione sociale del cessionario/committente (compilare nei casi di persona non fisica)</label>
+                                                                            <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.DatiAnagrafici.Anagrafica.Denominazione" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici-Anagrafica-Denominazione">
+                                                                            <p class="note">
+                                                                                <span>Questo campo è in alternativa ai campi Nome e Cognome</span>
+                                                                            </p>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div>
+                                                                        <div>
+                                                                            <label for="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici-Anagrafica-Nome">Nome del cessionario/committente (compilare nei casi di persona fisica)</label>
+                                                                            <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.DatiAnagrafici.Anagrafica.Nome" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici-Anagrafica-Nome">
+                                                                            <p class="note">
+                                                                                <span>Questo campo va compilato insieme al Cognome ed è in alternativa al campo Denominazione</span>
+                                                                            </p>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div>
+                                                                        <div>
+                                                                            <label for="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici-Anagrafica-Cognome">Cognome del cessionario/committente (compilare nei casi di persona fisica)</label>
+                                                                            <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.DatiAnagrafici.Anagrafica.Cognome" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici-Anagrafica-Cognome">
+                                                                            <p class="note">
+                                                                                <span>Questo campo va compilato insieme al Nome ed è in alternativa al campo Denominazione</span>
+                                                                            </p>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </fieldset>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="section-object">
+                                                    <div class="entry-edit-head collapseable">
+                                                        <a id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede" href="#" onclick="return false;">Sede</a>
+                                                    </div>
+                                                    <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede">
+                                                        <legend>Sede</legend>
+                                                        <div>
+                                                            <div>
+                                                                <label for="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede-Indirizzo">Indirizzo del cessionario/committente: via / piazza / ... nome e (opzionale) numero civico</label>
+                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.Sede.Indirizzo" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede-Indirizzo">
+                                                                <p class="note">
+                                                                    <span>Il numero civico può anche essere indicato separatamente nel campo apposito</span>
+                                                                </p>
+                                                            </div>
+
+                                                        </div>
+                                                        <div>
+                                                            <div>
+                                                                <label for="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede-CAP">Codice di Avviamento Postale</label>
+                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.Sede.CAP" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede-CAP">
+                                                            </div>
+
+                                                        </div>
+                                                        <div>
+                                                            <div>
+                                                                <label for="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede-Comune">Comune</label>
+                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.Sede.Comune" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede-Comune">
+                                                            </div>
+
+                                                        </div>
+                                                        <div>
+                                                            <div>
+                                                                <label for="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede-Nazione">Codice della nazione</label>
+                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.Sede.Nazione" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede-Nazione">
+                                                                <p class="note">
+                                                                    <span>Espresso secondo lo standard ISO 3166-1 alpha-2 code (https://it.wikipedia.org/wiki/ISO_3166-1_alpha-2), es: Italia: IT, Francia: FR, Svizzera: CH</span>
+                                                                </p>
+                                                            </div>
+
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="section-array">
+                            <fieldset>
+                                <legend>Fatture elettroniche</legend>
+                                <div class="section-object">
+                                    <div class="entry-edit-head collapseable">
+                                        <a id="FatturaElettronica-FatturaElettronicaBody-0" href="#" onclick="return false;">Fattura</a>
+                                    </div>
+                                    <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaBody-0">
+                                        <legend>Fattura</legend>
+                                        <div>
+                                            <div class="section-object">
+                                                <div class="entry-edit-head collapseable">
+                                                    <a id="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali" href="#" onclick="return false;">Dati Generali</a>
+                                                </div>
+                                                <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali">
+                                                    <legend>Dati Generali</legend>
+                                                    <div>
+                                                        <div class="section-object">
+                                                            <div class="entry-edit-head collapseable">
+                                                                <a id="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento" href="#" onclick="return false;">Dati Generali del documento</a>
+                                                            </div>
+                                                            <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento">
+                                                                <legend>Dati Generali del documento</legend>
+                                                                <div>
+                                                                    <div>
+                                                                        <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento-TipoDocumento">Tipologia del documento oggetto della trasmissione</label>
+                                                                        <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiGenerali.DatiGeneraliDocumento.TipoDocumento" id="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento-TipoDocumento">
+                                                                        <p class="note">
+                                                                            <span>TD01: Fattura, TD02: Acconto / anticipo su fattura, TD03: Acconto / anticipo su parcella, TD04: Nota di credito, TD05: Nota di debito, TD06: Parcella</span>
+                                                                        </p>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div>
+                                                                    <div>
+                                                                        <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento-Divisa">Valuta utilizzata per l&#039;indicazione degli importi</label>
+                                                                        <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiGenerali.DatiGeneraliDocumento.Divisa" id="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento-Divisa">
+                                                                        <p class="note">
+                                                                            <span>Espresso secondo lo standard ISO 4217 alpha-3:2001 (https://it.wikipedia.org/wiki/ISO_4217#Codici_attivi), esempi: EUR, USD, CHF, GBP, CZK ...</span>
+                                                                        </p>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div>
+                                                                    <div>
+                                                                        <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento-Data">Data del documento</label>
+                                                                        <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiGenerali.DatiGeneraliDocumento.Data" id="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento-Data">
+                                                                        <p class="note">
+                                                                            <span>Rappresentata secondo il formato ISO 8601:2004 (https://it.wikipedia.org/wiki/ISO_8601), con la seguente precisione: YYYY-MM-DD</span>
+                                                                        </p>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div>
+                                                                    <div>
+                                                                        <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento-Numero">Numero progressivo attribuito dal cedente/prestatore al documento</label>
+                                                                        <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiGenerali.DatiGeneraliDocumento.Numero" id="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento-Numero">
+                                                                    </div>
+
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="section-object">
+                                                <div class="entry-edit-head collapseable">
+                                                    <a id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi" href="#" onclick="return false;">Dati dei Beni / Servizi</a>
+                                                </div>
+                                                <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi">
+                                                    <legend>Dati dei Beni / Servizi</legend>
+                                                    <div>
+                                                        <div class="section-array">
+                                                            <fieldset>
+                                                                <legend>Linee di dettaglio del bene/servizio</legend>
+<?php 
+for ($i = 0; $i <= $numeroLinee; $i++):
+?>
+                                                                <div class="section-object">
+                                                                    <div class="entry-edit-head collapseable">
+                                                                        <a id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>" href="#" onclick="return false;">Linea di dettaglio</a>
+                                                                    </div>
+                                                                    <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>">
+                                                                        <legend>Linea di dettaglio</legend>
+                                                                        <div>
+                                                                            <div>
+                                                                                <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-NumeroLinea">Numero identificativo della linea di dettaglio</label>
+                                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DettaglioLinee[<?php echo $i; ?>].NumeroLinea" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-NumeroLinea">
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div>
+                                                                            <div>
+                                                                                <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-Descrizione">Natura e qualità del bene/servizio oggetto della cessione/prestazione; può fare anche riferimento ad un precedente documento emesso a titolo di anticipo/acconto</label>
+                                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DettaglioLinee[<?php echo $i; ?>].Descrizione" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-Descrizione">
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div>
+                                                                            <div>
+                                                                                <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-PrezzoUnitario">Prezzo unitario del bene/servizio; nel caso di beni ceduti a titolo di sconto, premio o abbuono, l&#039;importo indicato rappresenta il &quot;valore normale&quot;</label>
+                                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DettaglioLinee[<?php echo $i; ?>].PrezzoUnitario" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-PrezzoUnitario">
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div>
+                                                                            <div>
+                                                                                <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-PrezzoTotale">Importo totale del bene/servizio al netto dell&#039;eventuale sconto</label>
+                                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DettaglioLinee[<?php echo $i; ?>].PrezzoTotale" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-PrezzoTotale">
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div>
+                                                                            <div>
+                                                                                <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-AliquotaIVA">Aliquota IVA applicata alla cessione/prestazione; nel caso di non applicabilità, il campo deve essere impostato a 0.00</label>
+                                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DettaglioLinee[<?php echo $i; ?>].AliquotaIVA" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-AliquotaIVA">
+                                                                                <p class="note">
+                                                                                    <span>Espressa in percentuale con due decimali separati dall&#039;intero con il carattere &#039;.&#039; (punto)</span>
+                                                                                </p>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </fieldset>
+                                                                </div>
+<?php 
+endfor;
 ?>
 
-<!-- end page -->    
+                                                            </fieldset>
+                                                        </div>
+
+                                                    </div>
+                                                    <div>
+                                                        <div class="section-array">
+                                                            <fieldset>
+<?php 
+for ($j = 0; $j <= $numeroRiepiloghi; $j++):
+?>
+                                                                <legend>Dati di riepilogo</legend>
+                                                                <div class="section-object">
+                                                                    <div class="entry-edit-head collapseable">
+                                                                        <a id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DatiRiepilogo-<?php echo $j; ?>" href="#" onclick="return false;">Dati di riepilogo per aliquota</a>
+                                                                    </div>
+                                                                    <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DatiRiepilogo-<?php echo $j; ?>">
+                                                                        <legend>Dati di riepilogo per aliquota</legend>
+                                                                        <div>
+                                                                            <div>
+                                                                                <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DatiRiepilogo-<?php echo $j; ?>-AliquotaIVA">Aliquota IVA applicata alla cessione/prestazione; nel caso di non applicabilità, il campo deve essere impostato a 0.00</label>
+                                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DatiRiepilogo[<?php echo $j; ?>].AliquotaIVA" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DatiRiepilogo-<?php echo $j; ?>-AliquotaIVA">
+                                                                                <p class="note">
+                                                                                    <span>Espressa in percentuale con due decimali separati dall&#039;intero con il carattere &#039;.&#039; (punto)</span>
+                                                                                </p>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div>
+                                                                            <div>
+                                                                                <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DatiRiepilogo-<?php echo $j; ?>-ImponibileImporto">Valore che rappresenta la base imponibile per le operazioni soggette ad IVA, oppure l’importo per le operazioni che non rientrano tra quelle &#039;imponibili&#039;</label>
+                                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DatiRiepilogo[<?php echo $j; ?>].ImponibileImporto" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DatiRiepilogo-<?php echo $j; ?>-ImponibileImporto">
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div>
+                                                                            <div>
+                                                                                <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DatiRiepilogo-<?php echo $j; ?>-Imposta">Imposta corrispondente all’applicazione dell’aliquota IVA sulla base imponibile</label>
+                                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DatiRiepilogo[<?php echo $j; ?>].Imposta" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DatiRiepilogo-<?php echo $j; ?>-Imposta">
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </fieldset>
+                                                                </div>
+<?php 
+endfor;
+?>
+
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </fieldset>
+</div>
+<!-- end code generated with tweaked json-schema-form-php -->
+
 </div>
 
 </form>
-</div>
+</div> <!-- /fattura -->
 
 
 <script type="text/javascript">// <![CDATA[
+// configuration for jshint
+/* jshint browser: true, devel: true */
+/* global Vue, Handlebars, jsonSchema */
+
+"use strict";
+
+function merge(target, source) {
+    if (typeof target === 'object') {
+        for (var key in target) {
+            if ((key !== '__proto__') && (key in source)) {
+                target[key] = merge(target[key], source[key]);
+            }
+        }
+    } else if (typeof target !== 'function') {
+        target = source;
+    }
+    return target;
+}
+
+var app = new Vue({
+  el: '#fattura',
+  data: {
+    // empty data
+    "FatturaElettronica": {
+      "versione": "",
+      "FatturaElettronicaHeader": {
+      "DatiTrasmissione": {
+        "IdTrasmittente": {
+          "IdPaese": "",
+          "IdCodice": ""
+          },
+        "ProgressivoInvio": "",
+        "FormatoTrasmissione": "",
+        "CodiceDestinatario": ""
+      },
+      "CedentePrestatore": {
+        "DatiAnagrafici": {
+          "IdFiscaleIVA": {
+            "IdPaese": "",
+            "IdCodice": ""
+          },
+          "Anagrafica": {
+            "Denominazione": ""
+          },
+          "RegimeFiscale": ""
+        },
+        "Sede": {
+          "Indirizzo": "",
+          "CAP": "",
+          "Comune": "",
+          "Provincia": "",
+          "Nazione": ""
+        }
+      },
+      "CessionarioCommittente": {
+        "DatiAnagrafici": {
+          "CodiceFiscale": "",
+            "Anagrafica": {
+              "Denominazione": ""
+            }
+        },
+        "Sede": {
+          "Indirizzo": "",
+          "CAP": "",
+          "Comune": "",
+          "Provincia": "",
+          "Nazione": ""
+        }
+      }
+    },
+      "FatturaElettronicaBody": [
+        {
+          "DatiGenerali": {
+            "DatiGeneraliDocumento": {
+              "TipoDocumento": "",
+              "Divisa": "",
+              "Data": "",
+              "Numero": "",
+              "Causale": [
+                "",
+                ""
+              ]
+            },
+            "DatiOrdineAcquisto": [
+              {
+                "RiferimentoNumeroLinea": [
+                  ""
+                ],
+                "IdDocumento": "",
+                "NumItem": "",
+                "CodiceCUP": "",
+                "CodiceCIG": ""
+              }
+            ],
+            "DatiContratto": [
+              {
+                "RiferimentoNumeroLinea": [
+                  ""
+                ],
+                "IdDocumento": "",
+                "Data": "",
+                "NumItem": "",
+                "CodiceCUP": "",
+                "CodiceCIG": ""
+              }
+            ],
+            "DatiConvenzione": [
+              {
+                "RiferimentoNumeroLinea": [
+                  ""
+                ],
+                "IdDocumento": "",
+                "NumItem": "",
+                "CodiceCUP": "",
+                "CodiceCIG": ""
+              }
+            ],
+            "DatiRicezione": [
+              {
+                "RiferimentoNumeroLinea": [
+                  ""
+                ],
+                "IdDocumento": "",
+                "NumItem": "",
+                "CodiceCUP": "",
+                "CodiceCIG": ""
+              }
+            ],
+            "DatiTrasporto": {
+              "DatiAnagraficiVettore": {
+              "IdFiscaleIVA": {
+                  "IdPaese": "",
+                  "IdCodice": ""
+              },
+              "Anagrafica": {
+                  "Denominazione": ""
+              }
+              },
+              "DataOraConsegna": ""
+            }
+          },
+          "DatiBeniServizi": {
+            "DettaglioLinee": [
+<?php 
+for ($i = 0; $i <= $numeroLinee; $i++):
+?>
+              {
+                "NumeroLinea": "",
+                "Descrizione": "",
+                "Quantita": "",
+                "PrezzoUnitario": "",
+                "PrezzoTotale": "",
+                "AliquotaIVA": ""
+              },
+<?php 
+endfor;
+?>
+            ],
+            "DatiRiepilogo": [
+<?php 
+for ($j = 0; $j <= $numeroRiepiloghi; $j++):
+?>
+              {
+                "AliquotaIVA": "",
+                "ImponibileImporto": "",
+                "Imposta": "",
+                "EsigibilitaIVA": ""
+              },
+<?php 
+endfor;
+?>
+            ]
+          },
+          "DatiPagamento": [
+            {
+              "CondizioniPagamento": "",
+              "DettaglioPagamento": {
+                "ModalitaPagamento": "",
+                "DataScadenzaPagamento": "",
+                "ImportoPagamento": ""
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  mounted: function() {
+    var self = this;
+    var new_data = <?php echo $data; ?>;
+    merge(self.FatturaElettronica, new_data.FatturaElettronica);
+  },
+  methods: {
+    validateJson: function() {
+      var request = new XMLHttpRequest();
+      request.open("GET", "<?php echo Mage::getBaseUrl('js'); ?>/efatt/fatturaPA_1.2_schema.json");
+      request.onload = function() {
+        if (request.status == 200) {
+          if (request.responseText) {
+            var schema = request.responseText;
+            var json = JSON.stringify(this);
+            var result = jsonSchema.validate(json, schema);
+            document.getElementById("result").value = JSON.stringify(result);
+          }
+        }
+      };
+      request.send();
+    },
+    generateJson: function() {
+      var json = JSON.stringify(this.FatturaElettronica);
+      console.log(json);
+      document.getElementById("json").value = json;
+    },
+    generateXml: function() {
+      var request = new XMLHttpRequest();
+      request.open("GET", "<?php echo Mage::getBaseUrl('js'); ?>/efatt/fatturaPA_1.2.hbs");
+      request.onload = function() {
+        if (request.status == 200) {
+          if (request.responseText) {
+            var source = request.responseText;
+            var template = Handlebars.compile(source);
+            var context = this;
+            var xml = template(context);
+            document.getElementById("xml").value = xml;
+          }
+        }
+      };
+      request.send();
+    },
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  console.log("DOM fully loaded and parsed");
+});
 
 /*
 Calendar.setup({
