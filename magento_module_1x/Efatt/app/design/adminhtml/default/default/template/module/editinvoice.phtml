@@ -11,18 +11,8 @@ $fJsonUrl	= Mage::getBaseUrl('js') . "/efatt/fatturaPA_1.2_schema.json";
 $fXmlUrl	= Mage::getBaseUrl('js') . "/efatt/fatturaPA_1.2.hbs";
 
 $json = file_get_contents($fJsonUrl);
-$json = json_decode($json, true);
-
-$panels = array();
-$panel[0]           = $json['properties']['FatturaElettronica']['properties']['versione'];
-$panel[0]['title']  = $json['properties']['FatturaElettronica']['properties']['versione']['title'];
-$panel[1]           = $json['properties']['FatturaElettronica']['properties']['versione'];
-
-var_dump($panels);
-
-die;
-
-
+$jsonDecoded = json_decode($json);
+$json = $jsonDecoded;
 ?>
 
 <div id="page:main-container">
@@ -53,7 +43,59 @@ die;
 <tbody>
 -->
 
+<?php
+function printInput($type, $title, $node, $k, $mandatory) {
 
+        if($title == "") $title = $k;
+
+        if($mandatory == "Y") {
+            $border = " style='border-color: red;' ";
+        } else {
+            $border = "";
+        }
+
+        echo '<label>' . $title . '</label><br>';
+        echo "<input " . $border . " type='text' :value='" . $node . "'><br>";
+    
+}
+
+function printPanel($title, $k) {
+    $panelTitle = $k;
+    echo '<h2><strong>' . $title . '</strong></h2>';
+}
+
+function parseChildren($el, $n, $mandatory = "") {
+
+    foreach ($el as $k => $v) {
+        $n .= "." . $k;
+
+        if($k == "properties") $mandatory = "Y";
+
+        if($k == "additionalProperties") $mandatory = "N";
+
+        $type   = $v->type;
+        $title  = $v->title;
+        //echo $n . " - " . $type . "<br>";
+        if($type == "object") printPanel($title, $k);
+
+        if(isset($type) && $type != "object") {
+            printInput($type, $title, $node, $k, $mandatory);
+        }
+        parseChildren($v, $k, $mandatory);
+    }
+
+}
+
+parseChildren($json, "");
+
+/*
+foreach ($json as $k => $v) {
+
+    parseChildren($v, $k);
+}
+*/
+
+?>
 
 <!-- end page -->    
 </div>
