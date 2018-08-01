@@ -96,23 +96,23 @@ EOS;
                     <div>
                         <div class="section-object">
                             <div class="entry-edit-head collapseable">
-                                <a id="FatturaElettronica-FatturaElettronicaHeader" href="#" onclick="return false;">Intestazione della Fattura Elettronica</a>
+                                <a id="FatturaElettronica-FatturaElettronicaHeader" href="#" v-on:click="FatturaElettronica.FatturaElettronicaHeader.visible = !FatturaElettronica.FatturaElettronicaHeader.visible">Intestazione della Fattura Elettronica</a>
                             </div>
-                            <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaHeader">
+                            <fieldset class="config" v-if="FatturaElettronica.FatturaElettronicaHeader.visible" id="FatturaElettronica-FatturaElettronicaHeader">
                                 <legend>Intestazione della Fattura Elettronica</legend>
                                 <div>
                                     <div class="section-object">
                                         <div class="entry-edit-head collapseable">
-                                            <a id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione" href="#" onclick="return false;">Dati per il recapito del documento elettronico</a>
+                                            <a id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione" href="#" v-on:click="FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.visible = !FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.visible">Dati per il recapito del documento elettronico</a>
                                         </div>
-                                        <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione">
+                                        <fieldset class="config" v-if="FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.visible" id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione">
                                             <legend>Dati per il recapito del documento elettronico</legend>
                                             <div>
                                                 <div class="section-object">
                                                     <div class="entry-edit-head collapseable">
-                                                        <a id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-IdTrasmittente" href="#" onclick="return false;">Identificativo fiscale del soggetto trasmittente</a>
+                                                        <a id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-IdTrasmittente" href="#" v-on:click="FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.IdTrasmittente.visible = !FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.IdTrasmittente.visible">Identificativo fiscale del soggetto trasmittente</a>
                                                     </div>
-                                                    <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-IdTrasmittente">
+                                                    <fieldset class="config" v-if="FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.IdTrasmittente.visible" id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-IdTrasmittente">
                                                         <legend>Identificativo fiscale del soggetto trasmittente</legend>
                                                         <div>
                                                             <div>
@@ -164,23 +164,23 @@ EOS;
                                 <div>
                                     <div class="section-object">
                                         <div class="entry-edit-head collapseable">
-                                            <a id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore" href="#" onclick="return false;">Dati del Cedente / Prestatore del bene / servizio</a>
+                                            <a id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore" href="#" v-on:click="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.visible = !FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.visible">Dati del Cedente / Prestatore del bene / servizio</a>
                                         </div>
-                                        <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore">
+                                        <fieldset class="config" v-if="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.visible" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore">
                                             <legend>Dati del Cedente / Prestatore del bene / servizio</legend>
                                             <div>
                                                 <div class="section-object">
                                                     <div class="entry-edit-head collapseable">
-                                                        <a id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici" href="#" onclick="return false;">Dati anagrafici del cedente/prestatore</a>
+                                                        <a id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici" href="#" v-on:click="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.visible = !FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.visible">Dati anagrafici del cedente/prestatore</a>
                                                     </div>
-                                                    <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici">
+                                                    <fieldset class="config" v-if="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.visible" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici">
                                                         <legend>Dati anagrafici del cedente/prestatore</legend>
                                                         <div>
                                                             <div class="section-object">
                                                                 <div class="entry-edit-head collapseable">
-                                                                    <a id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-IdFiscaleIVA" href="#" onclick="return false;">Dati identificativi ai fini IVA del soggetto cedente/prestatore</a>
+                                                                    <a id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-IdFiscaleIVA" href="#" v-on:click="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.IdFiscaleIVA.visible = !FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.IdFiscaleIVA.visible">Dati identificativi ai fini IVA del soggetto cedente/prestatore</a>
                                                                 </div>
-                                                                <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-IdFiscaleIVA">
+                                                                <fieldset class="config" v-if="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.IdFiscaleIVA.visible" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-IdFiscaleIVA">
                                                                     <legend>Dati identificativi ai fini IVA del soggetto cedente/prestatore</legend>
                                                                     <div>
                                                                         <div>
@@ -205,9 +205,9 @@ EOS;
                                                         <div>
                                                             <div class="section-object">
                                                                 <div class="entry-edit-head collapseable">
-                                                                    <a id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-Anagrafica" href="#" onclick="return false;">Anagrafica</a>
+                                                                    <a id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-Anagrafica" href="#" v-on:click="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.Anagrafica.visible = !FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.Anagrafica.visible">Anagrafica</a>
                                                                 </div>
-                                                                <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-Anagrafica">
+                                                                <fieldset class="config" v-if="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.Anagrafica.visible" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-Anagrafica">
                                                                     <legend>Anagrafica</legend>
                                                                     <div>
                                                                         <div>
@@ -258,9 +258,9 @@ EOS;
                                             <div>
                                                 <div class="section-object">
                                                     <div class="entry-edit-head collapseable">
-                                                        <a id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-Sede" href="#" onclick="return false;">Sede legale per le società e del domicilio fiscale per le ditte individuali e i lavoratori autonomi</a>
+                                                        <a id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-Sede" href="#" v-on:click="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.Sede.visible = !FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.Sede.visible">Sede legale per le società e del domicilio fiscale per le ditte individuali e i lavoratori autonomi</a>
                                                     </div>
-                                                    <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-Sede">
+                                                    <fieldset class="config" v-if="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.Sede.visible" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-Sede">
                                                         <legend>Sede legale per le società e del domicilio fiscale per le ditte individuali e i lavoratori autonomi</legend>
                                                         <div>
                                                             <div>
@@ -305,23 +305,23 @@ EOS;
                                 <div>
                                     <div class="section-object">
                                         <div class="entry-edit-head collapseable">
-                                            <a id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente" href="#" onclick="return false;">Dati del Cessionario / Committente</a>
+                                            <a id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente" href="#" v-on:click="FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.visible = !FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.visible">Dati del Cessionario / Committente</a>
                                         </div>
-                                        <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente">
+                                        <fieldset class="config" v-if="FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.visible" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente">
                                             <legend>Dati del Cessionario / Committente</legend>
                                             <div>
                                                 <div class="section-object">
                                                     <div class="entry-edit-head collapseable">
-                                                        <a id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici" href="#" onclick="return false;">Dati anagrafici del cessionario/committente</a>
+                                                        <a id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici" href="#" v-on:click="FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.DatiAnagrafici.visible = !FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.DatiAnagrafici.visible">Dati anagrafici del cessionario/committente</a>
                                                     </div>
-                                                    <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici">
+                                                    <fieldset class="config" v-if="FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.DatiAnagrafici.visible" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici">
                                                         <legend>Dati anagrafici del cessionario/committente</legend>
                                                         <div>
                                                             <div class="section-object">
                                                                 <div class="entry-edit-head collapseable">
-                                                                    <a id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici-Anagrafica" href="#" onclick="return false;">Anagrafica</a>
+                                                                    <a id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici-Anagrafica" href="#" v-on:click="FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.DatiAnagrafici.Anagrafica.visible = !FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.DatiAnagrafici.Anagrafica.visible">Anagrafica</a>
                                                                 </div>
-                                                                <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici-Anagrafica">
+                                                                <fieldset class="config" v-if="FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.DatiAnagrafici.Anagrafica.visible" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici-Anagrafica">
                                                                     <legend>Anagrafica</legend>
                                                                     <div>
                                                                         <div>
@@ -362,9 +362,9 @@ EOS;
                                             <div>
                                                 <div class="section-object">
                                                     <div class="entry-edit-head collapseable">
-                                                        <a id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede" href="#" onclick="return false;">Sede</a>
+                                                        <a id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede" href="#" v-on:click="FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.Sede.visible = !FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.Sede.visible">Sede</a>
                                                     </div>
-                                                    <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede">
+                                                    <fieldset class="config" v-if="FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.Sede.visible" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede">
                                                         <legend>Sede</legend>
                                                         <div>
                                                             <div>
@@ -415,23 +415,23 @@ EOS;
                                 <legend>Fatture elettroniche</legend>
                                 <div class="section-object">
                                     <div class="entry-edit-head collapseable">
-                                        <a id="FatturaElettronica-FatturaElettronicaBody-0" href="#" onclick="return false;">Fattura</a>
+                                        <a id="FatturaElettronica-FatturaElettronicaBody-0" href="#">Fattura</a>
                                     </div>
-                                    <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaBody-0">
+                                    <fieldset class="config" id="FatturaElettronica-FatturaElettronicaBody-0">
                                         <legend>Fattura</legend>
                                         <div>
                                             <div class="section-object">
                                                 <div class="entry-edit-head collapseable">
-                                                    <a id="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali" href="#" onclick="return false;">Dati Generali</a>
+                                                    <a id="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali" href="#" v-on:click="FatturaElettronica.FatturaElettronicaBody[0].DatiGenerali.visible = !FatturaElettronica.FatturaElettronicaBody[0].DatiGenerali.visible">Dati Generali</a>
                                                 </div>
-                                                <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali">
+                                                <fieldset class="config" v-if="FatturaElettronica.FatturaElettronicaBody[0].DatiGenerali.visible" id="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali">
                                                     <legend>Dati Generali</legend>
                                                     <div>
                                                         <div class="section-object">
                                                             <div class="entry-edit-head collapseable">
-                                                                <a id="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento" href="#" onclick="return false;">Dati Generali del documento</a>
+                                                                <a id="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento" href="#" v-on:click="FatturaElettronica.FatturaElettronicaBody[0].DatiGenerali.DatiGeneraliDocumento.visible = !FatturaElettronica.FatturaElettronicaBody[0].DatiGenerali.DatiGeneraliDocumento.visible">Dati Generali del documento</a>
                                                             </div>
-                                                            <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento">
+                                                            <fieldset class="config" v-if="FatturaElettronica.FatturaElettronicaBody[0].DatiGenerali.DatiGeneraliDocumento.visible" id="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento">
                                                                 <legend>Dati Generali del documento</legend>
                                                                 <div>
                                                                     <div>
@@ -479,9 +479,9 @@ EOS;
                                         <div>
                                             <div class="section-object">
                                                 <div class="entry-edit-head collapseable">
-                                                    <a id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi" href="#" onclick="return false;">Dati dei Beni / Servizi</a>
+                                                    <a id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi" href="#" v-on:click="FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.visible = !FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.visible">Dati dei Beni / Servizi</a>
                                                 </div>
-                                                <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi">
+                                                <fieldset class="config" v-if="FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.visible" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi">
                                                     <legend>Dati dei Beni / Servizi</legend>
                                                     <div>
                                                         <div class="section-array">
@@ -492,9 +492,9 @@ for ($i = 0; $i <= $numeroLinee; $i++):
 ?>
                                                                 <div class="section-object">
                                                                     <div class="entry-edit-head collapseable">
-                                                                        <a id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>" href="#" onclick="return false;">Linea di dettaglio</a>
+                                                                        <a id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>" v-on:click="FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DettaglioLinee[<?php echo $i; ?>].visible = !FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DettaglioLinee[<?php echo $i; ?>].visible" href="#">Linea di dettaglio</a>
                                                                     </div>
-                                                                    <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>">
+                                                                    <fieldset class="config" v-if="FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DettaglioLinee[<?php echo $i; ?>].visible" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>">
                                                                         <legend>Linea di dettaglio</legend>
                                                                         <div>
                                                                             <div>
@@ -553,9 +553,9 @@ for ($j = 0; $j <= $numeroRiepiloghi; $j++):
                                                                 <legend>Dati di riepilogo</legend>
                                                                 <div class="section-object">
                                                                     <div class="entry-edit-head collapseable">
-                                                                        <a id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DatiRiepilogo-<?php echo $j; ?>" href="#" onclick="return false;">Dati di riepilogo per aliquota</a>
+                                                                        <a id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DatiRiepilogo-<?php echo $j; ?>" href="#" v-on:click="FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DatiRiepilogo[<?php echo $j; ?>].visible = !FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DatiRiepilogo[<?php echo $j; ?>].visible">Dati di riepilogo per aliquota</a>
                                                                     </div>
-                                                                    <fieldset class="config collapseable" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DatiRiepilogo-<?php echo $j; ?>">
+                                                                    <fieldset class="config" v-if="FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DatiRiepilogo[<?php echo $j; ?>].visible" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DatiRiepilogo-<?php echo $j; ?>">
                                                                         <legend>Dati di riepilogo per aliquota</legend>
                                                                         <div>
                                                                             <div>
@@ -637,56 +637,71 @@ var app = new Vue({
   data: {
     // empty data
     "FatturaElettronica": {
+      "visible": true,
       "versione": "",
       "FatturaElettronicaHeader": {
-      "DatiTrasmissione": {
-        "IdTrasmittente": {
-          "IdPaese": "",
-          "IdCodice": ""
-          },
-        "ProgressivoInvio": "",
-        "FormatoTrasmissione": "",
-        "CodiceDestinatario": ""
-      },
-      "CedentePrestatore": {
-        "DatiAnagrafici": {
-          "IdFiscaleIVA": {
+        "visible": true,
+        "DatiTrasmissione": {
+          "visible": true,
+          "IdTrasmittente": {
+            "visible": true,
             "IdPaese": "",
             "IdCodice": ""
-          },
-          "Anagrafica": {
-            "Denominazione": ""
-          },
-          "RegimeFiscale": ""
+            },
+          "ProgressivoInvio": "",
+          "FormatoTrasmissione": "",
+          "CodiceDestinatario": ""
         },
-        "Sede": {
-          "Indirizzo": "",
-          "CAP": "",
-          "Comune": "",
-          "Provincia": "",
-          "Nazione": ""
+        "CedentePrestatore": {
+          "visible": true,
+          "DatiAnagrafici": {
+            "visible": true,
+            "IdFiscaleIVA": {
+              "visible": true,
+              "IdPaese": "",
+              "IdCodice": ""
+            },
+            "Anagrafica": {
+              "visible": true,
+              "Denominazione": ""
+            },
+            "RegimeFiscale": ""
+          },
+          "Sede": {
+            "visible": true,
+            "Indirizzo": "",
+            "CAP": "",
+            "Comune": "",
+            "Provincia": "",
+            "Nazione": ""
+          }
+        },
+        "CessionarioCommittente": {
+          "visible": true,
+          "DatiAnagrafici": {
+            "visible": true,
+            "CodiceFiscale": "",
+              "Anagrafica": {
+                "visible": true,
+                "Denominazione": ""
+              }
+          },
+          "Sede": {
+            "visible": true,
+            "Indirizzo": "",
+            "CAP": "",
+            "Comune": "",
+            "Provincia": "",
+            "Nazione": ""
+          }
         }
       },
-      "CessionarioCommittente": {
-        "DatiAnagrafici": {
-          "CodiceFiscale": "",
-            "Anagrafica": {
-              "Denominazione": ""
-            }
-        },
-        "Sede": {
-          "Indirizzo": "",
-          "CAP": "",
-          "Comune": "",
-          "Provincia": "",
-          "Nazione": ""
-        }
-      }
-    },
       "FatturaElettronicaBody": [
         {
           "DatiGenerali": {
+            "visible": true,
             "DatiGeneraliDocumento": {
+              "visible": true,
               "TipoDocumento": "",
               "Divisa": "",
               "Data": "",
@@ -695,71 +710,16 @@ var app = new Vue({
                 "",
                 ""
               ]
-            },
-            "DatiOrdineAcquisto": [
-              {
-                "RiferimentoNumeroLinea": [
-                  ""
-                ],
-                "IdDocumento": "",
-                "NumItem": "",
-                "CodiceCUP": "",
-                "CodiceCIG": ""
-              }
-            ],
-            "DatiContratto": [
-              {
-                "RiferimentoNumeroLinea": [
-                  ""
-                ],
-                "IdDocumento": "",
-                "Data": "",
-                "NumItem": "",
-                "CodiceCUP": "",
-                "CodiceCIG": ""
-              }
-            ],
-            "DatiConvenzione": [
-              {
-                "RiferimentoNumeroLinea": [
-                  ""
-                ],
-                "IdDocumento": "",
-                "NumItem": "",
-                "CodiceCUP": "",
-                "CodiceCIG": ""
-              }
-            ],
-            "DatiRicezione": [
-              {
-                "RiferimentoNumeroLinea": [
-                  ""
-                ],
-                "IdDocumento": "",
-                "NumItem": "",
-                "CodiceCUP": "",
-                "CodiceCIG": ""
-              }
-            ],
-            "DatiTrasporto": {
-              "DatiAnagraficiVettore": {
-              "IdFiscaleIVA": {
-                  "IdPaese": "",
-                  "IdCodice": ""
-              },
-              "Anagrafica": {
-                  "Denominazione": ""
-              }
-              },
-              "DataOraConsegna": ""
             }
           },
           "DatiBeniServizi": {
+            "visible": true,
             "DettaglioLinee": [
 <?php 
 for ($i = 0; $i <= $numeroLinee; $i++):
 ?>
               {
+                "visible": true,
                 "NumeroLinea": "",
                 "Descrizione": "",
                 "Quantita": "",
@@ -776,6 +736,7 @@ endfor;
 for ($j = 0; $j <= $numeroRiepiloghi; $j++):
 ?>
               {
+                "visible": true,
                 "AliquotaIVA": "",
                 "ImponibileImporto": "",
                 "Imposta": "",
@@ -785,17 +746,7 @@ for ($j = 0; $j <= $numeroRiepiloghi; $j++):
 endfor;
 ?>
             ]
-          },
-          "DatiPagamento": [
-            {
-              "CondizioniPagamento": "",
-              "DettaglioPagamento": {
-                "ModalitaPagamento": "",
-                "DataScadenzaPagamento": "",
-                "ImportoPagamento": ""
-              }
-            }
-          ]
+          }
         }
       ]
     }
