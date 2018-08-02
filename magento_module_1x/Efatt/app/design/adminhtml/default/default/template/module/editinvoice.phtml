@@ -8,6 +8,10 @@ $cc   		= Mage::registry('efatt-cessionario-committente');
 $currencies = Mage::registry('efatt-currencies');
 $countryList = Mage::getResourceModel('directory/country_collection')->loadData()->toOptionArray(false);
 
+echo "<pre>";
+print_r($config);
+echo "</pre>";
+
 // TODO: impostare questi tre valori server-side:
 // 1. numero di elementi nel vettore FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DatiRiepilogo
 $numeroLinee = 4;
@@ -21,8 +25,8 @@ $data = '
       "FatturaElettronicaHeader": {
         "DatiTrasmissione": {
           "IdTrasmittente": {
-            "IdPaese": "IT",
-            "IdCodice": "5555"
+            "IdPaese": "' . $config['CedentePrestatore_DatiAnagrafici_IdFiscaleIVA']['IdPaese'] . '",
+            "IdCodice": "' . $config['CedentePrestatore_DatiAnagrafici_IdFiscaleIVA']['IdCodice'] . '"
             },
           "ProgressivoInvio": "",
           "FormatoTrasmissione": "",
@@ -31,20 +35,20 @@ $data = '
         "CedentePrestatore": {
           "DatiAnagrafici": {
             "IdFiscaleIVA": {
-              "IdPaese": "",
-              "IdCodice": ""
+              "IdPaese": "' . $config['CedentePrestatore_DatiAnagrafici_IdFiscaleIVA']['IdPaese'] . '",
+              "IdCodice": "' . $config['CedentePrestatore_DatiAnagrafici_IdFiscaleIVA']['IdCodice'] . '"
             },
             "Anagrafica": {
-              "Denominazione": ""
+              "Denominazione": "' . $config['CedentePrestatore_DatiAnagrafici_Anagrafica']['Denominazione'] . '"
             },
-            "RegimeFiscale": ""
+            "RegimeFiscale": "' . $config['CedentePrestatore_DatiAnagrafici']['RegimeFiscale'] . '"
           },
           "Sede": {
-            "Indirizzo": "",
-            "CAP": "",
-            "Comune": "",
-            "Provincia": "",
-            "Nazione": ""
+            "Indirizzo": "' . $config['CedentePrestatore_Sede']['Indirizzo'] . '",
+            "CAP": "' . $config['CedentePrestatore_Sede']['CAP'] . '",
+            "Comune": "' . $config['CedentePrestatore_Sede']['Comune'] . '",
+            "Provincia": "' . $config['CedentePrestatore_Sede']['Provincia'] . '",
+            "Nazione": "' . $config['CedentePrestatore_Sede']['Nazione'] . '"
           }
         },
         "CessionarioCommittente": {
