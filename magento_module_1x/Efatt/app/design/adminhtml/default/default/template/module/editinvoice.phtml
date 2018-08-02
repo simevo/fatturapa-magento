@@ -7,9 +7,11 @@ $config   	= Mage::registry('efatt-config');
 $cc   		= Mage::registry('efatt-cessionario-committente');
 $currencies = Mage::registry('efatt-currencies');
 $countryList = Mage::getResourceModel('directory/country_collection')->loadData()->toOptionArray(false);
+$order      = Mage::registry('efatt-order');
+$items      = Mage::registry('efatt-order-items');
 
 echo "<pre>";
-                                      
+print_r($items);
 echo "</pre>";
 
 // TODO: impostare questi tre valori server-side:
@@ -61,7 +63,7 @@ $data = '
           "Sede": {
             "Indirizzo": "' . $cc['street'] . '",
             "CAP": "' . $cc['postcode'] . '",
-            "Comune": "' . $cc['street'] . '",
+            "Comune": "' . $cc['city'] . '",
             "Provincia": "' . $cc['region'] . '",
             "Nazione": "' . $cc['country_id'] . '"
           }
