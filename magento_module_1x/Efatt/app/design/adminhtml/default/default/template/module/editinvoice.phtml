@@ -691,16 +691,28 @@ endfor;
 "use strict";
 
 function merge(target, source) {
-    if (typeof target === 'object') {
-        for (var key in target) {
-            if ((key !== '__proto__') && (key in source)) {
-                target[key] = merge(target[key], source[key]);
-            }
-        }
-    } else if (typeof target !== 'function') {
-        target = source;
+  if (typeof target === 'object') {
+    for (var key in target) {
+      if ((key !== '__proto__') && (key in source)) {
+        target[key] = merge(target[key], source[key]);
+      }
     }
-    return target;
+  } else if (typeof target !== 'function') {
+    target = source;
+  }
+  return target;
+}
+
+// https://stackoverflow.com/a/31729267
+function removeVisible(obj) {
+  var prop;
+  for (prop in obj) {
+    if (prop === 'visible') {
+      delete obj[prop];
+    } else if (typeof obj[prop] === 'object') {
+      removeVisible(obj[prop]);
+    }
+  }
 }
 
 var app = new Vue({
@@ -828,15 +840,22 @@ endfor;
     merge(self.FatturaElettronica, new_data.FatturaElettronica);
   },
   methods: {
+    getInvoice: function() {
+      var json = JSON.stringify(this.$data);
+      var invoice = JSON.parse(json);
+      removeVisible(invoice);
+      return invoice;
+    },
     validateJson: function() {
+      var self = this;
       var request = new XMLHttpRequest();
       request.open("GET", "<?php echo Mage::getBaseUrl('js'); ?>/efatt/fatturaPA_1.2_schema.json");
       request.onload = function() {
         if (request.status == 200) {
           if (request.responseText) {
-            var schema = request.responseText;
-            var json = JSON.stringify(this);
-            var result = jsonSchema.validate(json, schema);
+            var schema = JSON.parse(request.responseText);
+            var invoice = self.getInvoice();
+            var result = jsonSchema.validate(invoice, schema);
             document.getElementById("result").value = JSON.stringify(result);
           }
         }
@@ -844,11 +863,12 @@ endfor;
       request.send();
     },
     generateJson: function() {
-      var json = JSON.stringify(this.FatturaElettronica);
-      console.log(json);
+      var invoice = this.getInvoice();
+      var json = JSON.stringify(invoice);
       document.getElementById("json").value = json;
     },
     generateXml: function() {
+      var self = this;
       var request = new XMLHttpRequest();
       request.open("GET", "<?php echo Mage::getBaseUrl('js'); ?>/efatt/fatturaPA_1.2.hbs");
       request.onload = function() {
@@ -856,7 +876,7 @@ endfor;
           if (request.responseText) {
             var source = request.responseText;
             var template = Handlebars.compile(source);
-            var context = this;
+            var context = self.getInvoice();
             var xml = template(context);
             document.getElementById("xml").value = xml;
           }
