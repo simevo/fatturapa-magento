@@ -5,14 +5,11 @@ $mUrl 		= Mage::helper('adminhtml')->getUrl($lUrl);
 $fKey 		= Mage::getSingleton('core/session')->getFormKey(); 
 $config   	= Mage::registry('efatt-config'); 
 $cc   		= Mage::registry('efatt-cessionario-committente');
-$currencies = Mage::registry('efatt-currencies');
-$countryList = Mage::getResourceModel('directory/country_collection')->loadData()->toOptionArray(false);
 $fJsonUrl	= Mage::getBaseUrl('js') . "/efatt/fatturaPA_1.2_schema.json";
 $fXmlUrl	= Mage::getBaseUrl('js') . "/efatt/fatturaPA_1.2.hbs";
 
 $json = file_get_contents($fJsonUrl);
-$jsonDecoded = json_decode($json);
-$json = $jsonDecoded;
+$json = json_decode($json);
 ?>
 
 <div id="page:main-container">
@@ -32,16 +29,6 @@ $json = $jsonDecoded;
 <input name="form_key" type="hidden" value='<?php echo $fKey ?>' />
 
 <div class="box">
-
-<!--
-<div class="entry-edit">
-<div class="entry-edit-head collapseable">
-<strong>Fattura Elettronica</strong>
-</div>
-<div class="fieldset">
-<table cellspacing="0" class="form-list">
-<tbody>
--->
 
 <?php
 function printInput($type, $title, $node, $k, $mandatory) {
@@ -88,13 +75,6 @@ function parseChildren($el, $n, $mandatory = "") {
 
 parseChildren($json, "");
 
-/*
-foreach ($json as $k => $v) {
-
-    parseChildren($v, $k);
-}
-*/
-
 ?>
 
 <!-- end page -->    
@@ -102,20 +82,5 @@ foreach ($json as $k => $v) {
 
 </form>
 </div>
-
-
-<script type="text/javascript">// <![CDATA[
-
-/*
-Calendar.setup({
-    inputField : 'DatiGenerali_DatiGeneraliDocumento_Data',
-    ifFormat : '%Y-%m-%e',
-    button : 'date_from_trig',
-    align : 'Bl',
-    singleClick : true
-});
-
-*/
-// ]]></script>
 
   
