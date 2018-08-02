@@ -14,33 +14,104 @@ $numeroLinee = 4;
 // 2. numero di elementi nel vettore FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DettaglioLinee
 $numeroRiepiloghi = 10;
 // 3. JSON della fattura, serializzato a stringa per inizializzazione del form; può essere incompleto !
-$data = <<<EOS
+$data = '
 {
-  "FatturaElettronica": {
-    "versione": "questo si",
-    "FatturaElettronicaHeader": {
-      "DatiTrasmissione": {
-        "IdTrasmittente": {
-          "IdCodice": "anche questo"
+    "FatturaElettronica": {
+      "versione": "",
+      "FatturaElettronicaHeader": {
+        "DatiTrasmissione": {
+          "IdTrasmittente": {
+            "IdPaese": "IT",
+            "IdCodice": "5555"
+            },
+          "ProgressivoInvio": "",
+          "FormatoTrasmissione": "",
+          "CodiceDestinatario": ""
         },
-        "CodiceDestinatario": "pure questo"
-      },
-      "CedentePrestatore": {
-        "DatiAnagrafici": {
-          "IdFiscaleIVA": {
-            "IdCodice": "yes"
+        "CedentePrestatore": {
+          "DatiAnagrafici": {
+            "IdFiscaleIVA": {
+              "IdPaese": "",
+              "IdCodice": ""
+            },
+            "Anagrafica": {
+              "Denominazione": ""
+            },
+            "RegimeFiscale": ""
           },
-          "Provincia": "perchè no",
-          "Nazione": "IT"
+          "Sede": {
+            "Indirizzo": "",
+            "CAP": "",
+            "Comune": "",
+            "Provincia": "",
+            "Nazione": ""
+          }
+        },
+        "CessionarioCommittente": {
+          "DatiAnagrafici": {
+            "CodiceFiscale": "",
+              "Anagrafica": {
+                "Denominazione": ""
+              }
+          },
+          "Sede": {
+            "Indirizzo": "",
+            "CAP": "",
+            "Comune": "",
+            "Provincia": "",
+            "Nazione": ""
+          }
         }
       },
-      "CessionarioCommittente": {
-        "Provincia": "tutte le provincie"
-      }
+      "FatturaElettronicaBody": [
+        {
+          "DatiGenerali": {
+            "DatiGeneraliDocumento": {
+              "TipoDocumento": "",
+              "Divisa": "",
+              "Data": "",
+              "Numero": "",
+              "Causale": [
+                "",
+                ""
+              ]
+            }
+          },
+          "DatiBeniServizi": {
+            "DettaglioLinee": [';
+
+for ($i = 0; $i <= $numeroLinee; $i++):
+
+        $data .= '{
+                "NumeroLinea": "' . $i . '",
+                "Descrizione": "",
+                "Quantita": "",
+                "PrezzoUnitario": "",
+                "PrezzoTotale": "",
+                "AliquotaIVA": ""
+              },';
+endfor;
+
+        $data .= '],
+            "DatiRiepilogo": [';
+
+for ($j = 0; $j <= $numeroRiepiloghi; $j++):
+
+        $data .= '{
+                "AliquotaIVA": "",
+                "ImponibileImporto": "",
+                "Imposta": "",
+                "EsigibilitaIVA": ""
+              },';
+endfor;
+
+$data .= ' ]
+          }
+        }
+      ]
     }
-  }
 }
-EOS;
+';
 ?>
 
 <div id="page:main-container">
@@ -60,9 +131,9 @@ EOS;
 <input name="form_key" type="hidden" value='<?php echo $fKey ?>' />
 
 <!-- outside #fattura to avoid JSON circularity -->
-<input id="json" name="json" type="text" />
-<input id="xml" name="xml" type="text" />
-<input id="result" name="result" type="text" />
+<textarea id="json" name="json" rows="10" cols="50"></textarea>
+<textarea id="xml" name="xml" rows="10" cols="50"></textarea>
+<textarea id="result" name="result" rows="10" cols="50"></textarea>
 
 <div id="fattura" class="box">
 
@@ -72,16 +143,9 @@ EOS;
 
 <!-- code below generated with tweaked json-schema-form-php -->
 <div class="section-object">
-    <div class="entry-edit-head collapseable">
-        <a id="" href="#" onclick="return false;">Fattura Elettronica v 1.2</a>
-    </div>
     <fieldset class="config collapseable" id="">
-        <legend>Fattura Elettronica v 1.2</legend>
         <div>
             <div class="section-object">
-                <div class="entry-edit-head collapseable">
-                    <a id="FatturaElettronica" href="#" onclick="return false;">Fattura Elettronica Italiana</a>
-                </div>
                 <fieldset class="config collapseable" id="FatturaElettronica">
                     <legend>Fattura Elettronica Italiana</legend>
                     <div>
