@@ -9,7 +9,7 @@ $currencies = Mage::registry('efatt-currencies');
 $countryList = Mage::getResourceModel('directory/country_collection')->loadData()->toOptionArray(false);
 
 echo "<pre>";
-print_r($config);
+                                      
 echo "</pre>";
 
 // TODO: impostare questi tre valori server-side:
@@ -55,15 +55,15 @@ $data = '
           "DatiAnagrafici": {
             "CodiceFiscale": "",
               "Anagrafica": {
-                "Denominazione": ""
+                "Denominazione": "' . $cc['company'] . '"
               }
           },
           "Sede": {
-            "Indirizzo": "",
-            "CAP": "",
-            "Comune": "",
-            "Provincia": "",
-            "Nazione": ""
+            "Indirizzo": "' . $cc['street'] . '",
+            "CAP": "' . $cc['postcode'] . '",
+            "Comune": "' . $cc['street'] . '",
+            "Provincia": "' . $cc['region'] . '",
+            "Nazione": "' . $cc['country_id'] . '"
           }
         }
       },
