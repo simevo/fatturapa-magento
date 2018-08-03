@@ -1,5 +1,6 @@
 <?php 
 $fId  		= Mage::registry('efatt-invoice-id');
+$invoice    = Mage::registry('efatt-invoice');
 $lUrl 		= "*/sales_invoice/viewinvoicespage/invoice_id/" . $fId; 
 $mUrl 		= Mage::helper('adminhtml')->getUrl($lUrl);
 $fKey 		= Mage::getSingleton('core/session')->getFormKey(); 
@@ -8,6 +9,9 @@ $cc   		= Mage::registry('efatt-cessionario-committente');
 $order      = Mage::registry('efatt-order');
 $items      = Mage::registry('efatt-items');
 
+echo "<pre>";
+print_r($invoice);
+echo "</pre>";
 
 // TODO: impostare questi tre valori server-side:
 // 1. numero di elementi nel vettore FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DatiRiepilogo
@@ -69,8 +73,8 @@ $data = '
           "DatiGenerali": {
             "DatiGeneraliDocumento": {
               "TipoDocumento": "",
-              "Divisa": "",
-              "Data": "",
+              "Divisa": "' . $order->store_currency_code . '",
+              "Data": "' . date("Y-m-d", strtotime($invoice->created_at)) . '",
               "Numero": "",
               "Causale": [
                 "",

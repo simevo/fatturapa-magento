@@ -21,6 +21,7 @@ class Efatt_Module_Adminhtml_Sales_InvoiceController extends Mage_Adminhtml_Sale
         $currencies         = $this->getCurrencies();
          
         Mage::register('efatt-invoice-id', $invoiceId);
+        Mage::register('efatt-invoice', $invoice);
         Mage::register('efatt-order', $order);
         Mage::register('efatt-items', $orderItems);
         Mage::register('efatt-config', $config);
