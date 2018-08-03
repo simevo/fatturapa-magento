@@ -16,13 +16,13 @@ class Efatt_Module_Adminhtml_Sales_InvoiceController extends Mage_Adminhtml_Sale
         $invoice            = Mage::getModel('sales/order_invoice')->load($invoiceId);
         $config             = Mage::getStoreConfig('efatt');
         $order              = Mage::getModel('sales/order')->load($invoice->order_id);
-        //$orderItems         = $order->getItemsCollection();
+        $orderItems         = $order->getAllItems();
         $bAddress           = $order->getBillingAddress();
         $currencies         = $this->getCurrencies();
          
         Mage::register('efatt-invoice-id', $invoiceId);
         Mage::register('efatt-order', $order);
-        Mage::register('efatt-order-items', $orderItems);
+        Mage::register('efatt-items', $orderItems);
         Mage::register('efatt-config', $config);
         Mage::register('efatt-cessionario-committente', $bAddress);
         Mage::register('efatt-currencies', $currencies);
