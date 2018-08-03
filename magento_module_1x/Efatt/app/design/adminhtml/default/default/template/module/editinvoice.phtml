@@ -9,16 +9,8 @@ $cc   		= Mage::registry('efatt-cessionario-committente');
 $order      = Mage::registry('efatt-order');
 $items      = Mage::registry('efatt-items');
 
-echo "<pre>";
-print_r($invoice);
-echo "</pre>";
+$numeroLinee = count($items) - 1;
 
-// TODO: impostare questi tre valori server-side:
-// 1. numero di elementi nel vettore FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DatiRiepilogo
-$numeroLinee = count($items);
-// 2. numero di elementi nel vettore FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DettaglioLinee
-$numeroRiepiloghi = 10;
-// 3. JSON della fattura, serializzato a stringa per inizializzazione del form; può essere incompleto !
 $data = '
 {
     "FatturaElettronica": {
@@ -101,19 +93,14 @@ foreach ($items as $item) {
 }
 
         $data .= '],
-            "DatiRiepilogo": [';
-
-for ($j = 0; $j <= $numeroRiepiloghi; $j++):
-
-        $data .= '{
+            "DatiRiepilogo": [
+                {
                 "AliquotaIVA": "",
-                "ImponibileImporto": "",
-                "Imposta": "",
+                "ImponibileImporto": "' . $invoice->base_grand_total . '",
+                "Imposta": "' . $invoice->base_tax_amount . '",
                 "EsigibilitaIVA": ""
-              },';
-endfor;
-
-$data .= ' ]
+              },
+            ]
           }
         }
       ]
