@@ -136,13 +136,21 @@ foreach ($items as $item) {
 <button type="button" v-on:click="generateXml();">Genera XML</button>
 <button type="button" v-on:click="validateJson();">Valida JSON</button> 
 
+<div class="entry-edit">
+    <div class="section-config active">
+    <div class="entry-edit-head collapseable">
+        <a id="efatt_test" href="#" onclick="Fieldset.toggleCollapse('efatt_test', ''); return false;" class="open">Cedente Prestatore - Dati Anagrafici - Id Fiscale IVA</a>
+    </div>
+    <input type="text">
+    </div>
+</div>
+
 <!-- code below generated with tweaked json-schema-form-php -->
 <div class="section-object">
     <fieldset class="config collapseable" id="">
         <div>
             <div class="section-object">
                 <fieldset class="config collapseable" id="FatturaElettronica">
-                    <legend>Fattura Elettronica Italiana</legend>
                     <div>
                         <div>
                             <label for="FatturaElettronica-versione">Versione documento</label>
