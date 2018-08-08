@@ -65,7 +65,7 @@
 	var c = 0;
 	var obj = JSON.parse(json, function (key, value) {
     
-    	/*
+    	
 		if(key == 'property') {
 			var elId = value;
 			elId = elId.replace(/\]./g, "-");
@@ -77,11 +77,10 @@
 				var err = 1;
 			}
 
-			console.log(elId);
-		}
-		*/
+			console.log(json['errors'][c]['message']);
 
-		console.log(key + "--" + value);
+		}
+		
 		c++;
 
     });
