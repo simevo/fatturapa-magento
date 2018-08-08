@@ -61,10 +61,11 @@
 
 <script type="text/javascript">
 	var json = document.getElementById("debug").innerHTML;
-	var obj = JSON.parse(json, function (key, value) {
 
-		var err = 0;
+	var c = 0;
+	var obj = JSON.parse(json, function (key, value) {
     
+    	/*
 		if(key == 'property') {
 			var elId = value;
 			elId = elId.replace(/\]./g, "-");
@@ -78,6 +79,10 @@
 
 			console.log(elId);
 		}
+		*/
+
+		console.log(key + "--" + value);
+		c++;
 
     });
 </script>
