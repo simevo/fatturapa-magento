@@ -62,6 +62,15 @@
 <script type="text/javascript">
 	var json = document.getElementById("debug").innerHTML;
 
+	var obj 	= JSON.parse(json);
+	var errors 	= obj.errors;
+
+	for (i = 0; i < arr.length; i++) { 
+  		console.log(arr[i])
+	}
+
+	console.log(obj.errors.length);
+	/*
 	var c = 0;
 	var obj = JSON.parse(json, function (key, value) {
     
@@ -77,12 +86,11 @@
 				var err = 1;
 			}
 
-			console.log(json['errors'][c]['message']);
-
 		}
 		
 		c++;
 
     });
+    */
 </script>
 
