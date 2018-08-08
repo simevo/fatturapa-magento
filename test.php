@@ -65,32 +65,22 @@
 	var obj 	= JSON.parse(json);
 	var errors 	= obj.errors;
 
-	for (i = 0; i < arr.length; i++) { 
-  		console.log(arr[i])
-	}
+	for (i = 0; i < errors.length; i++) { 
+  		var elId = errors[i]['property'];
+  		elId = elId.replace(/\]./g, "-");
+		elId = elId.replace(/\[/g, "-");
+		elId = elId.replace(/\./g, "-");
 
-	console.log(obj.errors.length);
-	/*
-	var c = 0;
-	var obj = JSON.parse(json, function (key, value) {
-    
-    	
-		if(key == 'property') {
-			var elId = value;
-			elId = elId.replace(/\]./g, "-");
-			elId = elId.replace(/\[/g, "-");
-			elId = elId.replace(/\./g, "-");
-
-			if(document.getElementById(elId)) {
+		if(document.getElementById(elId)) {
 				document.getElementById(elId).style.border = "1px solid red";
-				var err = 1;
-			}
-
 		}
-		
-		c++;
 
-    });
-    */
+		var errMsgId = elId + "-error";
+		if(document.getElementById(errMsgId)) {
+			document.getElementById(errMsgId).innerHTML = errors[i]['message'];
+		}
+
+  		console.log(errMsgId);
+	}
 </script>
 
