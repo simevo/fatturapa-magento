@@ -54,12 +54,16 @@
 }</textarea>
 
 <input type="string" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DatiRiepilogo-0-Imposta">
+<div id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DatiRiepilogo-0-Imposta-error"></div>
 
 <input type="string" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DatiRiepilogo-0-ImponibileImporto">
+<div id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DatiRiepilogo-0-ImponibileImporto-error"></div>
 
 <script type="text/javascript">
 	var json = document.getElementById("debug").innerHTML;
 	var obj = JSON.parse(json, function (key, value) {
+
+		var err = 0;
     
 		if(key == 'property') {
 			var elId = value;
@@ -69,6 +73,7 @@
 
 			if(document.getElementById(elId)) {
 				document.getElementById(elId).style.border = "1px solid red";
+				var err = 1;
 			}
 
 			console.log(elId);
