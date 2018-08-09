@@ -110,6 +110,7 @@ foreach ($items as $item) {
 ?>
 
 <div id="page:main-container">
+    <div id="errors-alert" class="notification-global notification-global-notice">test</div>
 
 <form method="post" action='<?php echo $mUrl; ?>'>
 
@@ -131,6 +132,8 @@ foreach ($items as $item) {
 <textarea id="result" name="result" rows="10" cols="50"></textarea>
 
 <div id="fattura" class="box">
+
+
 
 <button type="button" v-on:click="generateJson();">Genera JSON</button>
 <button type="button" v-on:click="generateXml();">Genera XML</button>
