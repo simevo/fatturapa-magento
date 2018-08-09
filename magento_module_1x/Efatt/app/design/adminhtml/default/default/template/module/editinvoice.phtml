@@ -290,8 +290,9 @@ foreach ($items as $item) {
                                                                     </div>
                                                                     <div>
                                                                         <div>
-                                                                            <label for="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-Anagrafica-Nome">Nome del cedente/prestatore (compilare nei casi di persona fisica)</label>
-                                                                            <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.Anagrafica.Nome" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-Anagrafica-Nome">
+                                                                            <label for="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-Anagrafica-Nome">Nome del cedente/prestatore (compilare nei casi di persona fisica)</label><br>
+                                                                            <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.Anagrafica.Nome" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-Anagrafica-Nome"><br>
+                                                                            <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-Anagrafica-Nome-error"></div>
                                                                             <p class="note">
                                                                                 <span>Questo campo va compilato insieme al Cognome ed è in alternativa al campo Denominazione</span>
                                                                             </p>
@@ -300,8 +301,9 @@ foreach ($items as $item) {
                                                                     </div>
                                                                     <div>
                                                                         <div>
-                                                                            <label for="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-Anagrafica-Cognome">Cognome del cedente/prestatore (compilare nei casi di persona fisica)</label>
-                                                                            <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.Anagrafica.Cognome" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-Anagrafica-Cognome">
+                                                                            <label for="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-Anagrafica-Cognome">Cognome del cedente/prestatore (compilare nei casi di persona fisica)</label><br>
+                                                                            <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.Anagrafica.Cognome" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-Anagrafica-Cognome"><br>
+                                                                            <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-Anagrafica-Cognome-error"></div>
                                                                             <p class="note">
                                                                                 <span>Questo campo va compilato insieme al Nome ed è in alternativa al campo Denominazione</span>
                                                                             </p>
@@ -313,8 +315,9 @@ foreach ($items as $item) {
                                                         </div>
                                                         <div>
                                                             <div>
-                                                                <label for="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-RegimeFiscale">Regime fiscale del cedente/prestatore</label>
-                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.RegimeFiscale" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-RegimeFiscale">
+                                                                <label for="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-RegimeFiscale">Regime fiscale del cedente/prestatore</label><br>
+                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.RegimeFiscale" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-RegimeFiscale"><br>
+                                                                <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-RegimeFiscale-error"></div>
                                                                 <p class="note">
                                                                     <span>RF01: Regime ordinario; RF02: Regime dei contribuenti minimi; RF03: Regime delle nuove iniziative produttive; RF04: Agricoltura e attività connesse e pesca; RF05: Vendita sali e tabacchi; RF06: Commercio dei fiammiferi; RF07: Editoria; RF08: Gestione di servizi di telefonia pubblica; RF09: Rivendita di documenti di trasporto pubblico e di sosta; RF10: Intrattenimenti, giochi e altre attività; RF11: Agenzie di viaggi e turismo; RF12: Agriturismo; RF13: Vendite a domicilio; RF14: Rivendita di beni usati, di oggetti d&#039;arte, d&#039;antiquariato o da collezione; RF15: Agenzie di vendite all&#039;asta di oggetti d&#039;arte, antiquariato o da collezione; RF16: IVA per cassa P.A.; RF17: IVA per cassa; RF19: Regime forfettario; RF18: Altro</span>
                                                                 </p>
@@ -333,8 +336,9 @@ foreach ($items as $item) {
                                                         <legend>Sede legale per le società e del domicilio fiscale per le ditte individuali e i lavoratori autonomi</legend>
                                                         <div>
                                                             <div>
-                                                                <label for="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-Sede-Indirizzo">Indirizzo del cedente/prestatore: via / piazza / ... nome e (opzionale) numero civico</label>
-                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.Sede.Indirizzo" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-Sede-Indirizzo">
+                                                                <label for="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-Sede-Indirizzo">Indirizzo del cedente/prestatore: via / piazza / ... nome e (opzionale) numero civico</label><br>
+                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.Sede.Indirizzo" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-Sede-Indirizzo"><br>
+                                                                <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-Sede-Indirizzo-error"></div>
                                                                 <p class="note">
                                                                     <span>Il numero civico può anche essere indicato separatamente nel campo apposito</span>
                                                                 </p>
@@ -343,8 +347,9 @@ foreach ($items as $item) {
                                                         </div>
                                                         <div>
                                                             <div>
-                                                                <label for="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-Sede-CAP">Codice di Avviamento Postale</label>
-                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.Sede.CAP" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-Sede-CAP">
+                                                                <label for="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-Sede-CAP">Codice di Avviamento Postale</label><br>
+                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.Sede.CAP" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-Sede-CAP"><br>
+                                                                <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-Sede-CAP-error"></div>
                                                             </div>
 
                                                         </div>
@@ -358,7 +363,8 @@ foreach ($items as $item) {
                                                         <div>
                                                             <div>
                                                                 <label for="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-Sede-Nazione">Codice della nazione</label>
-                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.Sede.Nazione" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-Sede-Nazione">
+                                                                <br><input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.Sede.Nazione" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-Sede-Nazione"><br>
+                                                                <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-Sede-Nazione-error"></div>
                                                                 <p class="note">
                                                                     <span>Espressa secondo lo standard ISO 3166-1 alpha-2 code (https://it.wikipedia.org/wiki/ISO_3166-1_alpha-2), es: Italia: IT, Francia: FR, Svizzera: CH, San Marino: SM, Città del Vaticano: VA, Austria: AT, Slovenia: SI</span>
                                                                 </p>
@@ -394,8 +400,9 @@ foreach ($items as $item) {
                                                                     <legend>Anagrafica</legend>
                                                                     <div>
                                                                         <div>
-                                                                            <label for="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici-Anagrafica-Denominazione">Ditta, denominazione o ragione sociale del cessionario/committente (compilare nei casi di persona non fisica)</label>
-                                                                            <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.DatiAnagrafici.Anagrafica.Denominazione" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici-Anagrafica-Denominazione">
+                                                                            <label for="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici-Anagrafica-Denominazione">Ditta, denominazione o ragione sociale del cessionario/committente (compilare nei casi di persona non fisica)</label><br>
+                                                                            <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.DatiAnagrafici.Anagrafica.Denominazione" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici-Anagrafica-Denominazione"><br>
+                                                                            <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici-Anagrafica-Denominazione-error"></div>
                                                                             <p class="note">
                                                                                 <span>Questo campo è in alternativa ai campi Nome e Cognome</span>
                                                                             </p>
@@ -404,8 +411,9 @@ foreach ($items as $item) {
                                                                     </div>
                                                                     <div>
                                                                         <div>
-                                                                            <label for="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici-Anagrafica-Nome">Nome del cessionario/committente (compilare nei casi di persona fisica)</label>
-                                                                            <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.DatiAnagrafici.Anagrafica.Nome" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici-Anagrafica-Nome">
+                                                                            <label for="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici-Anagrafica-Nome">Nome del cessionario/committente (compilare nei casi di persona fisica)</label><br>
+                                                                            <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.DatiAnagrafici.Anagrafica.Nome" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici-Anagrafica-Nome"><br>
+                                                                            <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici-Anagrafica-Nome-error"></div>
                                                                             <p class="note">
                                                                                 <span>Questo campo va compilato insieme al Cognome ed è in alternativa al campo Denominazione</span>
                                                                             </p>
@@ -414,8 +422,9 @@ foreach ($items as $item) {
                                                                     </div>
                                                                     <div>
                                                                         <div>
-                                                                            <label for="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici-Anagrafica-Cognome">Cognome del cessionario/committente (compilare nei casi di persona fisica)</label>
-                                                                            <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.DatiAnagrafici.Anagrafica.Cognome" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici-Anagrafica-Cognome">
+                                                                            <label for="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici-Anagrafica-Cognome">Cognome del cessionario/committente (compilare nei casi di persona fisica)</label><br>
+                                                                            <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.DatiAnagrafici.Anagrafica.Cognome" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici-Anagrafica-Cognome"><br>
+                                                                            <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-DatiAnagrafici-Anagrafica-Cognome-error"></div>
                                                                             <p class="note">
                                                                                 <span>Questo campo va compilato insieme al Nome ed è in alternativa al campo Denominazione</span>
                                                                             </p>
@@ -437,8 +446,9 @@ foreach ($items as $item) {
                                                         <legend>Sede</legend>
                                                         <div>
                                                             <div>
-                                                                <label for="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede-Indirizzo">Indirizzo del cessionario/committente: via / piazza / ... nome e (opzionale) numero civico</label>
-                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.Sede.Indirizzo" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede-Indirizzo">
+                                                                <label for="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede-Indirizzo">Indirizzo del cessionario/committente: via / piazza / ... nome e (opzionale) numero civico</label><br>
+                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.Sede.Indirizzo" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede-Indirizzo"><br>
+                                                                <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede-Indirizzo-error"></div>
                                                                 <p class="note">
                                                                     <span>Il numero civico può anche essere indicato separatamente nel campo apposito</span>
                                                                 </p>
@@ -447,22 +457,25 @@ foreach ($items as $item) {
                                                         </div>
                                                         <div>
                                                             <div>
-                                                                <label for="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede-CAP">Codice di Avviamento Postale</label>
-                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.Sede.CAP" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede-CAP">
+                                                                <label for="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede-CAP">Codice di Avviamento Postale</label><br>
+                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.Sede.CAP" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede-CAP"><br>
+                                                                <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede-CAP-error"></div>
                                                             </div>
 
                                                         </div>
                                                         <div>
                                                             <div>
-                                                                <label for="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede-Comune">Comune</label>
-                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.Sede.Comune" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede-Comune">
+                                                                <label for="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede-Comune">Comune</label><br>
+                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.Sede.Comune" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede-Comune"><br>
+                                                                <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede-Comune-error"></div>
                                                             </div>
 
                                                         </div>
                                                         <div>
                                                             <div>
-                                                                <label for="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede-Nazione">Codice della nazione</label>
-                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.Sede.Nazione" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede-Nazione">
+                                                                <label for="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede-Nazione">Codice della nazione</label><br>
+                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CessionarioCommittente.Sede.Nazione" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede-Nazione"><br>
+                                                                <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaHeader-CessionarioCommittente-Sede-Nazione-error"></div>
                                                                 <p class="note">
                                                                     <span>Espresso secondo lo standard ISO 3166-1 alpha-2 code (https://it.wikipedia.org/wiki/ISO_3166-1_alpha-2), es: Italia: IT, Francia: FR, Svizzera: CH</span>
                                                                 </p>
@@ -504,8 +517,9 @@ foreach ($items as $item) {
                                                                 <legend>Dati Generali del documento</legend>
                                                                 <div>
                                                                     <div>
-                                                                        <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento-TipoDocumento">Tipologia del documento oggetto della trasmissione</label>
-                                                                        <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiGenerali.DatiGeneraliDocumento.TipoDocumento" id="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento-TipoDocumento">
+                                                                        <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento-TipoDocumento">Tipologia del documento oggetto della trasmissione</label><br>
+                                                                        <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiGenerali.DatiGeneraliDocumento.TipoDocumento" id="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento-TipoDocumento"><br>
+                                                                        <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento-TipoDocumento-error"></div>
                                                                         <p class="note">
                                                                             <span>TD01: Fattura, TD02: Acconto / anticipo su fattura, TD03: Acconto / anticipo su parcella, TD04: Nota di credito, TD05: Nota di debito, TD06: Parcella</span>
                                                                         </p>
@@ -514,8 +528,9 @@ foreach ($items as $item) {
                                                                 </div>
                                                                 <div>
                                                                     <div>
-                                                                        <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento-Divisa">Valuta utilizzata per l&#039;indicazione degli importi</label>
-                                                                        <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiGenerali.DatiGeneraliDocumento.Divisa" id="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento-Divisa">
+                                                                        <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento-Divisa">Valuta utilizzata per l&#039;indicazione degli importi</label><br>
+                                                                        <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiGenerali.DatiGeneraliDocumento.Divisa" id="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento-Divisa"><br>
+                                                                        <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento-Divisa-error"></div>
                                                                         <p class="note">
                                                                             <span>Espresso secondo lo standard ISO 4217 alpha-3:2001 (https://it.wikipedia.org/wiki/ISO_4217#Codici_attivi), esempi: EUR, USD, CHF, GBP, CZK ...</span>
                                                                         </p>
@@ -524,8 +539,9 @@ foreach ($items as $item) {
                                                                 </div>
                                                                 <div>
                                                                     <div>
-                                                                        <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento-Data">Data del documento</label>
-                                                                        <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiGenerali.DatiGeneraliDocumento.Data" id="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento-Data">
+                                                                        <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento-Data">Data del documento</label><br>
+                                                                        <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiGenerali.DatiGeneraliDocumento.Data" id="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento-Data"><br>
+                                                                        <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento-Data-error"></div>
                                                                         <p class="note">
                                                                             <span>Rappresentata secondo il formato ISO 8601:2004 (https://it.wikipedia.org/wiki/ISO_8601), con la seguente precisione: YYYY-MM-DD</span>
                                                                         </p>
@@ -534,8 +550,9 @@ foreach ($items as $item) {
                                                                 </div>
                                                                 <div>
                                                                     <div>
-                                                                        <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento-Numero">Numero progressivo attribuito dal cedente/prestatore al documento</label>
-                                                                        <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiGenerali.DatiGeneraliDocumento.Numero" id="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento-Numero">
+                                                                        <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento-Numero">Numero progressivo attribuito dal cedente/prestatore al documento</label><br>
+                                                                        <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiGenerali.DatiGeneraliDocumento.Numero" id="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento-Numero"><br>
+                                                                        <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento-Numero-error"></div>
                                                                     </div>
 
                                                                 </div>
@@ -567,36 +584,42 @@ for ($i = 0; $i <= $numeroLinee; $i++):
                                                                         <legend>Linea di dettaglio</legend>
                                                                         <div>
                                                                             <div>
-                                                                                <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-NumeroLinea">Numero identificativo della linea di dettaglio</label>
-                                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DettaglioLinee[<?php echo $i; ?>].NumeroLinea" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-NumeroLinea">
+                                                                                <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-NumeroLinea">Numero identificativo della linea di dettaglio</label><br>
+                                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DettaglioLinee[<?php echo $i; ?>].NumeroLinea" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-NumeroLinea"><br>
+                                                                                <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-NumeroLinea-error"></div>
                                                                             </div>
 
                                                                         </div>
                                                                         <div>
                                                                             <div>
-                                                                                <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-Descrizione">Natura e qualità del bene/servizio oggetto della cessione/prestazione; può fare anche riferimento ad un precedente documento emesso a titolo di anticipo/acconto</label>
-                                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DettaglioLinee[<?php echo $i; ?>].Descrizione" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-Descrizione">
+                                                                                <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-Descrizione">Natura e qualità del bene/servizio oggetto della cessione/prestazione; può fare anche riferimento ad un precedente documento emesso a titolo di anticipo/acconto</label><br>
+                                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DettaglioLinee[<?php echo $i; ?>].Descrizione" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-Descrizione"><br>
+                                                                                <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-Descrizione-error"></div>
                                                                             </div>
 
                                                                         </div>
                                                                         <div>
                                                                             <div>
-                                                                                <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-PrezzoUnitario">Prezzo unitario del bene/servizio; nel caso di beni ceduti a titolo di sconto, premio o abbuono, l&#039;importo indicato rappresenta il &quot;valore normale&quot;</label>
-                                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DettaglioLinee[<?php echo $i; ?>].PrezzoUnitario" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-PrezzoUnitario">
+                                                                                <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-PrezzoUnitario">Prezzo unitario del bene/servizio; nel caso di beni ceduti a titolo di sconto, premio o abbuono, l&#039;importo indicato rappresenta il &quot;valore normale&quot;</label><br>
+                                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DettaglioLinee[<?php echo $i; ?>].PrezzoUnitario" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-PrezzoUnitario"><br>
+                                                                                <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-PrezzoUnitario-error">
+                                                                            </div>
                                                                             </div>
 
                                                                         </div>
                                                                         <div>
                                                                             <div>
-                                                                                <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-PrezzoTotale">Importo totale del bene/servizio al netto dell&#039;eventuale sconto</label>
-                                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DettaglioLinee[<?php echo $i; ?>].PrezzoTotale" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-PrezzoTotale">
+                                                                                <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-PrezzoTotale">Importo totale del bene/servizio al netto dell&#039;eventuale sconto</label><br>
+                                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DettaglioLinee[<?php echo $i; ?>].PrezzoTotale" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-PrezzoTotale"><br>
+                                                                                <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-PrezzoTotale-error"></div>
                                                                             </div>
 
                                                                         </div>
                                                                         <div>
                                                                             <div>
-                                                                                <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-AliquotaIVA">Aliquota IVA applicata alla cessione/prestazione; nel caso di non applicabilità, il campo deve essere impostato a 0.00</label>
-                                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DettaglioLinee[<?php echo $i; ?>].AliquotaIVA" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-AliquotaIVA">
+                                                                                <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-AliquotaIVA">Aliquota IVA applicata alla cessione/prestazione; nel caso di non applicabilità, il campo deve essere impostato a 0.00</label><br>
+                                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DettaglioLinee[<?php echo $i; ?>].AliquotaIVA" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-AliquotaIVA"><br>
+                                                                                <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DettaglioLinee-<?php echo $i; ?>-AliquotaIVA-error"></div>
                                                                                 <p class="note">
                                                                                     <span>Espressa in percentuale con due decimali separati dall&#039;intero con il carattere &#039;.&#039; (punto)</span>
                                                                                 </p>
@@ -628,8 +651,9 @@ for ($j = 0; $j <= $numeroRiepiloghi; $j++):
                                                                         <legend>Dati di riepilogo per aliquota</legend>
                                                                         <div>
                                                                             <div>
-                                                                                <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DatiRiepilogo-<?php echo $j; ?>-AliquotaIVA">Aliquota IVA applicata alla cessione/prestazione; nel caso di non applicabilità, il campo deve essere impostato a 0.00</label>
-                                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DatiRiepilogo[<?php echo $j; ?>].AliquotaIVA" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DatiRiepilogo-<?php echo $j; ?>-AliquotaIVA">
+                                                                                <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DatiRiepilogo-<?php echo $j; ?>-AliquotaIVA">Aliquota IVA applicata alla cessione/prestazione; nel caso di non applicabilità, il campo deve essere impostato a 0.00</label><br>
+                                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DatiRiepilogo[<?php echo $j; ?>].AliquotaIVA" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DatiRiepilogo-<?php echo $j; ?>-AliquotaIVA"><br>
+                                                                                <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DatiRiepilogo-<?php echo $j; ?>-AliquotaIVA-error"></div>
                                                                                 <p class="note">
                                                                                     <span>Espressa in percentuale con due decimali separati dall&#039;intero con il carattere &#039;.&#039; (punto)</span>
                                                                                 </p>
@@ -638,15 +662,18 @@ for ($j = 0; $j <= $numeroRiepiloghi; $j++):
                                                                         </div>
                                                                         <div>
                                                                             <div>
-                                                                                <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DatiRiepilogo-<?php echo $j; ?>-ImponibileImporto">Valore che rappresenta la base imponibile per le operazioni soggette ad IVA, oppure l’importo per le operazioni che non rientrano tra quelle &#039;imponibili&#039;</label>
+                                                                                <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DatiRiepilogo-<?php echo $j; ?>-ImponibileImporto">Valore che rappresenta la base imponibile per le operazioni soggette ad IVA, oppure l’importo per le operazioni che non rientrano tra quelle &#039;imponibili&#039;</label><br>
                                                                                 <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DatiRiepilogo[<?php echo $j; ?>].ImponibileImporto" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DatiRiepilogo-<?php echo $j; ?>-ImponibileImporto">
+                                                                                <br>
+                                                                                <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DatiRiepilogo-<?php echo $j; ?>-ImponibileImporto-error">
                                                                             </div>
 
                                                                         </div>
                                                                         <div>
                                                                             <div>
-                                                                                <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DatiRiepilogo-<?php echo $j; ?>-Imposta">Imposta corrispondente all’applicazione dell’aliquota IVA sulla base imponibile</label>
-                                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DatiRiepilogo[<?php echo $j; ?>].Imposta" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DatiRiepilogo-<?php echo $j; ?>-Imposta">
+                                                                                <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DatiRiepilogo-<?php echo $j; ?>-Imposta">Imposta corrispondente all’applicazione dell’aliquota IVA sulla base imponibile</label><br>
+                                                                                <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiBeniServizi.DatiRiepilogo[<?php echo $j; ?>].Imposta" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DatiRiepilogo-<?php echo $j; ?>-Imposta"><br>
+                                                                                <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaBody-0-DatiBeniServizi-DatiRiepilogo-<?php echo $j; ?>-Imposta-error"></div>
                                                                             </div>
 
                                                                         </div>
@@ -862,9 +889,7 @@ endfor;
             for (edc = 0; edc < errDivs.length; edc++) {
                 errDivs[edc].innerHTML = "";
             }
-
             var errors  = result.errors;
-
             var i = 0;
             for (i = 0; i < errors.length; i++) { 
                 var elId = errors[i]['property'];
