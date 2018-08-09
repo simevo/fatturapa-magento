@@ -78,6 +78,7 @@
 		var errMsgId = elId + "-error";
 		if(document.getElementById(errMsgId)) {
 			document.getElementById(errMsgId).innerHTML = errors[i]['message'];
+			document.getElementById(errMsgId).style.color = "red";
 		}
 
   		console.log(errMsgId);
