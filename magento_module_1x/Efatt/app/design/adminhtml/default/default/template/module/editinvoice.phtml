@@ -147,7 +147,7 @@ foreach ($items as $item) {
                         <div>
                             <label for="FatturaElettronica-versione">Versione documento</label><br>
                             <input type="string" v-model="FatturaElettronica.versione" id="FatturaElettronica-versione"><br>
-                            <div id="FatturaElettronica-versione-error"></div>
+                            <div class="efatt-error" id="FatturaElettronica-versione-error"></div>
                             <p class="note">
                                 <span>FPR12: Fattura tra Privati, FPA12: Fattura verso Pubblica Amministrazione</span>
                             </p>
@@ -179,7 +179,7 @@ foreach ($items as $item) {
                                                             <div>
                                                                 <label for="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-IdTrasmittente-IdPaese">Codice della nazione assegnante l’identificativo fiscale al soggetto trasmittente</label><br>
                                                                 <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.IdTrasmittente.IdPaese" id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-IdTrasmittente-IdPaese"><br>
-                                                                <div id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-IdTrasmittente-IdPaese-error"></div>
+                                                                <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-IdTrasmittente-IdPaese-error"></div>
                                                                 <p class="note">
                                                                     <span>Espressa secondo lo standard ISO 3166-1 alpha-2 code (https://it.wikipedia.org/wiki/ISO_3166-1_alpha-2), es: Italia: IT, Francia: FR, Svizzera: CH, San Marino: SM, Città del Vaticano: VA, Austria: AT, Slovenia: SI</span>
                                                                 </p>
@@ -190,7 +190,7 @@ foreach ($items as $item) {
                                                             <div>
                                                                 <label for="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-IdTrasmittente-IdCodice">Numero di identificazione fiscale del soggetto trasmittente (per i soggetti stabiliti nel territorio dello Stato Italiano corrisponde al Codice Fiscale; per i non residenti si fa riferimento all’identificativo fiscale assegnato dall’autorità del paese di residenza)</label><br>
                                                                 <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.IdTrasmittente.IdCodice" id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-IdTrasmittente-IdCodice"><br>
-                                                                <div id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-IdTrasmittente-IdCodice-error"></div>
+                                                                <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-IdTrasmittente-IdCodice-error"></div>
                                                             </div>
 
                                                         </div>
@@ -201,7 +201,7 @@ foreach ($items as $item) {
                                                 <div>
                                                     <label for="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-ProgressivoInvio">Progressivo che il soggetto trasmittente attribuisce al file che inoltra al Sistema di Interscambio per una propria finalità di identificazione univoca</label><br>
                                                     <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.ProgressivoInvio" id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-ProgressivoInvio"><br>
-                                                    <div id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-ProgressivoInvio-error"></div>
+                                                    <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-ProgressivoInvio-error"></div>
                                                 </div>
 
                                             </div>
@@ -209,7 +209,7 @@ foreach ($items as $item) {
                                                 <div>
                                                     <label for="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-FormatoTrasmissione">Codice identificativo del tipo di trasmissione che si sta effettuando e del relativo formato</label><br>
                                                     <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.FormatoTrasmissione" id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-FormatoTrasmissione"><br>
-                                                    <div id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-FormatoTrasmissione-error"></div>
+                                                    <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-FormatoTrasmissione-error"></div>
                                                 </div>
 
                                             </div>
@@ -217,7 +217,7 @@ foreach ($items as $item) {
                                                 <div>
                                                     <label for="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-CodiceDestinatario">Identifica il soggetto al quale è destinata la fattura</label><br>
                                                     <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.CodiceDestinatario" id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-CodiceDestinatario">
-                                                    <div id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-CodiceDestinatario-error"></div>
+                                                    <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-CodiceDestinatario-error"></div>
                                                     <p class="note">
                                                         <span>Per PA: Codice Ufficio (6 caratteri, vedi https://www.indicepa.gov.it/). Per fatturazione verso privati, codice del canale di ricezione accreditato nel  Sistema di Interscambio (7 caratteri) oppure ‘0000000’ se riceve tramite PEC</span>
                                                     </p>
@@ -252,7 +252,7 @@ foreach ($items as $item) {
                                                                         <div>
                                                                             <label for="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-IdFiscaleIVA-IdPaese">Codice del paese assegnante l’identificativo fiscale al soggetto cedente/prestatore</label><br>
                                                                             <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.IdFiscaleIVA.IdPaese" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-IdFiscaleIVA-IdPaese"><br>
-                                                                            <div id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-IdFiscaleIVA-IdPaese-error"></div>
+                                                                            <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-IdFiscaleIVA-IdPaese-error"></div>
                                                                             <p class="note">
                                                                                 <span>Sigla della nazione espressa secondo lo standard ISO 3166-1 alpha-2 code (https://it.wikipedia.org/wiki/ISO_3166-1_alpha-2), es: Italia: IT, Francia: FR, Svizzera: CH, San Marino: SM, Città del Vaticano: VA, Austria: AT, Slovenia: SI</span>
                                                                             </p>
@@ -263,7 +263,7 @@ foreach ($items as $item) {
                                                                         <div>
                                                                             <label for="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-IdFiscaleIVA-IdCodice">Numero di identificazione fiscale del soggetto cedente/prestatore (per i soggetti stabiliti nel territorio dello Stato Italiano corrisponde al Codice Fiscale; per i non residenti si fa riferimento all’identificativo fiscale assegnato dall’autorità del paese di residenza)</label><br>
                                                                             <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.IdFiscaleIVA.IdCodice" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-IdFiscaleIVA-IdCodice"><br>
-                                                                            <div  id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-IdFiscaleIVA-IdCodice-error"></div>
+                                                                            <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-IdFiscaleIVA-IdCodice-error"></div>
                                                                         </div>
 
                                                                     </div>
@@ -281,7 +281,7 @@ foreach ($items as $item) {
                                                                         <div>
                                                                             <label for="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-Anagrafica-Denominazione">Ditta, denominazione o ragione sociale del cedente/prestatore (compilare nei casi di persona non fisica)</label><br>
                                                                             <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.CedentePrestatore.DatiAnagrafici.Anagrafica.Denominazione" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-Anagrafica-Denominazione"><br>
-                                                                            <div id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-Anagrafica-Denominazione-error"></div>
+                                                                            <div class="efatt-error" id="FatturaElettronica-FatturaElettronicaHeader-CedentePrestatore-DatiAnagrafici-Anagrafica-Denominazione-error"></div>
                                                                             <p class="note">
                                                                                 <span>Questo campo è in alternativa ai campi Nome e Cognome</span>
                                                                             </p>
@@ -856,10 +856,14 @@ endfor;
             var result = jsonSchema.validate(invoice, schema);
             document.getElementById("result").value = JSON.stringify(result);
 
-                  /* evidenziazione eventuali errori sui campi */
-            var errJson = result;
-            //var obj     = JSON.parse(errJson);
-            var errors  = errJson.errors;
+            /* evidenziazione eventuali errori sui campi */
+            var errDivs = document.getElementsByClassName("efatt-error");
+            var edc;
+            for (edc = 0; edc < errDivs.length; edc++) {
+                errDivs[edc].innerHTML = "";
+            }
+
+            var errors  = result.errors;
 
             var i = 0;
             for (i = 0; i < errors.length; i++) { 
@@ -877,8 +881,6 @@ endfor;
                     document.getElementById(errMsgId).innerHTML = errors[i]['message'];
                     document.getElementById(errMsgId).style.color = "red";
                 }
-
-                console.log(errMsgId);
             }
           }
         }
