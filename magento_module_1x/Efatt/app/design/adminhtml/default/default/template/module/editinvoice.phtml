@@ -846,6 +846,31 @@ endfor;
             var invoice = self.getInvoice();
             var result = jsonSchema.validate(invoice, schema);
             document.getElementById("result").value = JSON.stringify(result);
+
+                  /* evidenziazione eventuali errori sui campi */
+            var errJson = result;
+            //var obj     = JSON.parse(errJson);
+            var errors  = errJson.errors;
+
+            var i = 0;
+            for (i = 0; i < errors.length; i++) { 
+                var elId = errors[i]['property'];
+                elId = elId.replace(/\]./g, "-");
+                elId = elId.replace(/\[/g, "-");
+                elId = elId.replace(/\./g, "-");
+
+                if(document.getElementById(elId)) {
+                        document.getElementById(elId).style.border = "1px solid red";
+                }
+
+                var errMsgId = elId + "-error";
+                if(document.getElementById(errMsgId)) {
+                    //document.getElementById(errMsgId).innerHTML = errors[i]['message'];
+                    //document.getElementById(errMsgId).style.color = "red";
+                }
+
+                console.log(errMsgId);
+            }
           }
         }
       };
