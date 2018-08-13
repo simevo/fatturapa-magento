@@ -139,7 +139,7 @@ foreach ($items as $item) {
         <div>
             <div class="section-object">
                 <fieldset class="config collapseable" id="FatturaElettronica">
-                    <div>
+                <div style="display: none">
                         <div>
                             <label for="FatturaElettronica-versione">Versione documento</label><br>
                             <input type="string" v-model="FatturaElettronica.versione" id="FatturaElettronica-versione"><br>
@@ -201,7 +201,7 @@ foreach ($items as $item) {
                                                 </div>
 
                                             </div>
-                                            <div>
+                                            <div style="display: none">
                                                 <div>
                                                     <label for="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-FormatoTrasmissione">Codice identificativo del tipo di trasmissione che si sta effettuando e del relativo formato</label><br>
                                                     <input type="string" v-model="FatturaElettronica.FatturaElettronicaHeader.DatiTrasmissione.FormatoTrasmissione" id="FatturaElettronica-FatturaElettronicaHeader-DatiTrasmissione-FormatoTrasmissione"><br>
@@ -511,7 +511,7 @@ foreach ($items as $item) {
                                                             </div>
                                                             <fieldset class="config" v-if="FatturaElettronica.FatturaElettronicaBody[0].DatiGenerali.DatiGeneraliDocumento.visible" id="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento">
                                                                 <legend>Dati Generali del documento</legend>
-                                                                <div>
+                                                                <div style="display: none">
                                                                     <div>
                                                                         <label for="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento-TipoDocumento">Tipologia del documento oggetto della trasmissione</label><br>
                                                                         <input type="string" v-model="FatturaElettronica.FatturaElettronicaBody[0].DatiGenerali.DatiGeneraliDocumento.TipoDocumento" id="FatturaElettronica-FatturaElettronicaBody-0-DatiGenerali-DatiGeneraliDocumento-TipoDocumento"><br>
