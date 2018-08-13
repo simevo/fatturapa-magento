@@ -15,12 +15,13 @@ Testato con Magento 1.9.3.9 su Debian 9.4 (stretch) amd64 con PHP 5.6.37.
 
 ### Installazione
 
-Generare il file ZIP con i files da installare lanciando all'interno del repository il comando:
+Genera il file `efatt.tar.gz` con i files da installare lanciando all'interno del repository i comandi:
 ```
-./make dist
+make clean
+make dist
 ```
 
-Copiare il file ZIP generato ed estrarlo nella cartella di installazione di Magento sul tuo hosting
+Copia il file così generato ed estrailo nella cartella di installazione di Magento sul tuo hosting.
 
 All'interno dell'interfaccia utente amministrativa Magento, vai su `System -> Cache management` (italiano: `Sistema -> Gestione della Cache`) e clicca su `Flush Magento Cache` e `Flush Cache Storage` in alto a destra.
 
