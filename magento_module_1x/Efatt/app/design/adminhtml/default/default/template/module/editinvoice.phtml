@@ -14,16 +14,12 @@ $numeroLinee = count($items) - 1;
 $data = '
 {
     "FatturaElettronica": {
-      "versione": "",
       "FatturaElettronicaHeader": {
         "DatiTrasmissione": {
           "IdTrasmittente": {
             "IdPaese": "' . $config['CedentePrestatore_DatiAnagrafici_IdFiscaleIVA']['IdPaese'] . '",
             "IdCodice": "' . $config['CedentePrestatore_DatiAnagrafici_IdFiscaleIVA']['IdCodice'] . '"
-            },
-          "ProgressivoInvio": "",
-          "FormatoTrasmissione": "",
-          "CodiceDestinatario": ""
+            }
         },
         "CedentePrestatore": {
           "DatiAnagrafici": {
@@ -46,7 +42,6 @@ $data = '
         },
         "CessionarioCommittente": {
           "DatiAnagrafici": {
-            "CodiceFiscale": "",
               "Anagrafica": {
                 "Denominazione": "' . $cc['company'] . '"
               }
@@ -64,14 +59,8 @@ $data = '
         {
           "DatiGenerali": {
             "DatiGeneraliDocumento": {
-              "TipoDocumento": "",
               "Divisa": "' . $order->store_currency_code . '",
-              "Data": "' . date("Y-m-d", strtotime($invoice->created_at)) . '",
-              "Numero": "",
-              "Causale": [
-                "",
-                ""
-              ]
+              "Data": "' . date("Y-m-d", strtotime($invoice->created_at)) . '"
             }
           },
           "DatiBeniServizi": {
@@ -95,10 +84,8 @@ foreach ($items as $item) {
         $data .= '],
             "DatiRiepilogo": [
                 {
-                "AliquotaIVA": "",
                 "ImponibileImporto": "' . $invoice->base_grand_total . '",
-                "Imposta": "' . $invoice->base_tax_amount . '",
-                "EsigibilitaIVA": ""
+                "Imposta": "' . $invoice->base_tax_amount . '"
               },
             ]
           }
