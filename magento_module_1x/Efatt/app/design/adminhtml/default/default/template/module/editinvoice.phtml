@@ -493,9 +493,9 @@ foreach ($items as $item) {
                                 <legend>Fatture elettroniche</legend>
                                 <div class="section-object">
                                     <div class="entry-edit-head collapseable">
-                                        <a id="FatturaElettronica-FatturaElettronicaBody-0" href="#">Fattura</a>
+                                        <a id="FatturaElettronica-FatturaElettronicaBody-0" href="#" v-on:click="FatturaElettronica.FatturaElettronicaBody[0].visible = !FatturaElettronica.FatturaElettronicaBody[0].visible">Corpo della Fattura Elettronica</a>
                                     </div>
-                                    <fieldset class="config" id="FatturaElettronica-FatturaElettronicaBody-0">
+                                    <fieldset class="config" v-if="FatturaElettronica.FatturaElettronicaBody[0].visible" id="FatturaElettronica-FatturaElettronicaBody-0">
                                         <legend>Fattura</legend>
                                         <div>
                                             <div class="section-object">
@@ -802,6 +802,7 @@ var app = new Vue({
       },
       "FatturaElettronicaBody": [
         {
+          "visible": true,
           "DatiGenerali": {
             "visible": true,
             "DatiGeneraliDocumento": {
@@ -894,7 +895,7 @@ endfor;
                 elId = elId.replace(/\./g, "-");
 
                 if(document.getElementById(elId)) {
-                        document.getElementById(elId).style.border = "1px solid requested";
+                        document.getElementById(elId).style.border = "1px solid red";
                 }
 
                 var errMsgId = elId + "-error";
