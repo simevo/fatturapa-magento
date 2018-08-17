@@ -2,7 +2,7 @@
 <layout version="0.1.0">
   <adminhtml_sales_invoice_editinvoice>
   	<reference name="head">
-            <action method="addJs"><script>efatt/vue.min.js</script></action>
+            <action method="addJs"><script>efatt/vue.js</script></action>
             <action method="addJs"><script>efatt/validate.js</script></action> 
             <action method="addJs"><script>efatt/handlebars.min.js</script></action>        
         </reference>

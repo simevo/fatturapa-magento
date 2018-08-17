@@ -162,21 +162,30 @@ var validate = exports._validate = function(/*Any*/instance,/*Object*/schema,/*O
 					errors.concat(checkObj(value, schema.properties, path, schema.additionalProperties));
 				}
 				if(schema.pattern && typeof value == 'string' && !value.match(schema.pattern)){
-					addError("does not match the regex pattern " + schema.pattern);
+					//addError("does not match the regex pattern " + schema.pattern);
+					var pattern = schema.pattern;
+					if(pattern == '^[A-Z0-9]{6,7}$') {addError("deve essere 7 caratteri alfanumerici maiuscoli (Es. AAAAAA1)");}
+					if(pattern == '^[0-9]{1,2}\\.[0-9]{2}$') {addError("inserire un numero con due decimali separati con il punto '.' (Es. 22.00)");}
+					if(pattern == '^-?[0-9]{1,11}\\.[0-9]{2}$') {addError("inserire un numero con due cifre decimali separate dal punto '.' (Es. 22.00)");}
+					if(pattern == '^-?[0-9]{1,11}\\.[0-9]{2,8}$') {addError("inserire un numero che abbia da due a otto cifre decimali separate dal punto '.' (Es. 22.1233)");}
+					if(pattern == '^[A-Z]{2}$') {addError("inserie una stringa composta da due lettere maiuscole (Es. IT)");}
+					if(pattern == '^[0-9]{5}$') {addError("inserie un numero di 5 cifre (Es. 47921)");}
+					if(pattern == '^RF[0-9]{2}$') {addError("inserie codice regime fiscale (Es. RF03)");}
+					if(pattern == '^[0-9]{1,4}$') {addError("inserie un numero di massimo 4 cifre (Es. 12)");}
 				}
 				if(schema.maxLength && typeof value == 'string' && value.length > schema.maxLength){
-					addError("may only be " + schema.maxLength + " characters long");
+					addError("massimo " + schema.maxLength + " caratteri");
 				}
 				if(schema.minLength && typeof value == 'string' && value.length < schema.minLength){
-					addError("must be at least " + schema.minLength + " characters long");
+					addError("minimo " + schema.minLength + " caratteri");
 				}
 				if(typeof schema.minimum !== undefined && typeof value == typeof schema.minimum &&
 						schema.minimum > value){
-					addError("must have a minimum value of " + schema.minimum);
+					addError("valore minimo: " + schema.minimum);
 				}
 				if(typeof schema.maximum !== undefined && typeof value == typeof schema.maximum &&
 						schema.maximum < value){
-					addError("must have a maximum value of " + schema.maximum);
+					addError("valore massimo: " + schema.maximum);
 				}
 				if(schema['enum']){
 					var enumer = schema['enum'];
