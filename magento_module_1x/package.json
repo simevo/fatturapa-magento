@@ -1,0 +1,14 @@
+{
+    "name": "fatturapa-magento-1x",
+    "version": "0.0.1",
+    "description": "Plugin Magento 1.9.x per la fatturazione elettronica tra privati",
+    "repository": "https://github.com/simevo/fatturapa-magento",
+    "author": "Paolo Greppi simevo s.r.l.",
+    "license": "AGPL-3.0",
+    "dependencies": {
+        "handlebars": "^4.0.11",
+        "jshint": "^2.9.6",
+        "json-schema": "^0.2.3",
+        "vue": "^2.5.17"
+    }
+}
