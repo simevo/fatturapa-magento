@@ -71,7 +71,7 @@ foreach ($items as $item) {
 
         $data .= '{
                 "NumeroLinea": "' . $ic . '",
-                "Descrizione": "' . $item->name .'",
+                "Descrizione": "' . addslashes($item->name) .'",
                 "Quantita": "' . $item->qty_ordered . '",
                 "PrezzoUnitario": "' . $item->original_price . '",
                 "PrezzoTotale": "' . $item->row_total . '",
@@ -95,6 +95,10 @@ foreach ($items as $item) {
 }
 ';
 ?>
+
+<style type="text/css">
+    fieldset {padding-right: 0px;}
+</style>
 
 <div id="page:main-container">
 
